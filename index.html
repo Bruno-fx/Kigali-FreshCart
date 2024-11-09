@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kigali Shopping Mall</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'times new roman', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #cceef7;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: url('kigali.jpeg') no-repeat center center/cover;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .transparent-box {
+      background-color: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    header h1, header h2 {
+      margin: 0;
+    }
+
+    header h2 {
+      font-size: 4.5rem;
+      font-family: 'Script MT Bold', cursive;
+      background: linear-gradient(90deg, yellow, green);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideIn 2s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 6rem;
+      font-family: 'Script MT Bold', cursive;
+      background: rgb(0, 119, 255);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideIn 2s ease-in-out;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      color: white;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .logo-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .logo-container img {
+      width: 150px;
+      height: auto;
+    }
+
+    @keyframes slideIn {
+      from {transform: translateY(-50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    nav {
+      background-color: #333;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+    }
+
+    nav a:hover {
+      color: #1E90FF;
+    }
+
+    section {
+      padding: 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      animation: zoomIn 1.5s ease-in-out;
+    }
+
+    .category {
+      position: relative;
+      width: 28%;
+      margin: 20px;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .category img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .category:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    }
+
+    .category-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: background-color 0.4s ease;
+    }
+
+    .category h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .browse-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #FF6347;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .browse-button:hover {
+      background-color: #FF4500;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <div class="transparent-box">
+      <h1>Welcome</h1>
+      <h2>Kigali Shopping Mall</h2>
+      <p>Your one-stop online marketplace</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="special-offers.html">Special Offers</a>
+    <a href="shopping-cart.html">View Cart</a>
+    <a href="contact-us.html">Contact Us</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+
+  <section>
+    <h2>"Shop Smart, Live Better – Dive into What Matters Most!"</h2>
+    <div class="categories">
+      <div class="category">
+        <img src="fashion.jpg" alt="Fashion">
+        <div class="category-overlay">
+          <h3>Fashion</h3>
+          <a href="fashion.html" class="browse-button">Browse Shops</a>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="watches.jpg" alt="Watches & Jewelry">
+        <div class="category-overlay">
+          <h3>Watches & Jewelry</h3>
+          <a href="watches-jewelry.html" class="browse-button">Browse Shops</a>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="beauty.jpg" alt="Beauty">
+        <div class="category-overlay">
+          <h3>Beauty</h3>
+          <a href="beauty.html" class="browse-button">Browse Shops</a>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="food.jpg" alt="Food & Beverages">
+        <div class="category-overlay">
+          <h3>Food & Beverages</h3>
+          <a href="food-beverages-shops.html" class="browse-button">Browse Shops</a>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="electronics.jpg" alt="Electronics">
+        <div class="category-overlay">
+          <h3>Electronics</h3>
+          <a href="electronics-shops.html" class="browse-button">Browse Shops</a>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="home-decor.jpg" alt="Home Decor">
+        <div class="category-overlay">
+          <h3>Home Decor</h3>
+          <a href="home-decor-shops.html" class="browse-button">Browse Shops</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="width: 80%; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+  
+      <!-- About Us Section -->
+      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+        <h3 style="font-size: 18px;">About Us</h3>
+        <p>Kigali Shopping Mall is your one-stop online destination for a wide range of shops offering high-quality products. We aim to deliver an unparalleled shopping experience with convenience and diversity at your fingertips.</p>
+      </div>
+  
+      <!-- Customer Reviews Section -->
+      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+        <h3 style="font-size: 18px;">Customer Reviews</h3>
+        <p>"Great variety of products and super fast delivery!" - Jane D.</p>
+        <p>"I found everything I needed, and the shopping process was so easy." - Mark L.</p>
+      </div>
+  
+      <!-- Follow Us Section -->
+      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+        <h3 style="font-size: 18px;">Follow Us</h3>
+        <p>Stay connected with us on social media:</p>
+        <a href="#" style="color: white; margin-right: 10px;">Facebook</a>
+        <a href="#" style="color: white; margin-right: 10px;">Instagram</a>
+        <a href="#" style="color: white;">Twitter</a>
+      </div>
+  
+      <!-- Contact Info Section -->
+      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+        <h3 style="font-size: 18px;">Contact Us</h3>
+        <p>Address: Kigali Shopping Mall, Kigali, Rwanda</p>
+        <p>Phone: +250 123 456 789</p>
+        <p>Email: support@kigalimall.com</p>
+      </div>
+  
+      <!-- Newsletter Signup Section -->
+      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+        <h3 style="font-size: 18px;">Newsletter Signup</h3>
+        <p>Subscribe to our newsletter for the latest updates and promotions:</p>
+        <form>
+          <input type="email" placeholder="Enter your email" style="padding: 10px; width: 80%; border-radius: 5px; border: none;">
+          <button type="submit" style="padding: 10px 20px; background-color: #1e90ff; color: white; border: none; border-radius: 5px;">Subscribe</button>
+        </form>
+      </div>
+  
+    </div>
+    <div style="text-align: center; padding-top: 20px;">
+      <p>&copy; 2024 Kigali Shopping Mall. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+
+</body>
+</html>

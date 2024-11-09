@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electronics Shops</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'times new roman', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+    }
+
+    header {
+      position: relative;
+      background-image: url('electronics-header.jpg'); /* Replace with your header image URL */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    /* Overlay for header background */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* Black overlay with 40% opacity */
+      z-index: 1;
+    }
+
+    .home-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 8px 16px;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      z-index: 2;
+    }
+
+    .home-button:hover {
+      background-color: #555;
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 1rem auto 0;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .shop-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .shop {
+      position: relative;
+      width: 28%;
+      margin: 20px;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .shop img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .shop:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    }
+
+    .shop-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 1;
+      transition: background-color 0.4s ease;
+    }
+
+    .shop h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .view-products-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #FF6347;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .view-products-button:hover {
+      background-color: #FF4500;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="home-button">Home</a>
+    <h1>Electronics Shops</h1>
+    <p>Discover the latest in technology and electronics. From gadgets to appliances, each shop offers a variety of products to cater to all your tech needs. Explore and find the best electronics here!</p>
+  </header>
+
+  <section class="shop-container">
+    <div class="shop">
+      <img src="electronics-shop1.jpg" alt="Shop 1">
+      <div class="shop-overlay">
+        <h3>TechHub Electronics</h3>
+        <a href="techhub-electronics-products.html" class="view-products-button">View Products</a>
+      </div>
+    </div>
+
+    <div class="shop">
+      <img src="electronics-shop2.jpg" alt="Shop 2">
+      <div class="shop-overlay">
+        <h3>Gadget Galaxy</h3>
+        <a href="gadget-galaxy-products.html" class="view-products-button">View Products</a>
+      </div>
+    </div>
+
+    <div class="shop">
+      <img src="electronics-shop3.jpg" alt="Shop 3">
+      <div class="shop-overlay">
+        <h3>SmartTech Store</h3>
+        <a href="smarttech-store-products.html" class="view-products-button">View Products</a>
+      </div>
+    </div>
+
+    <div class="shop">
+      <img src="electronics-shop4.jpg" alt="Shop 4">
+      <div class="shop-overlay">
+        <h3>ElectroMart</h3>
+        <a href="electromart-products.html" class="view-products-button">View Products</a>
+      </div>
+    </div>
+
+    <div class="shop">
+      <img src="electronics-shop5.jpg" alt="Shop 5">
+      <div class="shop-overlay">
+        <h3>Device World</h3>
+        <a href="device-world-products.html" class="view-products-button">View Products</a>
+      </div>
+    </div>
+
+    <div class="shop">
+      <img src="electronics-shop6.jpg" alt="Shop 6">
+      <div class="shop-overlay">
+        <h3>Gizmo Central</h3>
+        <a href="gizmo-central-products.html" class="view-products-button">View Products</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Kigali Shopping Mall. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

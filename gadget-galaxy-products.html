@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gadget Galaxy Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      position: relative;
+      background-image: url('electronics-header.jpg'); /* Replace with header image URL */
+      background-size: cover;
+      background-position: center;
+      padding: 1.5rem;
+      color: white;
+      text-align: center;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .home-button {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      padding: 8px 16px;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      z-index: 2;
+    }
+
+    .home-button:hover {
+      background-color: #555;
+    }
+
+    header h1 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      position: relative;
+      width: 200px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-info {
+      padding: 0.5rem;
+    }
+
+    .product-name {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #333;
+      margin: 0.5rem 0;
+    }
+
+    .product-price {
+      font-size: 1rem;
+      color: #FF4500;
+      margin-bottom: 0.5rem;
+    }
+
+    .add-to-cart-button {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      background-color: #FF4500;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart-button:hover {
+      background-color: #FF6347;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="home-button">Home</a>
+    <h1>Gadget Galaxy Products</h1>
+  </header>
+
+  <section class="products-container">
+    <!-- Sample Products -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="product1.jpg" alt="Product 1">
+      </div>
+      <div class="product-info">
+        <p class="product-name">Smartwatch X</p>
+        <p class="product-price">$199.99</p>
+        <button class="add-to-cart-button" onclick="addToCart('Smartwatch X', 199.99)">Add to Cart</button>
+      </div>
+    </div>
+    
+    <!-- Repeat similar structure for other products -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="product2.jpg" alt="Product 2">
+      </div>
+      <div class="product-info">
+        <p class="product-name">Noise Cancelling Headphones</p>
+        <p class="product-price">$149.99</p>
+        <button class="add-to-cart-button" onclick="addToCart('Noise Cancelling Headphones', 149.99)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Add more product-card divs up to 10 -->
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Kigali Shopping Mall. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // IndexedDB setup and add-to-cart functionality
+    let db;
+    const request = indexedDB.open('KigaliShoppingMallDB', 1);
+
+    request.onupgradeneeded = (event) => {
+      db = event.target.result;
+      const objectStore = db.createObjectStore('cart', { keyPath: 'id', autoIncrement: true });
+      objectStore.createIndex('name', 'name', { unique: false });
+      objectStore.createIndex('price', 'price', { unique: false });
+    };
+
+    request.onsuccess = (event) => {
+      db = event.target.result;
+    };
+
+    request.onerror = (event) => {
+      console.error('IndexedDB error:', event.target.errorCode);
+    };
+
+    function addToCart(name, price) {
+      const transaction = db.transaction(['cart'], 'readwrite');
+      const objectStore = transaction.objectStore('cart');
+      const newItem = { name, price };
+      
+      const request = objectStore.add(newItem);
+
+      request.onsuccess = () => {
+        alert(`${name} has been added to your cart.`);
+      };
+
+      request.onerror = () => {
+        console.error('Failed to add item to cart.');
+      };
+    }
+  </script>
+
+</body>
+</html>
