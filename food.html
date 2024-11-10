@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food & Beverages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f3e7;
+    }
+    header {
+      background-image: url('images/food-beverages-header.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+    .home-button {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background-color: #555;
+      border-radius: 5px;
+      z-index: 2;
+    }
+    .home-button:hover {
+      background-color: #777;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+    .subcategory-card {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .subcategory-card:hover {
+      transform: translateY(-10px);
+    }
+    .subcategory-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: opacity 0.3s;
+    }
+    .subcategory-card:hover img {
+      opacity: 0.7;
+    }
+    .subcategory-name {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .partners-section {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #fafafa;
+      margin-top: 2rem;
+    }
+    .partners-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .partners-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .partner-logo {
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .partner-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .partner-logo:hover img {
+      transform: scale(1.1);
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="categories.html" class="home-button">Back to Categories</a>
+  <h1>Food & Beverages</h1>
+  <p>Find a variety of fresh foods, prepared meals, and refreshing drinks to satisfy your cravings.</p>
+</header>
+
+<section class="container">
+  <div class="subcategory-card">
+    <a href="fresh-foods.html">
+      <img src="images/fresh-foods.jpg" alt="Fresh Foods">
+      <div class="subcategory-name">Fresh Foods</div>
+    </a>
+  </div>
+  <div class="subcategory-card">
+    <a href="cooked-meals.html">
+      <img src="images/cooked-meals.jpg" alt="Cooked Meals">
+      <div class="subcategory-name">Cooked Meals</div>
+    </a>
+  </div>
+  <div class="subcategory-card">
+    <a href="drinks.html">
+      <img src="images/drinks.jpg" alt="Drinks">
+      <div class="subcategory-name">Drinks</div>
+    </a>
+  </div>
+</section>
+
+<section class="partners-section">
+  <h2 class="partners-title">Our Partners</h2>
+  <div class="partners-grid">
+    <div class="partner-logo">
+      <img src="images/partner1.jpg" alt="Partner 1">
+    </div>
+    <div class="partner-logo">
+      <img src="images/partner2.jpg" alt="Partner 2">
+    </div>
+    <div class="partner-logo">
+      <img src="images/partner3.jpg" alt="Partner 3">
+    </div>
+    <div class="partner-logo">
+      <img src="images/partner4.jpg" alt="Partner 4">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
