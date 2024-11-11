@@ -10,180 +10,252 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f3f4f6;
-      color: #333;
+      background-color: #f8f9fa;
     }
-    /* Header */
+
+    /* Header Styling */
     header {
-      background: url('images/header-bg.jpg') no-repeat center center/cover;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #fff;
+      background-image: url('images/header-background.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 2rem;
+      color: white;
+      text-align: center;
+      position: relative;
     }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    /* Back Button Styling */
     .back-button {
-      background-color: #1d3557;
-      padding: 0.5rem 1rem;
-      color: #fff;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
       text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s ease;
+      padding: 10px 20px;
+      background-color: #333;
+      border-radius: 5px;
     }
     .back-button:hover {
-      background-color: #457b9d;
+      background-color: #555;
     }
-    .header-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    /* Product List */
-    .product-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 2rem;
-    }
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      width: 200px;
+
+    /* Product Container Styling */
+    .product-container {
+      max-width: 1200px;
+      margin: 2rem auto;
       padding: 1rem;
-      text-align: center;
-      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-    .product-card img {
-      width: 100%;
+    .product-item {
+      display: flex;
+      background-color: #fff;
       border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
       transition: transform 0.3s ease;
     }
-    .product-card:hover img {
-      transform: scale(1.05);
+    .product-item:hover {
+      transform: scale(1.02);
     }
-    .product-title {
+    .product-item img {
+      width: 150px;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Product Details Styling */
+    .product-details {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-name {
       font-size: 1.2rem;
       font-weight: bold;
-      margin: 0.5rem 0;
+      margin: 0;
     }
     .product-price {
-      color: #e63946;
+      color: #28a745;
       font-weight: bold;
+    }
+    .product-description {
       margin: 0.5rem 0;
+      color: #555;
     }
-    .add-to-cart {
-      background-color: #1d3557;
+
+    /* Add to Cart Button Styling */
+    .add-to-cart-btn {
+      padding: 10px;
+      font-size: 1rem;
       color: #fff;
-      padding: 0.5rem 1rem;
+      background-color: #3131c0;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s;
     }
-    .add-to-cart:hover {
-      background-color: #457b9d;
+    .add-to-cart-btn:hover {
+      background-color: #FF6347;
     }
-    /* Floating Notification */
-    .notification {
+
+    /* Floating Cart Button Styling */
+    .floating-cart {
       position: fixed;
       bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #38a169;
-      color: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      display: none;
-      animation: fadeInOut 3s ease;
+      right: 20px;
+      width: 75px;
+      height: 75px;
+      background-color: #1d3557;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 1000;
     }
-    @keyframes fadeInOut {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; }
+    .floating-cart:hover {
+      background-color: #457b9d;
+      transform: scale(1.05);
     }
-    /* Footer */
+    .floating-cart img {
+      width: 35px;
+      height: 35px;
+    }
+
+    /* Footer Styling */
     footer {
+      background-color: #333;
+      color: white;
       text-align: center;
       padding: 1rem;
-      background-color: #1d3557;
-      color: #fff;
-      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* Notification Message */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1001;
     }
   </style>
 </head>
 <body>
 
-<!-- Header with Back Button -->
-<header>
-  <a href="index.html" class="back-button">Back</a>
-  <div class="header-title">Fashion Products</div>
-</header>
+  <header>
+    <a href="categories.html" class="back-button">Back</a>
+    <h1>Explore Our Products</h1>
+    <p>Find the best deals on high-quality products</p>
+  </header>
 
-<!-- Product List -->
-<div class="product-list">
-  <!-- Sample Product Cards -->
-  <div class="product-card" data-name="Classic Watch" data-price="49.99">
-    <img src="images/classic-watch.jpg" alt="Classic Watch">
-    <h3 class="product-title">Classic Watch</h3>
-    <p class="product-price">$49.99</p>
-    <button class="add-to-cart" onclick="addToCart('Classic Watch', 49.99)">Add to Cart</button>
+  <section class="product-container">
+    <!-- Sample Products -->
+    <div class="product-item">
+      <img src="images/product0.jpg" alt="Product 0">
+      <div class="product-details">
+        <h2 class="product-name">Product 0</h2>
+        <p class="product-price">$20.00</p>
+        <p class="product-description">A brief description of product 0.</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 0', 20.00)">Add to Cart</button>
+      </div>
+    </div>
+    <!-- Additional products would follow the same structure... -->
+    <div class="product-item">
+      <img src="images/product1.jpg" alt="Product 1">
+      <div class="product-details">
+        <h2 class="product-name">Product 1</h2>
+        <p class="product-price">$20.00</p>
+        <p class="product-description">A brief description of product 1.</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 1', 20.00)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <img src="images/product2.jpg" alt="Product 2">
+      <div class="product-details">
+        <h2 class="product-name">Product 2</h2>
+        <p class="product-price">$20.00</p>
+        <p class="product-description">A brief description of product 2.</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 2', 20.00)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <img src="images/product3.jpg" alt="Product 3">
+      <div class="product-details">
+        <h2 class="product-name">Product 3</h2>
+        <p class="product-price">$20.00</p>
+        <p class="product-description">A brief description of product 3.</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 3', 20.00)">Add to Cart</button>
+      </div>
+    </div> 
+  </section>
+
+  <div class="floating-cart" onclick="viewCart()">
+    <img src="images/cart-icon.png" alt="View Cart">
   </div>
-  <!-- Repeat for other products (total of 10) -->
-  <div class="product-card" data-name="Casual Sneakers" data-price="59.99">
-    <img src="images/casual-sneakers.jpg" alt="Casual Sneakers">
-    <h3 class="product-title">Casual Sneakers</h3>
-    <p class="product-price">$59.99</p>
-    <button class="add-to-cart" onclick="addToCart('Casual Sneakers', 59.99)">Add to Cart</button>
-  </div>
-  <!-- Add 8 more product cards in the same format -->
-</div>
 
-<!-- Floating Notification -->
-<div class="notification" id="notification">Product added to cart!</div>
+  <footer>
+    <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
+  </footer>
 
-<!-- Footer -->
-<footer>
-  &copy; 2024 Kigali Shopping Mall | Your one-stop shopping destination
-</footer>
+  <!-- Notification for Add to Cart -->
+  <div class="notification" id="cart-notification">Added to cart!</div>
 
-<script>
-  // Initialize IndexedDB
-  let db;
-  const request = indexedDB.open("ShoppingCartDB", 1);
-  request.onupgradeneeded = function(event) {
-    db = event.target.result;
-    if (!db.objectStoreNames.contains("cartItems")) {
-      db.createObjectStore("cartItems", { keyPath: "id", autoIncrement: true });
+  <script>
+    // IndexedDB Setup
+    let db;
+    const request = indexedDB.open("KigaliShoppingMallDB", 1);
+
+    request.onupgradeneeded = function(event) {
+      db = event.target.result;
+      db.createObjectStore("cart", { keyPath: "id", autoIncrement: true });
+    };
+
+    request.onsuccess = function(event) {
+      db = event.target.result;
+    };
+
+    // Add to Cart Function
+    function addToCart(productName, price) {
+      const transaction = db.transaction(["cart"], "readwrite");
+      const store = transaction.objectStore("cart");
+      const item = { name: productName, price: price, quantity: 1 };
+
+      store.add(item);
+      showNotification("Added to cart!");
     }
-  };
-  request.onsuccess = function(event) {
-    db = event.target.result;
-  };
-  request.onerror = function(event) {
-    console.log("Error opening IndexedDB:", event.target.errorCode);
-  };
 
-  // Add to Cart Functionality
-  function addToCart(productName, price) {
-    const transaction = db.transaction(["cartItems"], "readwrite");
-    const cartStore = transaction.objectStore("cartItems");
+    // Show Notification Function
+    function showNotification(message) {
+      const notification = document.getElementById("cart-notification");
+      notification.textContent = message;
+      notification.style.display = "block";
+      setTimeout(() => {
+        notification.style.display = "none";
+      }, 2000);
+    }
 
-    const cartItem = { name: productName, price: price, quantity: 1 };
-    cartStore.add(cartItem);
-
-    // Show floating notification
-    const notification = document.getElementById("notification");
-    notification.style.display = "block";
-    setTimeout(() => {
-      notification.style.display = "none";
-    }, 3000);
-  }
-</script>
-
+    // View Cart Function
+    function viewCart() {
+      window.location.href = "cart.html";
+    }
+  </script>
 </body>
 </html>
