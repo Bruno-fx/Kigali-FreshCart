@@ -13,7 +13,7 @@
       background-color: #f4f4f9;
     }
     header {
-      background-image: url('fashion-header.jpg');
+      background-image: url('img/fashion-header.jpg');
       background-size: cover;
       background-position: center;
       color: white;
@@ -49,12 +49,13 @@
     .home-button:hover {
       background-color: #777;
     }
+    /* Container grid with responsive layout */
     .container {
       max-width: 1200px;
       margin: 2rem auto;
       padding: 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust min-width for responsive effect */
       gap: 2rem;
       justify-items: center;
     }
@@ -90,18 +91,40 @@
       padding: 1rem;
       background: rgba(0, 0, 0, 0.5);
       color: white;
-      text-align: center;
+      text-align: match-parent;
       font-size: 1.2rem;
       font-weight: bold;
       transition: background 0.3s;
     }
+    /* Added style for the overlay text on each image */
+    .category-overlay {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      color: #000000;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: none;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .category-card:hover .category-overlay {
+      opacity: 1;
+    }
+    /* Partners Section Background Color */
     .partners-section {
       text-align: center;
       margin: 4rem 0;
+      background-color: #333;
+      padding: 2rem 1rem;
+      color: white;
     }
     .partners-section h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
+      color: #ffeb3b;
     }
     .partner-logos {
       display: flex;
@@ -124,6 +147,18 @@
       padding: 1rem;
       margin-top: 2rem;
     }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .partners-section h2 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -136,27 +171,38 @@
 
 <section class="container">
   <div class="category-card">
-    <a href="mens-clothes.html">
-      <img src="mens-clothes.jpg" alt="Men's Clothes">
-      <div class="category-name">Men's Clothes</div>
+    <a href="mens-fashion.html">
+      <img src="img/mens-fashion.jpg" alt="Men's Fashion">
+      <div class="category-overlay">Suits, Shirts, Sweaters, Jackets, Casual Wear</div>
+      <div class="category-name">Men's Fashion</div>
     </a>
   </div>
   <div class="category-card">
-    <a href="mens-shoes.html">
-      <img src="mens-shoes.jpg" alt="Men's Shoes">
-      <div class="category-name">Men's Shoes</div>
+    <a href="womens-fashion.html">
+      <img src="img/womens-fashion.jpg" alt="Women’s Fashion">
+      <div class="category-overlay">Dresses, Sweaters, Jackets, Skirts, Casual wear</div>
+      <div class="category-name">Women’s Fashion</div>
     </a>
   </div>
   <div class="category-card">
-    <a href="womens-clothes.html">
-      <img src="womens-clothes.jpg" alt="Women's Clothes">
-      <div class="category-name">Women's Clothes</div>
+    <a href="children-fashion.html">
+      <img src="img/children-fashion.jpg" alt="Children’s Fashion">
+      <div class="category-overlay">Holiday Outfits, Summer & Winter Wear, Pajamas,...</div>
+      <div class="category-name">Children’s Fashion</div>
     </a>
   </div>
   <div class="category-card">
-    <a href="womens-shoes.html">
-      <img src="womens-shoes.jpg" alt="Women's Shoes">
-      <div class="category-name">Women's Shoes</div>
+    <a href="accessories.html">
+      <img src="img/accessories.jpg" alt="Accessories">
+      <div class="category-overlay">Bags, Belts, Jewelry, Watches</div>
+      <div class="category-name">Accessories</div>
+    </a>
+  </div>
+  <div class="category-card">
+    <a href="footwear.html">
+      <img src="img/footwear.jpg" alt="Footwear">
+      <div class="category-overlay">Men’s Shoes, Women’s Shoes, Children’s Shoes</div>
+      <div class="category-name">Footwear</div>
     </a>
   </div>
 </section>
@@ -165,14 +211,22 @@
   <h2>Our Fashion Partners</h2>
   <p>We proudly collaborate with some of the finest brands to bring you quality and style.</p>
   <div class="partner-logos">
-    <div class="partner-logo"><img src="partner1-logo.png" alt="Partner 1"></div>
-    <div class="partner-logo"><img src="partner2-logo.png" alt="Partner 2"></div>
-    <div class="partner-logo"><img src="partner3-logo.png" alt="Partner 3"></div>
-    <div class="partner-logo"><img src="partner4-logo.jpg" alt="Partner 4"></div>
+    <div class="partner-logo"><img src="img/partner1-logo.png" alt="Partner 1"></div>
+    <div class="partner-logo"><img src="img/partner2-logo.png" alt="Partner 2"></div>
+    <div class="partner-logo"><img src="img/partner3-logo.png" alt="Partner 3"></div>
+    <div class="partner-logo"><img src="img/partner4-logo.jpg" alt="Partner 4"></div>
   </div>
 </section>
 
 <footer>
+  <!-- Contact Info Section -->
+  <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+    <h3 style="font-size: 18px;">Contact Us</h3>
+    <p>Address: Kigali Shopping Mall, Kigali, Rwanda</p>
+    <p>Phone: +250 123 456 789</p>
+    <p>Email: support@kigalimall.com</p>
+  </div>
+
   <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
 </footer>
 
