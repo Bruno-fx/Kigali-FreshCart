@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kigali Shopping Mall</title>
-
-  <!-- External Google Font for Backup (if Script MT Bold isn't available) -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-
   <style>
     /* General Styles */
     body {
@@ -18,7 +15,7 @@
       overflow-x: hidden;
     }
 
-    /* Header with Script MT Bold Font, Gradient Text, Image Background, and Transparent Box */
+    /* Header Styles */
     header {
       background: url('img/kigali.jpeg') no-repeat center center/cover;
       color: white;
@@ -27,44 +24,7 @@
       position: relative;
     }
 
-    /* Transparent Background for Text */
-    .transparent-box {
-      background-color: rgba(0, 0, 0, 0.5); /* 50% transparency */
-      display: inline-block;
-      padding: 20px;
-      border-radius: 15px;
-    }
-
-    header h1, header h2 {
-      margin: 0;
-    }
-
-    header h2 {
-      font-size: 4.5rem;
-      font-family: 'Script MT Bold', cursive;
-      background: linear-gradient(90deg, yellow, green);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: slideIn 2s ease-in-out;
-    }
-
-    header h1 {
-      font-size: 6rem;
-      font-family: 'Script MT Bold', cursive;
-      background: rgb(0, 119, 255);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: slideIn 2s ease-in-out;
-    }
-
-    header p {
-      font-size: 1.5rem;
-      margin-top: 10px;
-      color: white;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    /* Logo Placeholder */
+    /* Logo Container */
     .logo-container {
       position: absolute;
       top: 20px;
@@ -76,17 +36,35 @@
       height: auto;
     }
 
-    @keyframes slideIn {
-      from {transform: translateY(-50px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
+    /* Transparent Box and Text */
+    .transparent-box {
+      background-color: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      padding: 20px;
+      border-radius: 15px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    header h1, header h2 {
+      margin: 0;
     }
 
-    /* Sticky Navigation Bar */
+    header h1 {
+      font-size: 6rem;
+      font-family: 'Script MT Bold', cursive;
+      background: rgb(0, 119, 255);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header h2 {
+      font-size: 4.5rem;
+      font-family: 'Script MT Bold', cursive;
+      background: linear-gradient(90deg, yellow, green);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Navigation Bar */
     nav {
       background-color: #333;
       padding: 1rem;
@@ -101,34 +79,15 @@
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s ease-in-out;
-    }
-
-    nav a:hover {
-      color: #1E90FF; /* Dodger Blue */
     }
 
     /* Categories Section */
-    section {
-      padding: 2rem;
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #444;
-    }
-
     .categories {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       justify-content: space-around;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       margin: 20px;
-      flex-wrap: wrap;
-      animation: zoomIn 1.5s ease-in-out;
     }
 
     .category {
@@ -142,48 +101,16 @@
       overflow: hidden;
     }
 
-    .category:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 25px rgba(0,0,0,0.2);
-    }
-
     .category img {
       width: 100%;
       height: 200px;
       object-fit: cover;
       border-radius: 10px;
-      transition: opacity 0.5s ease;
-    }
-
-    .category:hover img {
-      opacity: 0.9;
     }
 
     .category h3 {
-      margin-top: 15px;
       font-size: 1.8rem;
-      color: #FF6347; /* Tomato */
-    }
-
-    .category p {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    .category button {
-      background-color: #32CD32; /* Lime Green */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-
-    .category button:hover {
-      background-color: #228B22; /* Forest Green */
-      transform: scale(1.1);
+      color: #FF6347;
     }
 
     /* Footer */
@@ -195,43 +122,51 @@
       margin-top: 50px;
     }
 
-    /* Responsive Adjustments for Header and Images */
-  @media (max-width: 1200px) {
-    .category img {
-      height: 180px;
-    }
-  }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .logo-container img {
+        width: 100px; /* Resize logo */
+      }
 
-  @media (max-width: 992px) {
-    .category img {
-      height: 160px;
-    }
-  }
+      header h1 {
+        font-size: 3rem;
+      }
 
-  @media (max-width: 768px) {
-    .category img {
-      height: 140px;
-    }
-  }
+      header h2 {
+        font-size: 2rem;
+      }
 
-  @media (max-width: 576px) {
-    header h1 {
-      font-size: 3rem;
-    }
+      .category {
+        width: 80%; /* Make categories take full width on smaller screens */
+      }
 
-    header h2 {
-      font-size: 2rem;
+      .category img {
+        height: 150px; /* Adjust image height for smaller screens */
+      }
     }
 
-    .category img {
-      height: 120px;
+    @media (max-width: 576px) {
+      header {
+        padding: 50px 0;
+      }
+
+      header h1, header h2 {
+        font-size: 2.5rem;
+      }
+
+      .category {
+        width: 100%; /* Make categories take full width on very small screens */
+      }
+
+      .category img {
+        height: 120px; /* Reduce image height further */
+      }
     }
-  }
   </style>
 </head>
 <body>
 
-  <!-- Header with Sliding Text, Transparent Box, and Logo Placeholder -->
+  <!-- Header -->
   <header>
     <div class="logo-container">
       <img src="img/logo.png" alt="Logo">
@@ -243,187 +178,34 @@
     </div>
   </header>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav>
     <a href="#">Home</a>
-    <a href="special-offers.html" class="special-offers-btn">Special Offers</a>
-    <a href="shopping-cart.html" class="cart-btn">View Cart</a>
-    <a href="contact-us.html" class="contact-btn">Contact Us</a>
-    <a href="faq.html" class="faq-button">FAQ</a>
+    <a href="special-offers.html">Special Offers</a>
+    <a href="shopping-cart.html">View Cart</a>
+    <a href="contact-us.html">Contact Us</a>
+    <a href="faq.html">FAQ</a>
   </nav>
 
-  <!-- Categories Section -->
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kigali Shopping Mall</title>
-  <style>
-    /* Previous styles for the page will remain the same... */
-
-    /* Search Bar Styles */
-    .search-container {
-      margin: 20px auto;
-      text-align: center;
-    }
-
-    .search-container input[type="text"] {
-      padding: 10px;
-      width: 60%;
-      font-size: 1.2rem;
-      border: 2px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .search-container button {
-      padding: 10px;
-      font-size: 1.2rem;
-      background-color: #32CD32; /* Lime Green */
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-left: 5px;
-    }
-
-    .search-container button:hover {
-      background-color: #228B22; /* Forest Green */
-    }
-
-    /* Category hidden when not matching the search */
-    .category.hidden {
-      display: none;
-    }
-
-  </style>
-</head>
-<body>
-
-  <!-- Header and other sections... -->
-
-  <!-- Search Bar -->
-  <div class="search-container">
-    <input type="text" id="searchBar" placeholder="Search for any kind of product that you want..." onkeyup="searchCategories()">
-    <button onclick="searchCategories()">Search</button>
-  </div>
-
-  <!-- Categories Section -->
+  <!-- Categories -->
   <section>
-    <h2>"Shop Smart, Live Better – Dive into What Matters Most!"</h2>
+    <h2>Shop Smart, Live Better – Dive into What Matters Most!</h2>
     <div class="categories">
-      <!-- Each Category has a class with a searchable keyword -->
-      <div class="category" data-name="Fashion">
-        <img src="img/fashion.jpg" alt="Fashion">
-        <h3>Fashion</h3>
-        <p>Discover the latest trends in clothing and accessories.</p>
-        <button onclick="window.location.href='fashion.html'">Browse Products</button>
-      </div>
-
-      <div class="category" data-name="Beauty">
+      <!-- Example Category -->
+      <div class="category">
         <img src="img/beauty.jpg" alt="Beauty">
         <h3>Beauty & Personal Care</h3>
         <p>Find beauty products, skincare, and cosmetics.</p>
-        <button onclick="window.location.href='beauty.html'">Browse Products</button>
+        <button>Browse Products</button>
       </div>
-
-      <div class="category" data-name="Electronics">
-        <img src="img/electronics.jpg" alt="Electronics">
-        <h3>Electronics & Gadgets</h3>
-        <p>Find the latest gadgets, phones, and tech products.</p>
-        <button onclick="window.location.href='electronics.html'">Browse Products</button>
-      </div>
-
-      <div class="category" data-name="Food Beverages">
-        <img src="img/food.jpg" alt="Food & Beverages">
-        <h3>Food & Beverages</h3>
-        <p>Order your favorite meals and drinks online.</p>
-        <button onclick="window.location.href='food-beverages.html'">Browse Products</button>
-      </div>
-
-      <div class="category" data-name="Children">
-        <img src="img/children.jpg" alt="Children">
-        <h3>Children</h3>
-        <p>Toys, clothes, and everything for your kids.</p>
-        <button onclick="window.location.href='children.html'">Browse Products</button>
-      </div>
-
-      <div class="category" data-name="Home Decor">
-        <img src="img/home-decor.jpg" alt="Home Decor">
-        <h3>Home Décor</h3>
-        <p>Home decor, furniture, and interior design.</p>
-        <button onclick="window.location.href='home-decor.html'">Browse Products</button>
-      </div>
+      <!-- Add more categories as needed -->
     </div>
   </section>
 
-  <script>
-    // JavaScript for searching categories
-    function searchCategories() {
-      const input = document.getElementById('searchBar').value.toLowerCase();
-      const categories = document.getElementsByClassName('category');
-
-      for (let i = 0; i < categories.length; i++) {
-        const categoryName = categories[i].getAttribute('data-name').toLowerCase();
-        if (categoryName.includes(input)) {
-          categories[i].classList.remove('hidden');
-        } else {
-          categories[i].classList.add('hidden');
-        }
-      }
-    }
-  </script>
-
-  <!-- Footer and other sections... -->
-  <footer style="background-color: #333; color: white; padding: 20px 0;">
-    <div class="container" style="width: 80%; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
-  
-      <!-- About Us Section -->
-      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-        <h3 style="font-size: 18px;">About Us</h3>
-        <p>Kigali Shopping Mall is your one-stop online destination for a wide range of shops offering high-quality products. We aim to deliver an unparalleled shopping experience with convenience and diversity at your fingertips.</p>
-      </div>
-  
-      <!-- Customer Reviews Section -->
-      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-        <h3 style="font-size: 18px;">Customer Reviews</h3>
-        <p>"Great variety of products and super fast delivery!" - Jane D.</p>
-        <p>"I found everything I needed, and the shopping process was so easy." - Mark L.</p>
-      </div>
-  
-      <!-- Follow Us Section -->
-      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-        <h3 style="font-size: 18px;">Follow Us</h3>
-        <p>Stay connected with us on social media:</p>
-        <a href="#" style="color: white; margin-right: 10px;">Facebook</a>
-        <a href="#" style="color: white; margin-right: 10px;">Instagram</a>
-        <a href="#" style="color: white;">Twitter</a>
-      </div>
-  
-      <!-- Contact Info Section -->
-      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-        <h3 style="font-size: 18px;">Contact Us</h3>
-        <p>Address: Kigali Shopping Mall, Kigali, Rwanda</p>
-        <p>Phone: +250 123 456 789</p>
-        <p>Email: support@kigalimall.com</p>
-      </div>
-  
-      <!-- Newsletter Signup Section -->
-      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-        <h3 style="font-size: 18px;">Newsletter Signup</h3>
-        <p>Subscribe to our newsletter for the latest updates and promotions:</p>
-        <form>
-          <input type="email" placeholder="Enter your email" style="padding: 10px; width: 80%; border-radius: 5px; border: none;">
-          <button type="submit" style="padding: 10px 20px; background-color: #1e90ff; color: white; border: none; border-radius: 5px;">Subscribe</button>
-        </form>
-      </div>
-  
-    </div>
-    <div style="text-align: center; padding-top: 20px;">
-      <p>&copy; 2024 Kigali Shopping Mall. All Rights Reserved.</p>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Kigali Shopping Mall. All Rights Reserved.</p>
   </footer>
-  
 
 </body>
 </html>
