@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Men's Fashion - Shopping Cart</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -148,6 +147,36 @@
       width: 100%;
       margin-top: 2rem;
     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .cart-container {
+        padding: 0.5rem;
+      }
+
+      table th, table td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+      }
+
+      .total-price {
+        font-size: 1rem;
+        padding-top: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .quantity-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .proceed-button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -178,6 +207,7 @@
         <option value="1.5">Motorcycle - $1.5</option>
         <option value="15">Car - $15</option>
       </select>
+      <div id="delivery-error" style="color: red; display: none;">Please select a delivery option!</div>
     </div>
 
     <div class="total-price" id="total-price">Total: $0.00</div>
@@ -199,7 +229,10 @@
     let cartTotal = 0;
 
     function loadCartItems() {
-      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [
+        { name: "Shirt", price: 20, quantity: 1 },
+        { name: "Jeans", price: 50, quantity: 2 }
+      ];
       displayCartItems(items);
       calculateCartTotal(items);
     }
@@ -208,7 +241,7 @@
       const cartItemsContainer = document.getElementById('cart-items');
       cartItemsContainer.innerHTML = '';
       items.forEach((item, index) => {
-        const itemTotal = item.price * (item.quantity || 1);
+        const itemTotal = item.price * item.quantity;
         const cartItem = document.createElement('tr');
         cartItem.innerHTML = `
           <td>${item.name}</td>
@@ -216,7 +249,7 @@
           <td>
             <div class="quantity-controls">
               <button onclick="updateQuantity(${index}, -1)">-</button>
-              <span>${item.quantity || 1}</span>
+              <span>${item.quantity}</span>
               <button onclick="updateQuantity(${index}, 1)">+</button>
             </div>
           </td>
@@ -228,7 +261,7 @@
     }
 
     function calculateCartTotal(items) {
-      cartTotal = items.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
+      cartTotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
       updateTotalWithDelivery();
     }
 
@@ -239,9 +272,11 @@
 
     function updateQuantity(index, change) {
       const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
-      items[index].quantity = Math.max(1, (items[index].quantity || 1) + change);
-      localStorage.setItem('mensFashionCart', JSON.stringify(items));
-      loadCartItems();
+      if (items[index]) {
+        items[index].quantity = Math.max(1, (items[index].quantity || 1) + change);
+        localStorage.setItem('mensFashionCart', JSON.stringify(items));
+        loadCartItems();
+      }
     }
 
     function removeItem(index) {
@@ -252,16 +287,22 @@
     }
 
     function proceedToPayment() {
-      const name = document.getElementById('customer-name').value;
-      const phone = document.getElementById('customer-phone').value;
-      const deliveryCost = parseFloat(document.getElementById("delivery-option").value) || 0;
-      if (name && phone) {
-        alert(`Thank you, ${name}! Your total is $${(cartTotal + deliveryCost).toFixed(2)}.`);
-        localStorage.removeItem('mensFashionCart');
-        loadCartItems();
-      } else {
-        alert('Please provide both your name and phone number.');
+      const name = document.getElementById('customer-name').value.trim();
+      const phone = document.getElementById('customer-phone').value.trim();
+      const deliveryOption = document.getElementById('delivery-option').value;
+
+      if (!deliveryOption || deliveryOption === "0") {
+        document.getElementById('delivery-error').style.display = 'block';
+        return;
       }
+
+      if (!name || !phone) {
+        alert('Please fill in your name and phone number.');
+        return;
+      }
+
+      document.getElementById('delivery-error').style.display = 'none';
+      alert(`Thank you, ${name}. Your order has been placed!`);
     }
 
     loadCartItems();
