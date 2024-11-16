@@ -108,30 +108,34 @@
       background-color: #FF6347;
     }
 
-    /* Floating Cart Button Styling */
+    /* Floating View Cart Button */
     .floating-cart {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 75px;
-      height: 75px;
-      background-color: #1d3557;
-      border-radius: 50%;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      gap: 8px;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
       z-index: 1000;
     }
-    .floating-cart:hover {
-      background-color: #457b9d;
-      transform: scale(1.05);
-    }
     .floating-cart img {
-      width: 35px;
-      height: 35px;
+      width: 70px;
+      height: 70px;
+      background-color: #1d3557;
+      border-radius: 50%;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+    .floating-cart img:hover {
+      transform: scale(1.05);
+      background-color: #457b9d;
+    }
+    .floating-cart span {
+      font-size: 0.9rem;
+      color: #1d3557;
+      font-weight: bold;
     }
 
     /* Footer Styling */
@@ -177,7 +181,6 @@
         <button class="add-to-cart-btn" onclick="addToCart('Product 0', 20.00)">Add to Cart</button>
       </div>
     </div>
-    <!-- Additional products would follow the same structure... -->
     <div class="product-item">
       <img src="images/product1.jpg" alt="Product 1">
       <div class="product-details">
@@ -207,54 +210,49 @@
     </div> 
   </section>
 
+  <!-- Floating Cart -->
   <div class="floating-cart" onclick="viewCart()">
     <img src="images/cart-icon.png" alt="View Cart">
+    <span>View Cart</span>
   </div>
 
   <footer>
     <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
   </footer>
 
-  <!-- Notification for Add to Cart -->
-  <div class="notification" id="cart-notification">Added to cart!</div>
+  <!-- Notification -->
+  <div class="notification" id="cart-notification">Product added to cart!</div>
 
   <script>
-    // IndexedDB Setup
-    let db;
-    const request = indexedDB.open("KigaliShoppingMallDB", 1);
-
-    request.onupgradeneeded = function(event) {
-      db = event.target.result;
-      db.createObjectStore("cart", { keyPath: "id", autoIncrement: true });
-    };
-
-    request.onsuccess = function(event) {
-      db = event.target.result;
-    };
-
-    // Add to Cart Function
+    // Add to Cart (local storage functionality for Men's Fashion)
     function addToCart(productName, price) {
-      const transaction = db.transaction(["cart"], "readwrite");
-      const store = transaction.objectStore("cart");
-      const item = { name: productName, price: price, quantity: 1 };
+      const cart = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+      const existingItem = cart.find(item => item.name === productName);
 
-      store.add(item);
-      showNotification("Added to cart!");
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name: productName, price: price, quantity: 1 });
+      }
+
+      localStorage.setItem('mensFashionCart', JSON.stringify(cart));
+      showNotification("Product added to cart!");
     }
 
-    // Show Notification Function
+    // Show Notification
     function showNotification(message) {
-      const notification = document.getElementById("cart-notification");
+      const notification = document.getElementById('cart-notification');
       notification.textContent = message;
-      notification.style.display = "block";
+      notification.style.display = 'block';
+
       setTimeout(() => {
-        notification.style.display = "none";
+        notification.style.display = 'none';
       }, 2000);
     }
 
-    // View Cart Function
+    // Redirect to Cart Page
     function viewCart() {
-      window.location.href = "cart.html";
+      window.location.href = 'mens-cart.html';
     }
   </script>
 </body>
