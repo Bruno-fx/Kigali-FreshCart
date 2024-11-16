@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cart</title>
+  <title>Men's Fashion - Shopping Cart</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -154,11 +154,10 @@
 
   <header>
     <a href="index.html" class="home-button">Home</a>
-    <h1>Shopping Cart</h1>
+    <h1>Men's Fashion Shopping Cart</h1>
   </header>
 
   <section class="cart-container">
-    <!-- Cart Table -->
     <table>
       <thead>
         <tr>
@@ -172,7 +171,6 @@
       <tbody id="cart-items"></tbody>
     </table>
 
-    <!-- Delivery Option Section -->
     <div class="checkout-container">
       <h2>Choose Delivery Option</h2>
       <select id="delivery-option" onchange="updateTotalWithDelivery()">
@@ -182,10 +180,8 @@
       </select>
     </div>
 
-    <!-- Total Price -->
     <div class="total-price" id="total-price">Total: $0.00</div>
 
-    <!-- Checkout Form -->
     <div class="checkout-container">
       <h2>Checkout</h2>
       <input type="text" id="customer-name" placeholder="Enter your name" required>
@@ -200,41 +196,19 @@
   </footer>
 
   <script>
-    // Set up IndexedDB connection
-    let db;
-    let cartTotal = 0;  // Variable to store the base cart total
+    let cartTotal = 0;
 
-    const request = indexedDB.open('KigaliShoppingMallDB', 1);
-
-    request.onsuccess = (event) => {
-      db = event.target.result;
-      loadCartItems();
-    };
-
-    request.onerror = (event) => {
-      console.error('IndexedDB error:', event.target.errorCode);
-    };
-
-    // Load cart items
     function loadCartItems() {
-      const transaction = db.transaction(['cart'], 'readonly');
-      const objectStore = transaction.objectStore('cart');
-      const request = objectStore.getAll();
-
-      request.onsuccess = () => {
-        displayCartItems(request.result);
-        calculateCartTotal(request.result);
-      };
+      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+      displayCartItems(items);
+      calculateCartTotal(items);
     }
 
-    // Display cart items in DOM
     function displayCartItems(items) {
       const cartItemsContainer = document.getElementById('cart-items');
       cartItemsContainer.innerHTML = '';
-
       items.forEach((item, index) => {
         const itemTotal = item.price * (item.quantity || 1);
-        
         const cartItem = document.createElement('tr');
         cartItem.innerHTML = `
           <td>${item.name}</td>
@@ -253,74 +227,44 @@
       });
     }
 
-    // Calculate and display the base cart total
     function calculateCartTotal(items) {
       cartTotal = items.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
-      updateTotalWithDelivery(); // Update with delivery
+      updateTotalWithDelivery();
     }
 
-    // Update total price with selected delivery option
     function updateTotalWithDelivery() {
       const deliveryCost = parseFloat(document.getElementById("delivery-option").value) || 0;
-      const totalWithDelivery = cartTotal + deliveryCost;
-      document.getElementById("total-price").innerText = `Total: $${totalWithDelivery.toFixed(2)}`;
+      document.getElementById("total-price").innerText = `Total: $${(cartTotal + deliveryCost).toFixed(2)}`;
     }
 
-    // Proceed to payment
+    function updateQuantity(index, change) {
+      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+      items[index].quantity = Math.max(1, (items[index].quantity || 1) + change);
+      localStorage.setItem('mensFashionCart', JSON.stringify(items));
+      loadCartItems();
+    }
+
+    function removeItem(index) {
+      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+      items.splice(index, 1);
+      localStorage.setItem('mensFashionCart', JSON.stringify(items));
+      loadCartItems();
+    }
+
     function proceedToPayment() {
       const name = document.getElementById('customer-name').value;
       const phone = document.getElementById('customer-phone').value;
-      const message = document.getElementById('customer-message').value;
       const deliveryCost = parseFloat(document.getElementById("delivery-option").value) || 0;
-
       if (name && phone) {
-        alert(`Thank you, ${name}! Your total is $${(cartTotal + deliveryCost).toFixed(2)}. A confirmation will be sent to ${phone}. ${message ? "Message: " + message : ""}`);
-        clearCart();
+        alert(`Thank you, ${name}! Your total is $${(cartTotal + deliveryCost).toFixed(2)}.`);
+        localStorage.removeItem('mensFashionCart');
+        loadCartItems();
       } else {
         alert('Please provide both your name and phone number.');
       }
     }
 
-    // Update quantity and recalculate total
-    function updateQuantity(index, change) {
-      const transaction = db.transaction(['cart'], 'readwrite');
-      const objectStore = transaction.objectStore('cart');
-      const request = objectStore.getAll();
-
-      request.onsuccess = () => {
-        const items = request.result;
-        const item = items[index];
-
-        item.quantity = Math.max(1, (item.quantity || 1) + change);
-
-        const updateRequest = objectStore.put(item);
-        updateRequest.onsuccess = () => loadCartItems();
-      };
-    }
-
-    // Remove an item from cart
-    function removeItem(index) {
-      const transaction = db.transaction(['cart'], 'readwrite');
-      const objectStore = transaction.objectStore('cart');
-      const request = objectStore.getAll();
-
-      request.onsuccess = () => {
-        const items = request.result;
-        const item = items[index];
-
-        const deleteRequest = objectStore.delete(item.id);
-        deleteRequest.onsuccess = () => loadCartItems();
-      };
-    }
-
-    // Clear cart items
-    function clearCart() {
-      const transaction = db.transaction(['cart'], 'readwrite');
-      const objectStore = transaction.objectStore('cart');
-      const clearRequest = objectStore.clear();
-
-      clearRequest.onsuccess = () => loadCartItems();
-    }
+    loadCartItems();
   </script>
 </body>
 </html>
