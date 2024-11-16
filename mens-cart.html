@@ -12,7 +12,7 @@
       padding: 0;
       background-color: #f8f9fa;
       width: 100%;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
+      overflow-x: hidden;
     }
 
     header {
@@ -148,11 +148,11 @@
       padding: 1rem;
       position: relative;
       bottom: 0;
-      width: 100%; /* Ensure it spans only the viewport width */
-      max-width: 100vw; /* Prevent exceeding viewport width */
-      overflow-x: hidden; /* Hide any accidental overflow */
-      box-sizing: border-box; /* Include padding within width */
-      margin: 0; /* Remove default margin */
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      margin: 0;
     }
 
     /* Responsive Design */
@@ -211,13 +211,13 @@
       <h2>Choose Delivery Option</h2>
       <select id="delivery-option" onchange="updateTotalWithDelivery()">
         <option value="0">Select Delivery Option</option>
-        <option value="1.5">Motorcycle - $1.5</option>
-        <option value="15">Car - $15</option>
+        <option value="1500">Motorcycle - RWF 1,500</option>
+        <option value="15000">Car - RWF 15,000</option>
       </select>
       <div id="delivery-error" style="color: red; display: none;">Please select a delivery option!</div>
     </div>
 
-    <div class="total-price" id="total-price">Total: $0.00</div>
+    <div class="total-price" id="total-price">Total: RWF 0</div>
 
     <div class="checkout-container">
       <h2>Checkout</h2>
@@ -235,11 +235,12 @@
   <script>
     let cartTotal = 0;
 
+    function formatPrice(price) {
+      return `RWF ${price.toLocaleString()}`;
+    }
+
     function loadCartItems() {
-      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [
-        { name: "Shirt", price: 20, quantity: 1 },
-        { name: "Jeans", price: 50, quantity: 2 }
-      ];
+      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
       displayCartItems(items);
       calculateCartTotal(items);
     }
@@ -252,7 +253,7 @@
         const cartItem = document.createElement('tr');
         cartItem.innerHTML = `
           <td>${item.name}</td>
-          <td>$${item.price.toFixed(2)}</td>
+          <td>${formatPrice(item.price)}</td>
           <td>
             <div class="quantity-controls">
               <button onclick="updateQuantity(${index}, -1)">-</button>
@@ -260,7 +261,7 @@
               <button onclick="updateQuantity(${index}, 1)">+</button>
             </div>
           </td>
-          <td>$${itemTotal.toFixed(2)}</td>
+          <td>${formatPrice(itemTotal)}</td>
           <td><span class="remove-button" onclick="removeItem(${index})">Remove</span></td>
         `;
         cartItemsContainer.appendChild(cartItem);
@@ -274,7 +275,7 @@
 
     function updateTotalWithDelivery() {
       const deliveryCost = parseFloat(document.getElementById("delivery-option").value) || 0;
-      document.getElementById("total-price").innerText = `Total: $${(cartTotal + deliveryCost).toFixed(2)}`;
+      document.getElementById("total-price").innerText = `Total: ${formatPrice(cartTotal + deliveryCost)}`;
     }
 
     function updateQuantity(index, change) {
