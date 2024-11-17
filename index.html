@@ -194,6 +194,25 @@
       text-align: center;
       margin-top: 50px;
     }
+    /* Style for the Special Offers Button */
+    .special-offers-btn {
+      background-color: #ff0000; /* Bright red */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .special-offers-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); /* Red glow */
+    }
+
+    .special-offers-btn:active {
+      transform: scale(0.95);
+    }
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -233,6 +252,15 @@
 
       .category img {
         height: 120px; /* Reduce image height further */
+      }
+    }
+    /* Make the navigation responsive */
+    @media (max-width: 768px) {
+      .special-offers-btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%; /* Center and make it wider */
+        text-align: center;
       }
     }
   </style>
