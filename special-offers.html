@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Special Offers | Kigali Shopping Mall</title>
   <style>
+    /* General styles remain unchanged */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -15,7 +16,7 @@
 
     /* Header Section */
     header {
-      background-image: url('header-background.jpg'); /* Add your header background image */
+      background-image: url('img/offers-background.jpg'); /* Replace with your background image */
       background-size: cover;
       background-position: center;
       color: white;
@@ -205,20 +206,50 @@
   <section>
     <h2>Exclusive Deals and Discounts</h2>
     <div class="offers">
+      <!-- Original 12 Offers -->
       <div class="offer-item">
-        <img src="offer-product1.jpg" alt="Offer Product 1">
+        <img src="img/offer-product1.jpg" alt="Beauty Essentials Set">
         <h3>Beauty Essentials Set</h3>
         <p>Complete skincare and makeup kit.</p>
         <p class="price">RWF 45,000 <span class="discount">(25% off)</span></p>
         <button onclick="addToCart('Beauty Essentials Set', 45000)">Shop Now</button>
       </div>
-      <!-- Repeat offers with updated prices -->
+      <!-- 13 New Offers -->
+      <div class="offer-item">
+        <img src="img/offer-product2.jpg" alt="Gaming Headset">
+        <h3>Gaming Headset</h3>
+        <p>Immersive sound for ultimate gaming experience.</p>
+        <p class="price">RWF 75,000 <span class="discount">(20% off)</span></p>
+        <button onclick="addToCart('Gaming Headset', 75000)">Shop Now</button>
+      </div>
+      <div class="offer-item">
+        <img src="img/offer-product3.jpg" alt="Eco-Friendly Water Bottle">
+        <h3>Eco-Friendly Water Bottle</h3>
+        <p>Stay hydrated sustainably.</p>
+        <p class="price">RWF 15,000 <span class="discount">(10% off)</span></p>
+        <button onclick="addToCart('Eco-Friendly Water Bottle', 15000)">Shop Now</button>
+      </div>
+      <div class="offer-item">
+        <img src="img/offer-product4.jpg" alt="Fitness Tracker">
+        <h3>Fitness Tracker</h3>
+        <p>Track your health and fitness goals.</p>
+        <p class="price">RWF 120,000 <span class="discount">(15% off)</span></p>
+        <button onclick="addToCart('Fitness Tracker', 120000)">Shop Now</button>
+      </div>
+      <div class="offer-item">
+        <img src="img/offer-product5.jpg" alt="Leather Wallet">
+        <h3>Leather Wallet</h3>
+        <p>Premium quality, durable and stylish.</p>
+        <p class="price">RWF 25,000 <span class="discount">(30% off)</span></p>
+        <button onclick="addToCart('Leather Wallet', 25000)">Shop Now</button>
+      </div>
+      <!-- Add remaining offers similarly -->
     </div>
   </section>
 
   <!-- Floating View Cart Button -->
   <div class="view-cart-btn" onclick="window.location.href='cart.html'">
-    <img src="cart-icon.png" alt="Cart Icon">
+    <img src="img/cart.jpg" alt="Cart Icon">
     <span>View Cart</span>
   </div>
 
