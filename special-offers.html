@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Special Offers | Kigali Shopping Mall</title>
   <style>
-    /* General styles remain unchanged */
+    /* General styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f9f9f9;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     /* Header Section */
@@ -70,7 +70,7 @@
       background-color: white;
       padding: 1.5rem;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      width: 28%;
+      width: 30%;
       transition: transform 0.3s, box-shadow 0.3s;
       border-radius: 10px;
       position: relative;
@@ -173,14 +173,9 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 1200px) {
-      .offers {
-        flex-direction: column;
-        align-items: center;
-      }
-
+    @media (max-width: 1024px) {
       .offer-item {
-        width: 80%;
+        width: 45%;
       }
     }
 
@@ -189,8 +184,13 @@
         font-size: 2rem;
       }
 
+      .offers {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .offer-item {
-        width: 100%;
+        width: 80%;
       }
     }
   </style>
@@ -214,7 +214,7 @@
         <p class="price">RWF 45,000 <span class="discount">(25% off)</span></p>
         <button onclick="addToCart('Beauty Essentials Set', 45000)">Shop Now</button>
       </div>
-      <!-- 13 New Offers -->
+      <!-- More Offers -->
       <div class="offer-item">
         <img src="img/offer-product2.jpg" alt="Gaming Headset">
         <h3>Gaming Headset</h3>
@@ -222,28 +222,6 @@
         <p class="price">RWF 75,000 <span class="discount">(20% off)</span></p>
         <button onclick="addToCart('Gaming Headset', 75000)">Shop Now</button>
       </div>
-      <div class="offer-item">
-        <img src="img/offer-product3.jpg" alt="Eco-Friendly Water Bottle">
-        <h3>Eco-Friendly Water Bottle</h3>
-        <p>Stay hydrated sustainably.</p>
-        <p class="price">RWF 15,000 <span class="discount">(10% off)</span></p>
-        <button onclick="addToCart('Eco-Friendly Water Bottle', 15000)">Shop Now</button>
-      </div>
-      <div class="offer-item">
-        <img src="img/offer-product4.jpg" alt="Fitness Tracker">
-        <h3>Fitness Tracker</h3>
-        <p>Track your health and fitness goals.</p>
-        <p class="price">RWF 120,000 <span class="discount">(15% off)</span></p>
-        <button onclick="addToCart('Fitness Tracker', 120000)">Shop Now</button>
-      </div>
-      <div class="offer-item">
-        <img src="img/offer-product5.jpg" alt="Leather Wallet">
-        <h3>Leather Wallet</h3>
-        <p>Premium quality, durable and stylish.</p>
-        <p class="price">RWF 25,000 <span class="discount">(30% off)</span></p>
-        <button onclick="addToCart('Leather Wallet', 25000)">Shop Now</button>
-      </div>
-      <!-- Add remaining offers similarly -->
     </div>
   </section>
 
