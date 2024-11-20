@@ -114,12 +114,11 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
+      cursor: pointer;
+      z-index: 1000;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      z-index: 1000;
     }
     .floating-cart img {
       width: 70px;
@@ -137,6 +136,16 @@
       font-size: 0.9rem;
       color: #1d3557;
       font-weight: bold;
+    }
+    .floating-cart .cart-badge {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 10px;
+      height: 10px;
+      background-color: #FF6347;
+      border-radius: 50%;
+      display: none; /* Hidden by default */
     }
 
     /* Footer Styling */
@@ -220,6 +229,7 @@
   <!-- Floating Cart -->
   <div class="floating-cart" onclick="viewCart()">
     <img src="img/cart.jpg" alt="View Cart">
+    <div class="cart-badge" id="cart-badge"></div>
     <span>View Cart</span>
   </div>
 
@@ -241,6 +251,7 @@
       }
 
       localStorage.setItem('mensFashionCart', JSON.stringify(cart));
+      updateCartBadge();
       showNotification("Product added to cart!");
     }
 
@@ -254,13 +265,18 @@
       }, 2000);
     }
 
-    function formatPrice(price) {
-      return `RWF ${price.toLocaleString()}`;
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+      const badge = document.getElementById('cart-badge');
+      badge.style.display = cart.length > 0 ? 'block' : 'none';
     }
 
     function viewCart() {
       window.location.href = 'mens-cart.html';
     }
+
+    // Initialize badge on page load
+    document.addEventListener('DOMContentLoaded', updateCartBadge);
   </script>
 </body>
 </html>
