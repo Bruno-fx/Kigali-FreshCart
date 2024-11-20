@@ -66,18 +66,29 @@
       border-radius: 50%;
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cart-button-container a {
-      text-decoration: none;
+      position: relative;
     }
     .cart-text {
       margin-top: 5px;
       font-size: 0.9rem;
       font-weight: bold;
       color: #333;
+    }
+    .cart-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 24px;
+      height: 24px;
+      background-color: #FF6347;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     .container {
       max-width: 1200px;
@@ -102,7 +113,6 @@
     .item-card:hover {
       transform: translateY(-10px);
     }
-    /* Fixed image container */
     .item-card img {
       width: 100%;
       height: 200px;
@@ -121,7 +131,7 @@
       margin-top: 0.5rem;
       padding: 8px 16px;
       background-color: #5777f9;
-      color: #333;
+      color: #fff;
       font-weight: bold;
       text-decoration: none;
       border-radius: 5px;
@@ -158,7 +168,6 @@
 </header>
 
 <section class="container">
-  <!-- Suits -->
   <div class="item-card">
     <img src="img/suits.jpg" alt="Suits">
     <div class="item-info">
@@ -166,7 +175,6 @@
       <a href="suits.html" class="view-styles-button">View Styles</a>
     </div>
   </div>
-  <!-- Shirts -->
   <div class="item-card">
     <img src="img/shirts.jpg" alt="Shirts">
     <div class="item-info">
@@ -174,36 +182,13 @@
       <a href="shirts.html" class="view-styles-button">View Styles</a>
     </div>
   </div>
-  <!-- Sweaters -->
-  <div class="item-card">
-    <img src="img/sweaters.jpeg" alt="Sweaters">
-    <div class="item-info">
-      Sweaters
-      <a href="sweaters.html" class="view-styles-button">View Styles</a>
-    </div>
-  </div>
-  <!-- Jackets -->
-  <div class="item-card">
-    <img src="img/jackets.jpg" alt="Jackets">
-    <div class="item-info">
-      Jackets
-      <a href="jackets.html" class="view-styles-button">View Styles</a>
-    </div>
-  </div>
-  <!-- Casual Wear -->
-  <div class="item-card">
-    <img src="img/casual-wear.jpg" alt="Casual Wear">
-    <div class="item-info">
-      Casual Wear
-      <a href="casual-wear.html" class="view-styles-button">View Styles</a>
-    </div>
-  </div>
 </section>
 
-<!-- Floating Cart Button with Link -->
 <div class="cart-button-container">
   <a href="mens-cart.html" title="View Cart">
-    <div class="cart-button"></div>
+    <div class="cart-button">
+      <div id="cart-badge" class="cart-badge" style="display: none;">0</div>
+    </div>
     <div class="cart-text">View Cart</div>
   </a>
 </div>
@@ -211,6 +196,32 @@
 <footer>
   <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
 </footer>
+
+<script>
+  let cartCount = 0;
+
+  function updateCartBadge() {
+    const badge = document.getElementById("cart-badge");
+    badge.textContent = cartCount;
+    badge.style.display = cartCount > 0 ? "flex" : "none";
+  }
+
+  function addToCart() {
+    cartCount++;
+    updateCartBadge();
+  }
+
+  function removeFromCart() {
+    if (cartCount > 0) {
+      cartCount--;
+      updateCartBadge();
+    }
+  }
+
+  // Simulating add/remove actions for testing
+  // Add your actual cart integration logic here
+  setTimeout(addToCart, 2000); // Example: Add a product after 2 seconds
+</script>
 
 </body>
 </html>
