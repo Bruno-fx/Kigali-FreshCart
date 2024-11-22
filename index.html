@@ -214,6 +214,61 @@
       transform: scale(0.95);
     }
 
+    /* Floating Chat Button */
+    .chat-btn {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      background-color: #25d366; /* WhatsApp green */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow added */
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .chat-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image fills the circle */
+      border-radius: 50%; /* Makes the image circular */
+    }
+
+    /* Floating Phrase */
+    .chat-text {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366; /* WhatsApp green */
+      color: white;
+      padding: 8px 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    .chat-text:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .logo-container img {
@@ -408,6 +463,14 @@
       }
     }
   </script>
+
+   <!-- Floating Chat Button -->
+  <a href="https://wa.me/250123456789?text=Hello%20Kigali%20Shopping%20Mall%20Support!" target="_blank">
+    <div class="chat-btn">
+      <img src="img/whatsapp-icon.jpg" alt="Chat with Us">
+    </div>
+    <div class="chat-text">Chat with us!</div>
+  </a>
 
   <!-- Footer and other sections... -->
   <footer style="background-color: #333; color: white; padding: 20px 0;">
