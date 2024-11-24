@@ -310,7 +310,20 @@
       }
 
       document.getElementById('delivery-error').style.display = 'none';
-      alert(`Thank you, ${name}. Your order has been placed!`);
+
+      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+      const deliveryCost = parseFloat(deliveryOption);
+      const total = cartTotal + deliveryCost;
+
+      let orderDetails = `Order Summary:\nName: ${name}\nPhone: ${phone}\n\nProducts:\n`;
+      items.forEach(item => {
+        orderDetails += `${item.name} - ${item.quantity} x RWF ${item.price.toLocaleString()} = RWF ${(item.price * item.quantity).toLocaleString()}\n`;
+      });
+      orderDetails += `\nDelivery: RWF ${deliveryCost.toLocaleString()}\nTotal: RWF ${total.toLocaleString()}\n`;
+
+      // Replace YOUR_WHATSAPP_NUMBER with your actual number
+      const whatsappUrl = `https://wa.me/250727725180?text=${encodeURIComponent(orderDetails)}`;
+      window.open(whatsappUrl, '_blank');
     }
 
     loadCartItems();
