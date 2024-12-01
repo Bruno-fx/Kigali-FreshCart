@@ -6,7 +6,6 @@
   <title>Men's Fashion - Shopping Cart</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Your existing styles here */
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -68,6 +67,27 @@
 
     th {
       background-color: #f2f2f2;
+    }
+
+    .product-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .product-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-name {
+      font-size: 0.9rem;
+      color: #333;
+      font-weight: 500;
     }
 
     .quantity-controls {
@@ -151,13 +171,8 @@
       position: relative;
       bottom: 0;
       width: 100%;
-      max-width: 100vw;
-      overflow-x: hidden;
-      box-sizing: border-box;
-      margin: 0;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
       .cart-container {
         padding: 0.5rem;
@@ -166,6 +181,11 @@
       table th, table td {
         font-size: 0.9rem;
         padding: 0.5rem;
+      }
+
+      .product-image {
+        width: 60px;
+        height: 60px;
       }
 
       .total-price {
@@ -254,24 +274,25 @@
     cartItemsContainer.innerHTML = '';
     items.forEach((item, index) => {
       const itemTotal = item.price * item.quantity;
-      const cartItem = document.createElement('tr');
-      cartItem.innerHTML = `
-        <td>
-          <img src="${item.image}" alt="${item.name}" class="product-image">
-          <span>${item.name}</span>
-        </td>
-        <td>${formatPrice(item.price)}</td>
-        <td>
-          <div class="quantity-controls">
-            <button onclick="updateQuantity(${index}, -1)">-</button>
-            <span>${item.quantity}</span>
-            <button onclick="updateQuantity(${index}, 1)">+</button>
-          </div>
-        </td>
-        <td>${formatPrice(itemTotal)}</td>
-        <td><span class="remove-button" onclick="removeItem(${index})">Remove</span></td>
-      `;
-      cartItemsContainer.appendChild(cartItem);
+      cartItemsContainer.innerHTML += `
+        <tr>
+          <td>
+            <div class="product-container">
+              <img src="${item.image}" alt="${item.name}" class="product-image">
+              <div class="product-name">${item.name}</div>
+            </div>
+          </td>
+          <td>${formatPrice(item.price)}</td>
+          <td>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity(${index}, -1)">-</button>
+              <span>${item.quantity}</span>
+              <button onclick="updateQuantity(${index}, 1)">+</button>
+            </div>
+          </td>
+          <td>${formatPrice(itemTotal)}</td>
+          <td><span class="remove-button" onclick="removeItem(${index})">Remove</span></td>
+        </tr>`;
     });
   }
 
@@ -287,11 +308,9 @@
 
   function updateQuantity(index, change) {
     const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
-    if (items[index]) {
-      items[index].quantity = Math.max(1, (items[index].quantity || 1) + change);
-      localStorage.setItem('mensFashionCart', JSON.stringify(items));
-      loadCartItems();
-    }
+    items[index].quantity = Math.max(1, items[index].quantity + change);
+    localStorage.setItem('mensFashionCart', JSON.stringify(items));
+    loadCartItems();
   }
 
   function removeItem(index) {
@@ -302,26 +321,19 @@
   }
 
   function proceedToPayment() {
-    const name = document.getElementById("customer-name").value.trim();
-    const phone = document.getElementById("customer-phone").value.trim();
     const deliveryOption = document.getElementById("delivery-option").value;
-    if (!name || !phone || deliveryOption === "0") {
-      alert("Please fill all the fields and select a delivery option.");
+    if (!deliveryOption || deliveryOption === "0") {
+      document.getElementById("delivery-error").style.display = "block";
       return;
     }
-
-    const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
-    const deliveryCost = parseFloat(deliveryOption);
-    const total = cartTotal + deliveryCost;
-
-    const message = items.map(item => 
-      `*${item.name}* (${item.quantity} x ${formatPrice(item.price)}): ${formatPrice(item.price * item.quantity)}`
-    ).join("\n");
-
-    const whatsappMessage = `Hello,\n\nOrder Summary:\n${message}\n\nDelivery Cost: ${formatPrice(deliveryCost)}\nTotal: ${formatPrice(total)}\n\nName: ${name}\nPhone: ${phone}\n\nThank you!`;
-
-    const whatsappURL = `https://wa.me/1234567890?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappURL, '_blank');
+    const name = document.getElementById('customer-name').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+    if (!name || !phone) {
+      alert("Please fill out all required fields.");
+      return;
+    }
+    const message = `Hello, I would like to place an order. My total is ${document.getElementById("total-price").innerText}. Name: ${name}, Phone: ${phone}.`;
+    window.open(`https://wa.me/123456789?text=${encodeURIComponent(message)}`, '_blank');
   }
 
   loadCartItems();
