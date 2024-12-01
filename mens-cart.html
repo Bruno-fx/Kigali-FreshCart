@@ -321,19 +321,44 @@
   }
 
   function proceedToPayment() {
+    const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
     const deliveryOption = document.getElementById("delivery-option").value;
+    const deliveryText = deliveryOption === "1500" ? "Motorcycle - RWF 1,500" : 
+                         deliveryOption === "15000" ? "Car - RWF 15,000" : "";
+
     if (!deliveryOption || deliveryOption === "0") {
       document.getElementById("delivery-error").style.display = "block";
       return;
     }
+
     const name = document.getElementById('customer-name').value.trim();
     const phone = document.getElementById('customer-phone').value.trim();
     if (!name || !phone) {
       alert("Please fill out all required fields.");
       return;
     }
-    const message = `Hello, I would like to place an order. My total is ${document.getElementById("total-price").innerText}. Name: ${name}, Phone: ${phone}.`;
-    window.open(`https://wa.me/250727725180?text=${encodeURIComponent(message)}`, '_blank');
+
+    let orderSummary = "*Order Summary:*\n";
+    let totalCost = 0;
+
+    items.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      orderSummary += `\n${index + 1}. ${item.name}\n`;
+      orderSummary += `   - Price: RWF ${item.price.toLocaleString()}\n`;
+      orderSummary += `   - Quantity: ${item.quantity}\n`;
+      orderSummary += `   - Total: RWF ${itemTotal.toLocaleString()}\n`;
+      totalCost += itemTotal;
+    });
+
+    totalCost += parseFloat(deliveryOption);
+
+    orderSummary += `\n*Delivery Option:* ${deliveryText}\n`;
+    orderSummary += `*Total Cost:* RWF ${totalCost.toLocaleString()}\n\n`;
+
+    const message = `Hello, I would like to place an order.\n\n${orderSummary}*Customer Details:*\n- Name: ${name}\n- Phone: ${phone}`;
+
+    const whatsappNumber = "250727725180";
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   }
 
   loadCartItems();
