@@ -118,12 +118,13 @@
       border-radius: 4px;
     }
 
-    .message-box {
-      width: 95%;
-      height: 100px;
-      border: 1px solid #ddd;
+    .note-box {
+      padding: 1rem;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
       border-radius: 4px;
-      padding: 0.5rem;
+      margin-top: 1rem;
     }
 
     .proceed-button {
@@ -198,6 +199,7 @@
       <thead>
         <tr>
           <th>Product</th>
+          <th>Details</th>
           <th>Price</th>
           <th>Quantity</th>
           <th>Total</th>
@@ -223,7 +225,9 @@
       <h2>Checkout</h2>
       <input type="text" id="customer-name" placeholder="Enter your name" required>
       <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
-      <textarea id="customer-message" class="message-box" placeholder="Leave a message! (tell us your location)"></textarea>
+      <div class="note-box">
+        Upon clicking the "Proceed to Payment" button, you will be redirected to WhatsApp, where a member of our finance team will assist you in finalizing your payment smoothly.
+      </div>
       <button class="proceed-button" onclick="proceedToPayment()">Proceed to Payment</button>
     </div>
   </section>
@@ -253,6 +257,7 @@
         const cartItem = document.createElement('tr');
         cartItem.innerHTML = `
           <td>${item.name}</td>
+          <td>${item.details || 'N/A'}</td>
           <td>${formatPrice(item.price)}</td>
           <td>
             <div class="quantity-controls">
@@ -317,11 +322,10 @@
 
       let orderDetails = `Order Summary:\nName: ${name}\nPhone: ${phone}\n\nProducts:\n`;
       items.forEach(item => {
-        orderDetails += `${item.name} - ${item.quantity} x RWF ${item.price.toLocaleString()} = RWF ${(item.price * item.quantity).toLocaleString()}\n`;
+        orderDetails += `${item.name} (${item.details || 'N/A'}) - ${item.quantity} x RWF ${item.price.toLocaleString()} = RWF ${(item.price * item.quantity).toLocaleString()}\n`;
       });
       orderDetails += `\nDelivery: RWF ${deliveryCost.toLocaleString()}\nTotal: RWF ${total.toLocaleString()}\n`;
 
-      // Replace YOUR_WHATSAPP_NUMBER with your actual number
       const whatsappUrl = `https://wa.me/250727725180?text=${encodeURIComponent(orderDetails)}`;
       window.open(whatsappUrl, '_blank');
     }
