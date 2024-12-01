@@ -6,6 +6,7 @@
   <title>Men's Fashion - Shopping Cart</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Your existing styles here */
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -123,8 +124,8 @@
       background-color: #d4edda;
       color: #155724;
       border: 1px solid #c3e6cb;
-      border-radius: 4px;
-      margin-top: 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
     }
 
     .proceed-button {
@@ -189,148 +190,142 @@
 </head>
 <body>
 
-  <header>
-    <a href="mens-fashion.html" class="home-button">Back</a>
-    <h1>Men's Fashion Shopping Cart</h1>
-  </header>
+<header>
+  <a href="mens-fashion.html" class="home-button">Back</a>
+  <h1>Men's Fashion Shopping Cart</h1>
+</header>
 
-  <section class="cart-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Details</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="cart-items"></tbody>
-    </table>
+<section class="cart-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="cart-items"></tbody>
+  </table>
 
-    <div class="checkout-container">
-      <h2>Choose Delivery Option</h2>
-      <select id="delivery-option" onchange="updateTotalWithDelivery()">
-        <option value="0">Select Delivery Option</option>
-        <option value="1500">Motorcycle - RWF 1,500</option>
-        <option value="15000">Car - RWF 10,000</option>
-      </select>
-      <div id="delivery-error" style="color: red; display: none;">Please select a delivery option!</div>
+  <div class="checkout-container">
+    <h2>Choose Delivery Option</h2>
+    <select id="delivery-option" onchange="updateTotalWithDelivery()">
+      <option value="0">Select Delivery Option</option>
+      <option value="1500">Motorcycle - RWF 1,500</option>
+      <option value="15000">Car - RWF 15,000</option>
+    </select>
+    <div id="delivery-error" style="color: red; display: none;">Please select a delivery option!</div>
+  </div>
+
+  <div class="total-price" id="total-price">Total: RWF 0</div>
+
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <input type="text" id="customer-name" placeholder="Enter your name" required>
+    <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+    <div class="note-box">
+      Upon clicking the "Proceed to Payment" button, you will be redirected to WhatsApp, where a member of our finance team will assist you in finalizing your payment smoothly.
     </div>
+    <button class="proceed-button" onclick="proceedToPayment()">Proceed to Payment</button>
+  </div>
+</section>
 
-    <div class="total-price" id="total-price">Total: RWF 0</div>
+<footer>
+  <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
+</footer>
 
-    <div class="checkout-container">
-      <h2>Checkout</h2>
-      <input type="text" id="customer-name" placeholder="Enter your name" required>
-      <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
-      <div class="note-box">
-        Upon clicking the "Proceed to Payment" button, you will be redirected to WhatsApp, where a member of our finance team will assist you in finalizing your payment smoothly.
-      </div>
-      <button class="proceed-button" onclick="proceedToPayment()">Proceed to Payment</button>
-    </div>
-  </section>
+<script>
+  let cartTotal = 0;
 
-  <footer>
-    <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
-  </footer>
+  function formatPrice(price) {
+    return `RWF ${price.toLocaleString()}`;
+  }
 
-  <script>
-    let cartTotal = 0;
+  function loadCartItems() {
+    const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+    displayCartItems(items);
+    calculateCartTotal(items);
+  }
 
-    function formatPrice(price) {
-      return `RWF ${price.toLocaleString()}`;
-    }
+  function displayCartItems(items) {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = '';
+    items.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      const cartItem = document.createElement('tr');
+      cartItem.innerHTML = `
+        <td>
+          <img src="${item.image}" alt="${item.name}" class="product-image">
+          <span>${item.name}</span>
+        </td>
+        <td>${formatPrice(item.price)}</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateQuantity(${index}, -1)">-</button>
+            <span>${item.quantity}</span>
+            <button onclick="updateQuantity(${index}, 1)">+</button>
+          </div>
+        </td>
+        <td>${formatPrice(itemTotal)}</td>
+        <td><span class="remove-button" onclick="removeItem(${index})">Remove</span></td>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+    });
+  }
 
-    function loadCartItems() {
-      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
-      displayCartItems(items);
-      calculateCartTotal(items);
-    }
+  function calculateCartTotal(items) {
+    cartTotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
+    updateTotalWithDelivery();
+  }
 
-    function displayCartItems(items) {
-      const cartItemsContainer = document.getElementById('cart-items');
-      cartItemsContainer.innerHTML = '';
-      items.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        const cartItem = document.createElement('tr');
-        cartItem.innerHTML = `
-          <td>${item.name}</td>
-          <td>${item.details || 'N/A'}</td>
-          <td>${formatPrice(item.price)}</td>
-          <td>
-            <div class="quantity-controls">
-              <button onclick="updateQuantity(${index}, -1)">-</button>
-              <span>${item.quantity}</span>
-              <button onclick="updateQuantity(${index}, 1)">+</button>
-            </div>
-          </td>
-          <td>${formatPrice(itemTotal)}</td>
-          <td><span class="remove-button" onclick="removeItem(${index})">Remove</span></td>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-      });
-    }
+  function updateTotalWithDelivery() {
+    const deliveryCost = parseFloat(document.getElementById("delivery-option").value) || 0;
+    document.getElementById("total-price").innerText = `Total: ${formatPrice(cartTotal + deliveryCost)}`;
+  }
 
-    function calculateCartTotal(items) {
-      cartTotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
-      updateTotalWithDelivery();
-    }
-
-    function updateTotalWithDelivery() {
-      const deliveryCost = parseFloat(document.getElementById("delivery-option").value) || 0;
-      document.getElementById("total-price").innerText = `Total: ${formatPrice(cartTotal + deliveryCost)}`;
-    }
-
-    function updateQuantity(index, change) {
-      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
-      if (items[index]) {
-        items[index].quantity = Math.max(1, (items[index].quantity || 1) + change);
-        localStorage.setItem('mensFashionCart', JSON.stringify(items));
-        loadCartItems();
-      }
-    }
-
-    function removeItem(index) {
-      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
-      items.splice(index, 1);
+  function updateQuantity(index, change) {
+    const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+    if (items[index]) {
+      items[index].quantity = Math.max(1, (items[index].quantity || 1) + change);
       localStorage.setItem('mensFashionCart', JSON.stringify(items));
       loadCartItems();
     }
+  }
 
-    function proceedToPayment() {
-      const name = document.getElementById('customer-name').value.trim();
-      const phone = document.getElementById('customer-phone').value.trim();
-      const deliveryOption = document.getElementById('delivery-option').value;
+  function removeItem(index) {
+    const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+    items.splice(index, 1);
+    localStorage.setItem('mensFashionCart', JSON.stringify(items));
+    loadCartItems();
+  }
 
-      if (!deliveryOption || deliveryOption === "0") {
-        document.getElementById('delivery-error').style.display = 'block';
-        return;
-      }
-
-      if (!name || !phone) {
-        alert('Please fill in your name and phone number.');
-        return;
-      }
-
-      document.getElementById('delivery-error').style.display = 'none';
-
-      const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
-      const deliveryCost = parseFloat(deliveryOption);
-      const total = cartTotal + deliveryCost;
-
-      let orderDetails = `Order Summary:\nName: ${name}\nPhone: ${phone}\n\nProducts:\n`;
-      items.forEach(item => {
-        orderDetails += `${item.name} (${item.details || 'N/A'}) - ${item.quantity} x RWF ${item.price.toLocaleString()} = RWF ${(item.price * item.quantity).toLocaleString()}\n`;
-      });
-      orderDetails += `\nDelivery: RWF ${deliveryCost.toLocaleString()}\nTotal: RWF ${total.toLocaleString()}\n`;
-
-      const whatsappUrl = `https://wa.me/250727725180?text=${encodeURIComponent(orderDetails)}`;
-      window.open(whatsappUrl, '_blank');
+  function proceedToPayment() {
+    const name = document.getElementById("customer-name").value.trim();
+    const phone = document.getElementById("customer-phone").value.trim();
+    const deliveryOption = document.getElementById("delivery-option").value;
+    if (!name || !phone || deliveryOption === "0") {
+      alert("Please fill all the fields and select a delivery option.");
+      return;
     }
 
-    loadCartItems();
-  </script>
+    const items = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
+    const deliveryCost = parseFloat(deliveryOption);
+    const total = cartTotal + deliveryCost;
+
+    const message = items.map(item => 
+      `*${item.name}* (${item.quantity} x ${formatPrice(item.price)}): ${formatPrice(item.price * item.quantity)}`
+    ).join("\n");
+
+    const whatsappMessage = `Hello,\n\nOrder Summary:\n${message}\n\nDelivery Cost: ${formatPrice(deliveryCost)}\nTotal: ${formatPrice(total)}\n\nName: ${name}\nPhone: ${phone}\n\nThank you!`;
+
+    const whatsappURL = `https://wa.me/1234567890?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappURL, '_blank');
+  }
+
+  loadCartItems();
+</script>
+
 </body>
 </html>

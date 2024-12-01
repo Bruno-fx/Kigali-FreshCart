@@ -174,7 +174,7 @@
     /* Responsive Styling */
     @media (max-width: 768px) {
       .product-container {
-        gap: 2rem; /* Increased gap for better differentiation on smaller screens */
+        gap: 2rem;
       }
     }
   </style>
@@ -187,14 +187,13 @@
   </header>
 
   <section class="product-container">
-    <!-- Sample Products -->
     <div class="product-item">
       <img src="img/product0.jpeg" alt="Product 0">
       <div class="product-details">
         <h2 class="product-name">Product 0</h2>
         <p class="product-price">RWF 65,000</p>
         <p class="product-description">A brief description of product 0.</p>
-        <button class="add-to-cart-btn" onclick="addToCart('Product 0', 65000)">Add to Cart</button>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 0', 65000, 'img/product0.jpeg')">Add to Cart</button>
       </div>
     </div>
     <div class="product-item">
@@ -203,7 +202,7 @@
         <h2 class="product-name">Product 1</h2>
         <p class="product-price">RWF 75,000</p>
         <p class="product-description">A brief description of product 1.</p>
-        <button class="add-to-cart-btn" onclick="addToCart('Product 1', 75000)">Add to Cart</button>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 1', 75000, 'img/product1.jpeg')">Add to Cart</button>
       </div>
     </div>
     <div class="product-item">
@@ -212,7 +211,7 @@
         <h2 class="product-name">Product 2</h2>
         <p class="product-price">RWF 80,000</p>
         <p class="product-description">A brief description of product 2.</p>
-        <button class="add-to-cart-btn" onclick="addToCart('Product 2', 80000)">Add to Cart</button>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 2', 80000, 'img/product2.jpg')">Add to Cart</button>
       </div>
     </div>
     <div class="product-item">
@@ -221,12 +220,11 @@
         <h2 class="product-name">Product 3</h2>
         <p class="product-price">RWF 70,000</p>
         <p class="product-description">A brief description of product 3.</p>
-        <button class="add-to-cart-btn" onclick="addToCart('Product 3', 70000)">Add to Cart</button>
+        <button class="add-to-cart-btn" onclick="addToCart('Product 3', 70000, 'img/product3.jpg')">Add to Cart</button>
       </div>
     </div>
   </section>
 
-  <!-- Floating Cart -->
   <div class="floating-cart" onclick="viewCart()">
     <img src="img/cart.jpg" alt="View Cart">
     <div class="cart-badge" id="cart-badge"></div>
@@ -240,14 +238,14 @@
   <div class="notification" id="cart-notification">Product added to cart!</div>
 
   <script>
-    function addToCart(productName, price) {
+    function addToCart(productName, price, image) {
       const cart = JSON.parse(localStorage.getItem('mensFashionCart')) || [];
       const existingItem = cart.find(item => item.name === productName);
 
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
-        cart.push({ name: productName, price: price, quantity: 1 });
+        cart.push({ name: productName, price: price, quantity: 1, image: image });
       }
 
       localStorage.setItem('mensFashionCart', JSON.stringify(cart));
