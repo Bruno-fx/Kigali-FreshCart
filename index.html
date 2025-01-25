@@ -339,54 +339,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kigali Shopping Mall</title>
-  <style>
-    /* Previous styles for the page will remain the same... */
-
-    /* Search Bar Styles */
-    .search-container {
-      margin: 20px auto;
-      text-align: center;
-    }
-
-    .search-container input[type="text"] {
-      padding: 10px;
-      width: 60%;
-      font-size: 1.2rem;
-      border: 2px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .search-container button {
-      padding: 10px;
-      font-size: 1.2rem;
-      background-color: #32CD32; /* Lime Green */
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-left: 5px;
-    }
-
-    .search-container button:hover {
-      background-color: #228B22; /* Forest Green */
-    }
-
-    /* Category hidden when not matching the search */
-    .category.hidden {
-      display: none;
-    }
-
-  </style>
 </head>
 <body>
-
-  <!-- Header and other sections... -->
-
-  <!-- Search Bar -->
-  <div class="search-container">
-    <input type="text" id="searchBar" placeholder="Search for any kind of product that you want..." onkeyup="searchCategories()">
-    <button onclick="searchCategories()">Search</button>
-  </div>
 
   <!-- Categories Section -->
   <section>
@@ -443,23 +397,6 @@
       </div>
     </div>
   </section>
-
-  <script>
-    // JavaScript for searching categories
-    function searchCategories() {
-      const input = document.getElementById('searchBar').value.toLowerCase();
-      const categories = document.getElementsByClassName('category');
-
-      for (let i = 0; i < categories.length; i++) {
-        const categoryName = categories[i].getAttribute('data-name').toLowerCase();
-        if (categoryName.includes(input)) {
-          categories[i].classList.remove('hidden');
-        } else {
-          categories[i].classList.add('hidden');
-        }
-      }
-    }
-  </script>
 
    <!-- Floating Chat Button -->
   <a href="https://wa.me/250123456789?text=Hello%20Kigali%20Shopping%20Mall%20Support!" target="_blank">
