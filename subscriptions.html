@@ -10,13 +10,13 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f8ca9b;
+      background-color: #9bd3f8;
       overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     /* Header Section */
     header {
-      background-image: url('img/offers-background.jpg'); /* Replace with your background image */
+      background-image: url('img/sub-bg.jpg'); /* Replace with your background image */
       background-size: cover;
       background-position: center;
       color: white;
@@ -29,7 +29,7 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background-color: #FF6347;
+      background-color: #32CD32;
       color: white;
       padding: 10px 20px;
       text-decoration: none;
@@ -39,7 +39,7 @@
     }
 
     .home-btn:hover {
-      background-color: #FF4500;
+      background-color: #168416;
     }
 
     header h1 {
@@ -101,17 +101,6 @@
       margin: 0.5rem 0;
     }
 
-    .offer-item .price {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #32CD32;
-    }
-
-    .discount {
-      font-size: 1rem;
-      color: #FF6347;
-    }
-
     .offer-item button {
       background-color: #32CD32;
       color: white;
@@ -125,37 +114,6 @@
 
     .offer-item button:hover {
       background-color: #228B22;
-    }
-
-    /* Floating View Cart Button */
-    .view-cart-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .view-cart-btn img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .view-cart-btn img:hover {
-      transform: scale(1.1);
-    }
-
-    .view-cart-btn span {
-      margin-top: 5px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #333;
     }
 
     /* Footer Section */
@@ -206,73 +164,50 @@
   <section>
     <h2>Exclusive Deals and Discounts</h2>
     <div class="offers">
-      <!-- Original 12 Offers -->
+      <!-- Offer Items without prices or add-to-cart functionality -->
       <div class="offer-item">
         <img src="img/fruits-sub.jpg" alt="Fruits Subscription">
         <h3>Fruits Subscription</h3>
-        <p> A mix of your favorite fruits frequently delivered to your doorstep without reordering.</p>
-        <p class="price">RWF 35,000 <span class="discount">(25% off)</span></p>
-        <button onclick="addToCart('Fruits Subscription', 35000)">Choose Subscription</button>
+        <p>A mix of your favorite fruits, delivered frequently to your doorstep.</p>
+        <button>Customize Subscription</button>
       </div>
-      <!-- More Offers -->
       <div class="offer-item">
         <img src="img/vegetables-sub.jpg" alt="Vegetables Subscription">
         <h3>Vegetables Subscription</h3>
-        <p>A mix of your daily cooking vegetables frequently delivered to your doorstep without reordering.</p>
-        <p class="price">RWF 25,000 <span class="discount">(20% off)</span></p>
-        <button onclick="addToCart('Vegetables Subscription', 25000)">Choose Subscription</button>
+        <p>A selection of daily cooking vegetables, delivered to your doorstep.</p>
+        <button>Customize Subscription</button>
       </div>
       <div class="offer-item">
         <img src="img/milk-sub.jpg" alt="Milk Subscription">
         <h3>Milk Subscription</h3>
-        <p>Get fresh milk frequently at your doorstep without reordering.</p>
-        <p class="price">RWF 30,000 <span class="discount">(10% off)</span></p>
-        <button onclick="addToCart('Milk Subscription', 30000)">Choose Subscription</button>
+        <p>Fresh milk delivered regularly, ensuring your fridge is always stocked.</p>
+        <button>Customize Subscription</button>
       </div>
       <div class="offer-item">
         <img src="img/bakery-sub.jpg" alt="Bakery Subscription">
         <h3>Bakery Subscription</h3>
-        <p>Get your favorite baked products daily without reordering.</p>
-        <p class="price">RWF 60,000 <span class="discount">(15% off)</span></p>
-        <button onclick="addToCart('Bakery Subscription', 60000)">Choose Subscription</button>
+        <p>Daily delivery of your favorite breads, pastries, and baked treats.</p>
+        <button>Customize Subscription</button>
       </div>
       <div class="offer-item">
         <img src="img/meat-sub.jpg" alt="Fresh Meat Subscription">
         <h3>Fresh Meat Subscription</h3>
-        <p>Get the most fresh meat of your preference frequently at your doorstep without reordering.</p>
-        <p class="price">RWF 50,000 <span class="discount">(30% off)</span></p>
-        <button onclick="addToCart('Fresh Meat Subscription', 50000)">Choose Subscription</button>
+        <p>Premium cuts of meat delivered regularly to ensure top quality.</p>
+        <button>Customize Subscription</button>
       </div>
       <div class="offer-item">
         <img src="img/hygiene-sub.jpg" alt="Hygiene Tools Subscription">
         <h3>Hygiene Tools Subscription</h3>
-        <p>Get the best quality hygiene tools for your clean home frequently at your doorstep without reordering.</p>
-        <p class="price">RWF 100,000 <span class="discount">(30% off)</span></p>
-        <button onclick="addToCart('Hygiene Tools Subscription', 100000)">Choose Subscription</button>
+        <p>High-quality hygiene products delivered on a regular schedule.</p>
+        <button>Customize Subscription</button>
       </div>
-      <!-- Add remaining offers similarly -->
+      <!-- Add more offers as needed -->
     </div>
   </section>
-
-  <!-- Floating View Cart Button -->
-  <div class="view-cart-btn" onclick="window.location.href='cart.html'">
-    <img src="img/cart.jpg" alt="Cart Icon">
-    <span>View Cart</span>
-  </div>
 
   <!-- Footer Section -->
   <footer>
     <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
   </footer>
-
-  <script>
-    const cart = [];
-
-    function addToCart(itemName, price) {
-      cart.push({ itemName, price });
-      alert(`${itemName} added to cart!`);
-      console.log(cart); // For debugging
-    }
-  </script>
 </body>
 </html>
