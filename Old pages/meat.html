@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Categories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #cceef7;
+    }
+    header {
+      background-image: url('img/meat-header.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+    .home-button {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background-color: #555;
+      border-radius: 5px;
+      z-index: 2;
+    }
+    .home-button:hover {
+      background-color: #777;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+    .category-card {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-10px);
+    }
+    .category-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: opacity 0.3s;
+    }
+    .category-card:hover img {
+      opacity: 0.7;
+    }
+    .category-name {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: match-parent;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .category-overlay {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      color: #000000;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: none;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .category-card:hover .category-overlay {
+      opacity: 1;
+    }
+    .partners-section {
+      text-align: center;
+      margin: 4rem 0;
+      background-color: #333;
+      padding: 2rem 1rem;
+      color: white;
+    }
+    .partners-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffeb3b;
+    }
+    .partner-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .partner-logo img {
+      width: 120px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+    .partner-logo:hover img {
+      transform: scale(1.1);
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    /* Floating Chat Button */
+    .chat-btn {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      background-color: #25d366; /* WhatsApp green */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow added */
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .chat-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image fills the circle */
+      border-radius: 50%; /* Makes the image circular */
+    }
+
+    /* Floating Phrase */
+    .chat-text {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366; /* WhatsApp green */
+      color: white;
+      padding: 8px 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    .chat-text:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce box size on smaller screens */
+        gap: 1.5rem; /* Slightly reduce the gap between boxes */
+      }
+      .partners-section h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="home-button">Home</a>
+  <h1>Discover The Best Fresh Fish and Meats you can get on the Market</h1>
+  <p>Explore all kinds of the most trustworthy and delicious fresh meat that will be delivered to you.</p>
+</header>
+
+<section class="container">
+  <div class="category-card">
+    <a href="fish.html">
+      <img src="img/fish.jpg" alt="Fish">
+      <div class="category-overlay">Tuna, Tilapia, Salmon,...</div>
+      <div class="category-name">Fish</div>
+    </a>
+  </div>
+  <div class="category-card">
+    <a href="beef.html">
+      <img src="img/beef.jpeg" alt="Beef">
+      <div class="category-overlay">Soft fresh and ready to cook beef</div>
+      <div class="category-name">Beef</div>
+    </a>
+  </div>
+  <div class="category-card">
+    <a href="chicken.html">
+      <img src="img/chicken.jpg" alt="Chicken">
+      <div class="category-overlay">Best chicken meat from local farms</div>
+      <div class="category-name">Chicken</div>
+    </a>
+  </div>
+  <div class="category-card">
+    <a href="pork.html">
+      <img src="img/pork.jpeg" alt="Pork">
+      <div class="category-overlay">The best akabenzi meat</div>
+      <div class="category-name">Pork</div>
+    </a>
+  </div>
+  <div class="category-card">
+    <a href="goat.html">
+      <img src="img/goat.jpg" alt="Goat">
+      <div class="category-overlay">Soft fresh and ready to cook goat meat</div>
+      <div class="category-name">Goat</div>
+    </a>
+  </div>
+  <div class="category-card">
+    <a href="rabbit.html">
+      <img src="img/rabbit.jpg" alt="Rabbit">
+      <div class="category-overlay">Delicious local rabbits meat</div>
+      <div class="category-name">Rabbit</div>
+    </a>
+  </div>
+</section>
+
+<section class="partners-section">
+  <h2>Our Partners</h2>
+  <p>We proudly collaborate with some of the finest brands to bring you quality products.</p>
+  <div class="partner-logos">
+    <div class="partner-logo"><img src="img/partner1-logo.png" alt="Partner 1"></div>
+    <div class="partner-logo"><img src="img/partner2-logo.png" alt="Partner 2"></div>
+    <div class="partner-logo"><img src="img/partner3-logo.png" alt="Partner 3"></div>
+    <div class="partner-logo"><img src="img/partner4-logo.jpg" alt="Partner 4"></div>
+  </div>
+</section>
+
+<!-- Floating Chat Button -->
+  <a href="https://wa.me/250123456789?text=Hello%20Kigali%20Shopping%20Mall%20Support!" target="_blank">
+    <div class="chat-btn">
+      <img src="img/whatsapp-icon.jpg" alt="Chat with Us">
+    </div>
+    <div class="chat-text">Chat with us!</div>
+  </a>
+
+<footer>
+  <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+    <h3 style="font-size: 18px;">Contact Us</h3>
+    <p>Address: Kigali Shopping Mall, Kigali, Rwanda</p>
+    <p>Phone: +250 123 456 789</p>
+    <p>Email: support@kigalimall.com</p>
+  </div>
+  <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

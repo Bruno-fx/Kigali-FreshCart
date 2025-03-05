@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruits Subscription - Kigali Shopping Mall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 1rem;
+      background-image: url('img/fruits-header.png'); /* Updated header background image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      text-align: center;
+    }
+    .home-button {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background-color: #555;
+      border-radius: 5px;
+      margin: 0 auto 10px;
+      width: max-content;
+    }
+    .home-button:hover {
+      background-color: #777;
+    }
+    h1 {
+      margin: 0;
+    }
+    .cart-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .product-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .product-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .product-name {
+      font-size: 0.9rem;
+      color: #333;
+      font-weight: 500;
+    }
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .quantity-controls button {
+      padding: 5px 10px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ddd;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    .quantity-controls button:hover {
+      background-color: #ccc;
+    }
+    .summary-container {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .summary-container h2 {
+      margin-top: 0;
+    }
+    #product-summary {
+      background-color: #e0e0e0;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    #product-summary p {
+      margin: 0.2rem 0;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .checkout-container {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .checkout-container input, .checkout-container select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .note-box {
+      padding: 1rem;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+    .proceed-button {
+      padding: 1rem;
+      font-size: 1rem;
+      background-color: #FF4500;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .proceed-button:hover {
+      background-color: #FF6347;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    @media (max-width: 768px) {
+      .cart-container {
+        padding: 0.5rem;
+      }
+      table th, table td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+      }
+      .product-image {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    @media (max-width: 480px) {
+      .quantity-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .proceed-button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+    }
+    @media (max-width: 768px) {
+      footer {
+        padding: 0.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      footer {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="fruits-subscription.html" class="home-button">Back</a>
+  <h1>Fruits Subscription</h1>
+</header>
+
+<section class="cart-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Fruit</th>
+        <th>Price/Unit</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="fruit-items">
+      <tr data-fruit="Bananas">
+        <td>
+          <div class="product-container">
+            <img src="img/bananas.jpg" alt="Bananas" class="product-image">
+            <div class="product-name">Bananas</div>
+          </div>
+        </td>
+        <td>RWF 500</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(0, -1)">-</button>
+            <span id="quantity-0">0</span>
+            <button onclick="updateFruitQuantity(0, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-0">RWF 0</td>
+      </tr>
+      <tr data-fruit="Apples">
+        <td>
+          <div class="product-container">
+            <img src="img/apples.jpg" alt="Apples" class="product-image">
+            <div class="product-name">Apples</div>
+          </div>
+        </td>
+        <td>RWF 700</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(1, -1)">-</button>
+            <span id="quantity-1">0</span>
+            <button onclick="updateFruitQuantity(1, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-1">RWF 0</td>
+      </tr>
+      <tr data-fruit="Oranges">
+        <td>
+          <div class="product-container">
+            <img src="img/oranges.jpg" alt="Oranges" class="product-image">
+            <div class="product-name">Oranges</div>
+          </div>
+        </td>
+        <td>RWF 600</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(2, -1)">-</button>
+            <span id="quantity-2">0</span>
+            <button onclick="updateFruitQuantity(2, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-2">RWF 0</td>
+      </tr>
+      <tr data-fruit="Berries">
+        <td>
+          <div class="product-container">
+            <img src="img/berries.jpg" alt="Berries" class="product-image">
+            <div class="product-name">Berries</div>
+          </div>
+        </td>
+        <td>RWF 1200</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(3, -1)">-</button>
+            <span id="quantity-3">0</span>
+            <button onclick="updateFruitQuantity(3, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-3">RWF 0</td>
+      </tr>
+      <tr data-fruit="Papayas">
+        <td>
+          <div class="product-container">
+            <img src="img/papayas.jpg" alt="Papayas" class="product-image">
+            <div class="product-name">Papayas</div>
+          </div>
+        </td>
+        <td>RWF 800</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(4, -1)">-</button>
+            <span id="quantity-4">0</span>
+            <button onclick="updateFruitQuantity(4, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-4">RWF 0</td>
+      </tr>
+      <tr data-fruit="Water Melons">
+        <td>
+          <div class="product-container">
+            <img src="img/watermelons.jpg" alt="Water Melons" class="product-image">
+            <div class="product-name">Water Melons</div>
+          </div>
+        </td>
+        <td>RWF 1500</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(5, -1)">-</button>
+            <span id="quantity-5">0</span>
+            <button onclick="updateFruitQuantity(5, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-5">RWF 0</td>
+      </tr>
+      <tr data-fruit="Mangoes">
+        <td>
+          <div class="product-container">
+            <img src="img/mangoes.jpg" alt="Mangoes" class="product-image">
+            <div class="product-name">Mangoes</div>
+          </div>
+        </td>
+        <td>RWF 900</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(6, -1)">-</button>
+            <span id="quantity-6">0</span>
+            <button onclick="updateFruitQuantity(6, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-6">RWF 0</td>
+      </tr>
+      <tr data-fruit="Pineapples">
+        <td>
+          <div class="product-container">
+            <img src="img/pineapples.jpg" alt="Pineapples" class="product-image">
+            <div class="product-name">Pineapples</div>
+          </div>
+        </td>
+        <td>RWF 1100</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(7, -1)">-</button>
+            <span id="quantity-7">0</span>
+            <button onclick="updateFruitQuantity(7, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-7">RWF 0</td>
+      </tr>
+      <tr data-fruit="Passion Fruits">
+        <td>
+          <div class="product-container">
+            <img src="img/passionfruits.jpg" alt="Passion Fruits" class="product-image">
+            <div class="product-name">Passion Fruits</div>
+          </div>
+        </td>
+        <td>RWF 400</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(8, -1)">-</button>
+            <span id="quantity-8">0</span>
+            <button onclick="updateFruitQuantity(8, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-8">RWF 0</td>
+      </tr>
+      <tr data-fruit="Tree Tomatoes">
+        <td>
+          <div class="product-container">
+            <img src="img/treetomatoes.jpg" alt="Tree Tomatoes" class="product-image">
+            <div class="product-name">Tree Tomatoes</div>
+          </div>
+        </td>
+        <td>RWF 600</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(9, -1)">-</button>
+            <span id="quantity-9">0</span>
+            <button onclick="updateFruitQuantity(9, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-9">RWF 0</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Summary Section -->
+  <div class="summary-container">
+    <h2>Order Summary</h2>
+    <!-- Product summary with totals -->
+    <div id="product-summary"></div>
+    <p id="subtotal">Subtotal: RWF 0</p>
+    <label for="delivery-option">Delivery Option:</label>
+    <select id="delivery-option" onchange="updateGlobalTotal()">
+      <option value="0">Select Delivery Option</option>
+      <option value="1500">Motorcycle - RWF 1,500</option>
+      <option value="15000">Car - RWF 15,000</option>
+    </select>
+    <p id="delivery-fee">Delivery Fee: RWF 0</p>
+    <p id="grand-total">Grand Total: RWF 0</p>
+  </div>
+
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <input type="text" id="customer-name" placeholder="Enter your name" required>
+    <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+    <div class="note-box">
+      Upon clicking the "Proceed to Payment" button, you will be redirected to WhatsApp, where a member of our finance team will assist you in finalizing your payment smoothly.
+    </div>
+    <button class="proceed-button" onclick="proceedToPayment()">Proceed to Payment</button>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
+</footer>
+
+<script>
+  // Array of fixed fruits with price and initial quantity
+  const fruits = [
+    { name: "Bananas", price: 500, quantity: 0 },
+    { name: "Apples", price: 700, quantity: 0 },
+    { name: "Oranges", price: 600, quantity: 0 },
+    { name: "Berries", price: 1200, quantity: 0 },
+    { name: "Papayas", price: 800, quantity: 0 },
+    { name: "Water Melons", price: 1500, quantity: 0 },
+    { name: "Mangoes", price: 900, quantity: 0 },
+    { name: "Pineapples", price: 1100, quantity: 0 },
+    { name: "Passion Fruits", price: 400, quantity: 0 },
+    { name: "Tree Tomatoes", price: 600, quantity: 0 }
+  ];
+
+  function updateFruitQuantity(index, change) {
+    fruits[index].quantity = Math.max(0, fruits[index].quantity + change);
+    document.getElementById(`quantity-${index}`).innerText = fruits[index].quantity;
+    const total = fruits[index].quantity * fruits[index].price;
+    document.getElementById(`total-${index}`).innerText = `RWF ${total.toLocaleString()}`;
+    updateGlobalTotal();
+  }
+
+  function updateProductSummary() {
+    let summary = "";
+    fruits.forEach((fruit) => {
+      if (fruit.quantity > 0) {
+        const totalPrice = fruit.quantity * fruit.price;
+        summary += `<p>${fruit.name}: ${fruit.quantity} (RWF ${totalPrice.toLocaleString()})</p>`;
+      }
+    });
+    document.getElementById("product-summary").innerHTML = summary;
+  }
+
+  function updateGlobalTotal() {
+    let subtotal = 0;
+    fruits.forEach((fruit) => {
+      subtotal += fruit.quantity * fruit.price;
+    });
+    document.getElementById('subtotal').innerText = `Subtotal: RWF ${subtotal.toLocaleString()}`;
+    const deliveryFee = parseFloat(document.getElementById('delivery-option').value) || 0;
+    document.getElementById('delivery-fee').innerText = `Delivery Fee: RWF ${deliveryFee.toLocaleString()}`;
+    let grandTotal = subtotal + deliveryFee;
+    document.getElementById('grand-total').innerText = `Grand Total: RWF ${grandTotal.toLocaleString()}`;
+    updateProductSummary();
+  }
+
+  function proceedToPayment() {
+    const name = document.getElementById('customer-name').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+    if (!name || !phone) {
+      alert("Please fill out all required fields.");
+      return;
+    }
+    let orderSummary = "*Fruits Subscription Order Summary:*\n";
+    let totalItems = 0;
+    let grandTotal = 0;
+    fruits.forEach((fruit) => {
+      if (fruit.quantity > 0) {
+        const itemTotal = fruit.quantity * fruit.price;
+        orderSummary += `\n- ${fruit.name}: ${fruit.quantity} x RWF ${fruit.price} = RWF ${itemTotal.toLocaleString()}`;
+        totalItems += fruit.quantity;
+        grandTotal += itemTotal;
+      }
+    });
+    const deliveryFee = parseFloat(document.getElementById('delivery-option').value) || 0;
+    if (totalItems === 0) {
+      alert("Please select at least one fruit.");
+      return;
+    }
+    orderSummary += `\n\nDelivery Fee: RWF ${deliveryFee.toLocaleString()}`;
+    orderSummary += `\n\n*Grand Total:* RWF ${(grandTotal + deliveryFee).toLocaleString()}`;
+    orderSummary += `\n\n*Customer Details:*\n- Name: ${name}\n- Phone: ${phone}`;
+    const whatsappNumber = "250727725180";
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderSummary)}`, '_blank');
+  }
+
+  // Initialize global total and product summary on load
+  updateGlobalTotal();
+</script>
+
+</body>
+</html>
