@@ -31,6 +31,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      transition: opacity 0.3s;
     }
     /* Overlay to dim the header image */
     header::before {
@@ -557,15 +558,15 @@
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderSummary)}`, '_blank');
   }
 
-  // Hide header on scroll
+  // Hide header on scroll by fading its opacity (preserving layout)
   let prevScrollpos = window.pageYOffset;
   window.onscroll = function() {
     let currentScrollPos = window.pageYOffset;
     const header = document.getElementById("main-header");
     if (prevScrollpos > currentScrollPos) {
-      header.style.top = "0";
+      header.style.opacity = "1";
     } else {
-      header.style.top = "-100px";
+      header.style.opacity = "0";
     }
     prevScrollpos = currentScrollPos;
   };
