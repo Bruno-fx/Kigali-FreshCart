@@ -10,36 +10,58 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f3eb93;
+      /* Gradient background */
+      background: linear-gradient(to bottom, #f3eb93, #f8f9fa);
       width: 100%;
       overflow-x: hidden;
     }
     header {
       padding: 1rem;
-      background-image: url('img/fruits-header.jpeg'); /* Updated header background image */
-      background-size: cover;
-      background-position: center;
-      color: white;
       position: sticky;
       top: 0;
       z-index: 10;
       text-align: center;
+      /* Header background image with overlay container */
+      background-image: url('img/fruits-header.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      transition: top 0.3s;
     }
+    /* Overlay to dim the header image */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    /* Title style with text shadow */
+    header h1 {
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    /* Home button styled and positioned top-left */
     .home-button {
-      display: block;
+      position: absolute;
+      top: 10px;
+      left: 10px;
       color: white;
       text-decoration: none;
       padding: 8px 16px;
       background-color: #555;
       border-radius: 5px;
-      margin: 0 auto 10px;
-      width: max-content;
+      z-index: 2;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
     }
     .home-button:hover {
       background-color: #777;
-    }
-    h1 {
-      margin: 0;
     }
     .cart-container {
       max-width: 800px;
@@ -114,6 +136,15 @@
       padding: 0.5rem;
       border-radius: 4px;
       margin-bottom: 1rem;
+    }
+    #product-summary table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #product-summary th, #product-summary td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
     }
     .checkout-container {
       margin-top: 2rem;
@@ -195,8 +226,8 @@
 </head>
 <body>
 
-<header>
-  <a href="fruits-subscription.html" class="home-button">Back</a>
+<header id="main-header">
+  <a href="fruits-subscription.html" class="home-button">Home</a>
   <h1>Fruits Subscription</h1>
 </header>
 
@@ -506,6 +537,19 @@
     const whatsappNumber = "250727725180";
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderSummary)}`, '_blank');
   }
+
+  // Hide header on scroll
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+    const header = document.getElementById("main-header");
+    if (prevScrollpos > currentScrollPos) {
+      header.style.top = "0";
+    } else {
+      header.style.top = "-100px";
+    }
+    prevScrollpos = currentScrollPos;
+  };
 
   // Initialize global total and product summary on load
   updateGlobalTotal();
