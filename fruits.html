@@ -16,7 +16,7 @@
     }
     header {
       padding: 1rem;
-      background-image: url('img/fruits-header.png'); /* Updated header background image */
+      background-image: url('img/header-background.jpg'); /* Updated header background image */
       background-size: cover;
       background-position: center;
       color: white;
@@ -114,11 +114,6 @@
       padding: 0.5rem;
       border-radius: 4px;
       margin-bottom: 1rem;
-    }
-    #product-summary p {
-      margin: 0.2rem 0;
-      font-size: 0.95rem;
-      color: #333;
     }
     .checkout-container {
       margin-top: 2rem;
@@ -220,7 +215,7 @@
         <td>
           <div class="product-container">
             <img src="img/bananas.jpg" alt="Bananas" class="product-image">
-            <div class="product-name">Bananas</div>
+            <div class="product-name">Bananas (dozen(s))</div>
           </div>
         </td>
         <td>RWF 500</td>
@@ -237,7 +232,7 @@
         <td>
           <div class="product-container">
             <img src="img/apples.jpg" alt="Apples" class="product-image">
-            <div class="product-name">Apples</div>
+            <div class="product-name">Apples (kilogram(s))</div>
           </div>
         </td>
         <td>RWF 700</td>
@@ -254,7 +249,7 @@
         <td>
           <div class="product-container">
             <img src="img/oranges.jpg" alt="Oranges" class="product-image">
-            <div class="product-name">Oranges</div>
+            <div class="product-name">Oranges (kilogram(s))</div>
           </div>
         </td>
         <td>RWF 600</td>
@@ -271,7 +266,7 @@
         <td>
           <div class="product-container">
             <img src="img/berries.jpg" alt="Berries" class="product-image">
-            <div class="product-name">Berries</div>
+            <div class="product-name">Berries (pack(s))</div>
           </div>
         </td>
         <td>RWF 1200</td>
@@ -288,7 +283,7 @@
         <td>
           <div class="product-container">
             <img src="img/papayas.jpg" alt="Papayas" class="product-image">
-            <div class="product-name">Papayas</div>
+            <div class="product-name">Papayas (piece(s))</div>
           </div>
         </td>
         <td>RWF 800</td>
@@ -305,7 +300,7 @@
         <td>
           <div class="product-container">
             <img src="img/watermelons.jpg" alt="Water Melons" class="product-image">
-            <div class="product-name">Water Melons</div>
+            <div class="product-name">Water Melons (piece(s))</div>
           </div>
         </td>
         <td>RWF 1500</td>
@@ -322,7 +317,7 @@
         <td>
           <div class="product-container">
             <img src="img/mangoes.jpg" alt="Mangoes" class="product-image">
-            <div class="product-name">Mangoes</div>
+            <div class="product-name">Mangoes (kilogram(s))</div>
           </div>
         </td>
         <td>RWF 900</td>
@@ -339,7 +334,7 @@
         <td>
           <div class="product-container">
             <img src="img/pineapples.jpg" alt="Pineapples" class="product-image">
-            <div class="product-name">Pineapples</div>
+            <div class="product-name">Pineapples (piece(s))</div>
           </div>
         </td>
         <td>RWF 1100</td>
@@ -356,7 +351,7 @@
         <td>
           <div class="product-container">
             <img src="img/passionfruits.jpg" alt="Passion Fruits" class="product-image">
-            <div class="product-name">Passion Fruits</div>
+            <div class="product-name">Passion Fruits (pack(s))</div>
           </div>
         </td>
         <td>RWF 400</td>
@@ -373,7 +368,7 @@
         <td>
           <div class="product-container">
             <img src="img/treetomatoes.jpg" alt="Tree Tomatoes" class="product-image">
-            <div class="product-name">Tree Tomatoes</div>
+            <div class="product-name">Tree Tomatoes (kilogram(s))</div>
           </div>
         </td>
         <td>RWF 600</td>
@@ -392,7 +387,7 @@
   <!-- Summary Section -->
   <div class="summary-container">
     <h2>Order Summary</h2>
-    <!-- Product summary with totals -->
+    <!-- Organized Product Summary Table -->
     <div id="product-summary"></div>
     <p id="subtotal">Subtotal: RWF 0</p>
     <label for="delivery-option">Delivery Option:</label>
@@ -421,18 +416,18 @@
 </footer>
 
 <script>
-  // Array of fixed fruits with price and initial quantity
+  // Array of fixed fruits with price, initial quantity, and unit
   const fruits = [
-    { name: "Bananas", price: 500, quantity: 0 },
-    { name: "Apples", price: 700, quantity: 0 },
-    { name: "Oranges", price: 600, quantity: 0 },
-    { name: "Berries", price: 1200, quantity: 0 },
-    { name: "Papayas", price: 800, quantity: 0 },
-    { name: "Water Melons", price: 1500, quantity: 0 },
-    { name: "Mangoes", price: 900, quantity: 0 },
-    { name: "Pineapples", price: 1100, quantity: 0 },
-    { name: "Passion Fruits", price: 400, quantity: 0 },
-    { name: "Tree Tomatoes", price: 600, quantity: 0 }
+    { name: "Bananas", price: 500, quantity: 0, unit: "dozen(s)" },
+    { name: "Apples", price: 700, quantity: 0, unit: "kilogram(s)" },
+    { name: "Oranges", price: 600, quantity: 0, unit: "kilogram(s)" },
+    { name: "Berries", price: 1200, quantity: 0, unit: "pack(s)" },
+    { name: "Papayas", price: 800, quantity: 0, unit: "piece(s)" },
+    { name: "Water Melons", price: 1500, quantity: 0, unit: "piece(s)" },
+    { name: "Mangoes", price: 900, quantity: 0, unit: "kilogram(s)" },
+    { name: "Pineapples", price: 1100, quantity: 0, unit: "piece(s)" },
+    { name: "Passion Fruits", price: 400, quantity: 0, unit: "pack(s)" },
+    { name: "Tree Tomatoes", price: 600, quantity: 0, unit: "kilogram(s)" }
   ];
 
   function updateFruitQuantity(index, change) {
@@ -444,13 +439,28 @@
   }
 
   function updateProductSummary() {
-    let summary = "";
+    let summary = `<table style="width:100%; border-collapse: collapse;">
+       <thead>
+         <tr>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Fruit</th>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Quantity</th>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Unit</th>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Total Price</th>
+         </tr>
+       </thead>
+       <tbody>`;
     fruits.forEach((fruit) => {
       if (fruit.quantity > 0) {
         const totalPrice = fruit.quantity * fruit.price;
-        summary += `<p>${fruit.name}: ${fruit.quantity} (RWF ${totalPrice.toLocaleString()})</p>`;
+        summary += `<tr>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">${fruit.name}</td>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">${fruit.quantity}</td>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">${fruit.unit}</td>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">RWF ${totalPrice.toLocaleString()}</td>
+         </tr>`;
       }
     });
+    summary += `</tbody></table>`;
     document.getElementById("product-summary").innerHTML = summary;
   }
 
@@ -480,7 +490,7 @@
     fruits.forEach((fruit) => {
       if (fruit.quantity > 0) {
         const itemTotal = fruit.quantity * fruit.price;
-        orderSummary += `\n- ${fruit.name}: ${fruit.quantity} x RWF ${fruit.price} = RWF ${itemTotal.toLocaleString()}`;
+        orderSummary += `\n- ${fruit.name} (${fruit.unit}): ${fruit.quantity} x RWF ${fruit.price} = RWF ${itemTotal.toLocaleString()}`;
         totalItems += fruit.quantity;
         grandTotal += itemTotal;
       }
