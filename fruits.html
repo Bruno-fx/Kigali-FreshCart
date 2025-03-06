@@ -31,7 +31,8 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      transition: opacity 0.3s;
+      /* Always visible */
+      opacity: 1;
     }
     /* Overlay to dim the header image */
     header::before {
@@ -246,7 +247,7 @@
 <body>
 
 <header id="main-header">
-  <a href="fruits-subscription.html" class="home-button">Home</a>
+  <a href="index.html" class="home-button">Home</a>
   <h1>Fruits Subscription</h1>
   <h2>Your trusted source for fresh fruits!</h2>
 </header>
@@ -558,18 +559,7 @@
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderSummary)}`, '_blank');
   }
 
-  // Hide header on scroll by fading its opacity (preserving layout)
-  let prevScrollpos = window.pageYOffset;
-  window.onscroll = function() {
-    let currentScrollPos = window.pageYOffset;
-    const header = document.getElementById("main-header");
-    if (prevScrollpos > currentScrollPos) {
-      header.style.opacity = "1";
-    } else {
-      header.style.opacity = "0";
-    }
-    prevScrollpos = currentScrollPos;
-  };
+  // Remove scroll event for header so it stays visible at all times
 
   // Initialize global total and product summary on load
   updateGlobalTotal();
