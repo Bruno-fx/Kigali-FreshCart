@@ -21,30 +21,57 @@
       background-position: center;
       color: white;
       text-align: center;
-      padding: 2rem;
+      padding: 4rem 2rem; /* Increased height */
       position: relative;
+    }
+
+    /* Overlay to dim the header image */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
     }
 
     .home-btn {
       position: absolute;
       top: 10px;
       left: 10px;
-      background-color: #32CD32;
       color: white;
-      padding: 10px 20px;
       text-decoration: none;
+      padding: 8px 16px;
+      background-color: #555;
       border-radius: 5px;
       font-size: 1rem;
-      transition: background-color 0.3s ease-in-out;
+      transition: background-color 0.3s ease;
+      z-index: 2;
     }
 
     .home-btn:hover {
       background-color: #168416;
     }
 
+    /* Title Styling */
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    }
+
+    header h3 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-top: 5px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     }
 
     /* Offers Section */
@@ -142,6 +169,10 @@
         font-size: 2rem;
       }
 
+      header h3 {
+        font-size: 1.2rem;
+      }
+
       .offers {
         flex-direction: column;
         align-items: center;
@@ -155,63 +186,67 @@
         height: 100px;
       }
     }
-
   </style>
 </head>
 <body>
+
   <!-- Header Section -->
   <header>
     <a href="index.html" class="home-btn">Home</a>
-    <h1>Special Offers</h1>
+    <div class="header-content">
+      <h1>Special Offers</h1>
+      <h3>Subscribe & Enjoy Fresh Deliveries</h3>
+    </div>
   </header>
 
   <!-- Special Offers Section -->
   <section>
-  <h2>Exclusive Deals and Discounts</h2>
-  <div class="offers">
-    <!-- Offer Items with links to customize subscriptions -->
-    <div class="offer-item">
-      <img src="img/fruits-sub.jpg" alt="Fruits Subscription">
-      <h3>Fruits Subscription</h3>
-      <p>A mix of your favorite fruits, delivered frequently to your doorstep.</p>
-      <a href="fruits-subscription.html"><button>Customize Subscription</button></a>
+    <h2>Exclusive Deals and Discounts</h2>
+    <div class="offers">
+      <!-- Offer Items with links to customize subscriptions -->
+      <div class="offer-item">
+        <img src="img/fruits-sub.jpg" alt="Fruits Subscription">
+        <h3>Fruits Subscription</h3>
+        <p>A mix of your favorite fruits, delivered frequently to your doorstep.</p>
+        <a href="fruits-subscription.html"><button>Customize Subscription</button></a>
+      </div>
+      <div class="offer-item">
+        <img src="img/vegetables-sub.jpg" alt="Vegetables Subscription">
+        <h3>Vegetables Subscription</h3>
+        <p>A selection of daily cooking vegetables, delivered to your doorstep.</p>
+        <a href="vegetables-subscription.html"><button>Customize Subscription</button></a>
+      </div>
+      <div class="offer-item">
+        <img src="img/milk-sub.jpg" alt="Milk Subscription">
+        <h3>Milk Subscription</h3>
+        <p>Fresh milk delivered regularly, ensuring your fridge is always stocked.</p>
+        <a href="milk-subscription.html"><button>Customize Subscription</button></a>
+      </div>
+      <div class="offer-item">
+        <img src="img/bakery-sub.jpg" alt="Bakery Subscription">
+        <h3>Bakery Subscription</h3>
+        <p>Daily delivery of your favorite breads, pastries, and baked treats.</p>
+        <a href="bakery-subscription.html"><button>Customize Subscription</button></a>
+      </div>
+      <div class="offer-item">
+        <img src="img/meat-sub.jpg" alt="Fresh Meat Subscription">
+        <h3>Fresh Meat Subscription</h3>
+        <p>Premium cuts of meat delivered regularly to ensure top quality.</p>
+        <a href="meat-subscription.html"><button>Customize Subscription</button></a>
+      </div>
+      <div class="offer-item">
+        <img src="img/hygiene-sub.jpg" alt="Hygiene Tools Subscription">
+        <h3>Hygiene Tools Subscription</h3>
+        <p>High-quality hygiene products delivered on a regular schedule.</p>
+        <a href="hygiene-subscription.html"><button>Customize Subscription</button></a>
+      </div>
     </div>
-    <div class="offer-item">
-      <img src="img/vegetables-sub.jpg" alt="Vegetables Subscription">
-      <h3>Vegetables Subscription</h3>
-      <p>A selection of daily cooking vegetables, delivered to your doorstep.</p>
-      <a href="vegetables-subscription.html"><button>Customize Subscription</button></a>
-    </div>
-    <div class="offer-item">
-      <img src="img/milk-sub.jpg" alt="Milk Subscription">
-      <h3>Milk Subscription</h3>
-      <p>Fresh milk delivered regularly, ensuring your fridge is always stocked.</p>
-      <a href="milk-subscription.html"><button>Customize Subscription</button></a>
-    </div>
-    <div class="offer-item">
-      <img src="img/bakery-sub.jpg" alt="Bakery Subscription">
-      <h3>Bakery Subscription</h3>
-      <p>Daily delivery of your favorite breads, pastries, and baked treats.</p>
-      <a href="bakery-subscription.html"><button>Customize Subscription</button></a>
-    </div>
-    <div class="offer-item">
-      <img src="img/meat-sub.jpg" alt="Fresh Meat Subscription">
-      <h3>Fresh Meat Subscription</h3>
-      <p>Premium cuts of meat delivered regularly to ensure top quality.</p>
-      <a href="meat-subscription.html"><button>Customize Subscription</button></a>
-    </div>
-    <div class="offer-item">
-      <img src="img/hygiene-sub.jpg" alt="Hygiene Tools Subscription">
-      <h3>Hygiene Tools Subscription</h3>
-      <p>High-quality hygiene products delivered on a regular schedule.</p>
-      <a href="hygiene-subscription.html"><button>Customize Subscription</button></a>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Footer Section -->
   <footer>
     <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
