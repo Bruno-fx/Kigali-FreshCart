@@ -52,7 +52,7 @@
       max-width: 1100px;
       margin: 2rem auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller product boxes */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Default layout */
       gap: 15px;
       padding: 0 20px;
     }
@@ -161,25 +161,65 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
+  .products-container {
+    grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Reduce width to fit 2 per row */
+    gap: 10px; /* Reduce spacing */
+  }
 
-      .products-container {
-        grid-template-columns: repeat(2, 1fr); /* Still 2 per row */
-      }
-    }
+  .product-card {
+    padding: 0.5rem; /* Reduce padding inside the box */
+  }
 
-    @media (max-width: 480px) {
-      .products-container {
-        grid-template-columns: 1fr; /* Single column for very small screens */
-      }
+  .product-card img {
+    height: 130px; /* Reduce image height */
+  }
 
-      .view-cart-btn img {
-        width: 45px; /* Reduce cart button further */
-        height: 45px;
-      }
-    }
+  .product-card h3 {
+    font-size: 0.9rem; /* Reduce font size */
+  }
+
+  .product-card p {
+    font-size: 0.8rem; /* Reduce text size */
+  }
+
+  .product-card .price {
+    font-size: 0.9rem; /* Reduce price text size */
+  }
+
+  .product-card button {
+    padding: 6px 12px; /* Reduce button size */
+    font-size: 0.8rem;
+  }
+}
+
+/* Further Reduce for Extra Small Screens */
+@media (max-width: 480px) {
+  .products-container {
+    grid-template-columns: repeat(2, minmax(130px, 1fr)); /* Even smaller width */
+    gap: 8px; /* Reduce spacing */
+  }
+
+  .product-card img {
+    height: 110px; /* Further reduce image height */
+  }
+
+  .product-card h3 {
+    font-size: 0.8rem; /* Adjust font size */
+  }
+
+  .product-card p {
+    font-size: 0.7rem;
+  }
+
+  .product-card .price {
+    font-size: 0.8rem;
+  }
+
+  .product-card button {
+    padding: 5px 10px; /* Make button even smaller */
+    font-size: 0.7rem;
+  }
+}
   </style>
 </head>
 <body>
