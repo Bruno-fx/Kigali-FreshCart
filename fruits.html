@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Page | Kigali Shopping Mall</title>
+  <title>Fruits | Kigali Shopping Mall</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* General styles */
@@ -16,7 +16,7 @@
 
     /* Header */
     header {
-      background-image: url('img/products-header.jpg');
+      background-image: url('img/fruits-bg.jpg');
       background-size: cover;
       background-position: center;
       color: white;
@@ -119,6 +119,37 @@
       background-color: #CC3700;
     }
 
+    /* Floating View Cart Button */
+    .view-cart-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .view-cart-btn img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .view-cart-btn img:hover {
+      transform: scale(1.1);
+    }
+
+    .view-cart-btn span {
+      margin-top: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+
     /* Footer */
     footer {
       background-color: #333;
@@ -150,48 +181,56 @@
   <!-- Header -->
   <header>
     <a href="index.html" class="home-btn">Home</a>
-    <h1>Shop Your Favorite Products</h1>
+    <h1>Fruits Category</h1>
   </header>
 
   <!-- Product Section -->
   <section class="products-container">
     <div class="product-card">
-      <img src="img/product1.jpg" alt="Product 1">
+      <img src="img/apples.jpg" alt="Fresh Apples">
       <h3>Fresh Apples</h3>
       <p>Get the best quality apples delivered fresh to you.</p>
       <p class="price">RWF 1,500 / kg</p>
-      <button>Add to Cart</button>
+      <button onclick="addToCart('Fresh Apples', 1500)">Add to Cart</button>
     </div>
 
     <div class="product-card">
-      <img src="img/product2.jpg" alt="Product 2">
-      <h3>Whole Grain Bread</h3>
-      <p>Healthy, nutritious, and freshly baked daily.</p>
-      <p class="price">RWF 2,000 / loaf</p>
-      <button>Add to Cart</button>
+      <img src="img/bananas.jpg" alt="Bananas">
+      <h3>Bananas</h3>
+      <p>Ripe and delicious bananas at the best price.</p>
+      <p class="price">RWF 500 / dozen</p>
+      <button onclick="addToCart('Bananas', 500)">Add to Cart</button>
     </div>
 
     <div class="product-card">
-      <img src="img/product3.jpg" alt="Product 3">
-      <h3>Fresh Milk</h3>
-      <p>Pure, fresh milk sourced from the best farms.</p>
-      <p class="price">RWF 800 / liter</p>
-      <button>Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-      <img src="img/product4.jpg" alt="Product 4">
-      <h3>Organic Eggs</h3>
-      <p>Farm-fresh organic eggs with high nutritional value.</p>
-      <p class="price">RWF 3,500 / dozen</p>
-      <button>Add to Cart</button>
+      <img src="img/oranges.jpg" alt="Oranges">
+      <h3>Oranges</h3>
+      <p>Juicy oranges rich in Vitamin C.</p>
+      <p class="price">RWF 600 / kg</p>
+      <button onclick="addToCart('Oranges', 600)">Add to Cart</button>
     </div>
   </section>
+
+  <!-- Floating View Cart Button -->
+  <div class="view-cart-btn" onclick="window.location.href='cart.html'">
+    <img src="img/cart.jpg" alt="Cart Icon">
+    <span>View Cart</span>
+  </div>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
   </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function addToCart(productName, price) {
+      cart.push({ productName, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${productName} added to cart!`);
+    }
+  </script>
 
 </body>
 </html>
