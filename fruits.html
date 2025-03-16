@@ -151,12 +151,19 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {  /* Covers iPhone 11 & similar screens */
       .products-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 products per row on smaller screens */
+        grid-template-columns: repeat(2, 1fr); /* Ensures 2 product boxes per row */
       }
     }
 
+    /* Force Single Column for Extra Small Screens */
+    @media (max-width: 480px) {
+      .products-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     @media (max-width: 480px) {
       .products-container {
         grid-template-columns: 1fr; /* Single column on very small screens */
@@ -180,7 +187,7 @@
   <!-- Product Section -->
   <section class="products-container">
     <div class="product-card">
-      <img src="img/apples.jpg" alt="Fresh Apples">
+      <img src="img/apples.png" alt="Fresh Apples">
       <h3>Fresh Apples</h3>
       <p>Get the best quality apples delivered fresh to you.</p>
       <p class="price">RWF 1,500 / kg</p>
@@ -188,7 +195,7 @@
     </div>
 
     <div class="product-card">
-      <img src="img/bananas.jpg" alt="Bananas">
+      <img src="img/bananas.png" alt="Bananas">
       <h3>Bananas</h3>
       <p>Ripe and delicious bananas at the best price.</p>
       <p class="price">RWF 500 / dozen</p>
@@ -196,7 +203,7 @@
     </div>
 
     <div class="product-card">
-      <img src="img/oranges.jpg" alt="Oranges">
+      <img src="img/oranges.png" alt="Oranges">
       <h3>Oranges</h3>
       <p>Juicy oranges rich in Vitamin C.</p>
       <p class="price">RWF 600 / kg</p>
