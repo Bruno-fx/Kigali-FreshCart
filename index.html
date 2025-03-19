@@ -262,6 +262,7 @@
 
     /* View Cart Button */
     .cart-btn {
+      position: relative;
       display: inline-flex; /* Keeps it aligned with other buttons */
       align-items: center;
       justify-content: center;
@@ -298,9 +299,9 @@
       height: 10px;
       background-color: red;
       border-radius: 50%;
-      position:relative;
-      top: 5px;
-      right: 5px;
+      position: absolute;
+      top: -5px;  /* Move dot slightly above the button */
+      left: -5px; /* Move dot slightly to the left */
       display: none;
     }
 
