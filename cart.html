@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -269,10 +269,22 @@
       updateTotal();
     }
 
+    function updateQuantity(index, change) {
+      cart[index].quantity = Math.max(1, cart[index].quantity + change);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCartItems();
+    }
+
     function updateTotal() {
       let subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
       let deliveryFee = parseFloat(document.getElementById("delivery-option").value) || 0;
       document.getElementById("grand-total").innerText = formatPrice(subtotal + deliveryFee);
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCartItems();
     }
 
     loadCartItems();
