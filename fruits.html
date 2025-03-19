@@ -165,13 +165,92 @@
       color: #333;
     }
 
-    /* Footer */
+    /* Footer Styling */
     footer {
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.8); /* Transparent black */
       color: white;
+      padding: 2rem 1rem;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+    }
+
+    /* Footer Layout */
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: auto;
+      text-align: left;
+    }
+
+    /* Footer Sections */
+    .footer-container div {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* Footer Headings */
+    footer h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer Links */
+    .footer-links {
+      text-align: center;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li {
+      margin: 5px 0;
+    }
+
+    .footer-links ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links ul li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Social Media */
+    .social-media {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 1.5rem;
+    }
+
+    .social-media div {
+      text-align: center;
+    }
+
+    .social-media img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+    }
+
+    .social-media p {
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    /* Copyright */
+    .footer-bottom {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
 
     /* Responsive Design */
@@ -294,9 +373,56 @@
     <span>View Cart</span>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer Section -->
   <footer>
-    <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
+    <div class="footer-container">
+      <!-- About FreshCart -->
+      <div class="footer-about">
+        <h3>About FreshCart</h3>
+        <p>FreshCart is your trusted online marketplace for fresh produce, dairy, bakery items, ready-to-eat meals, fresh meat, hygiene products, and more. We bring convenience to your doorstep with reliable subscriptions and on-demand delivery.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="subscriptions.html">Subscriptions</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Email: support@freshcart.com</p>
+        <p>Phone: +250 123 456 789</p>
+        <p>Location: Kigali, Rwanda</p>
+      </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-media">
+      <div>
+        <a href="#"><img src="img/facebook-icon.png" alt="Facebook"></a>
+        <p>Facebook</p>
+      </div>
+      <div>
+        <a href="#"><img src="img/instagram-icon.png" alt="Instagram"></a>
+        <p>Instagram</p>
+      </div>
+      <div>
+        <a href="#"><img src="img/twitter-icon.png" alt="Twitter"></a>
+        <p>Twitter</p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 FreshCart. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
