@@ -260,6 +260,50 @@
       box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
     }
 
+    /* View Cart Button */
+    .cart-btn {
+  display: inline-flex; /* Keeps it aligned with other buttons */
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #555;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+  order: -1; /* Moves it before "Subscriptions" */
+  width: auto;
+  height: auto;
+  vertical-align: middle; /* Aligns with other buttons */
+  margin-bottom: 3px; /* Slight downward adjustment */
+}
+
+
+    .cart-btn:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Cart Icon */
+    .cart-btn img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    /* Red Dot for Cart Notification */
+    .cart-dot {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: none;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .logo-container img {
@@ -326,7 +370,11 @@
 
   <!-- Navigation Bar -->
   <nav>
-    <a href="#">Home</a>
+    <a href="cart.html" class="cart-btn">
+      <img src="img/cart.jpg" alt="Cart Icon">
+      <span>View Cart</span>
+      <span class="cart-dot" id="cartDot"></span> <!-- Small dot indicator -->
+    </a>
     <a href="subscriptions.html" class="subscriptions-btn">Subscriptions</a>
     <a href="contact-us.html" class="contact-btn">Contact Us</a>
     <a href="faq.html" class="faq-button">FAQ</a>
@@ -462,6 +510,29 @@
       <p>&copy; 2024 Kigali Fresh Cart. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    function addToCart(productName, price) {
+      cart.push({ productName, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${productName} added to cart!`);
+      updateCartIndicator();
+    }
+  
+    function updateCartIndicator() {
+      const cartDot = document.getElementById("cartDot");
+      if (cart.length > 0) {
+        cartDot.style.display = "block";
+      } else {
+        cartDot.style.display = "none";
+      }
+    }
+  
+    // Run this function when the page loads to check if the cart has items
+    document.addEventListener("DOMContentLoaded", updateCartIndicator);
+  </script>
   
 
 </body>
