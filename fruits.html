@@ -165,6 +165,18 @@
       color: #333;
     }
 
+    /* Red Dot Notification */
+    .cart-dot {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      display: none;
+    }
+
     /* Footer Styling */
     footer {
       background-color: rgba(0, 0, 0, 0.8); /* Transparent black */
@@ -371,6 +383,7 @@
   <div class="view-cart-btn" onclick="window.location.href='cart.html'">
     <img src="img/cart.jpg" alt="Cart Icon">
     <span>View Cart</span>
+    <span class="cart-dot" id="cartDot"></span> <!-- Red dot -->
   </div>
 
   <!-- Footer Section -->
@@ -429,10 +442,22 @@
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     function addToCart(productName, price) {
-      cart.push({ productName, price });
+      cart.push({ productName, price, quantity: 1 });
       localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartIndicator();
       alert(`${productName} added to cart!`);
     }
+
+    function updateCartIndicator() {
+      const cartDot = document.getElementById("cartDot");
+      if (cart.length > 0) {
+        cartDot.style.display = "block";
+      } else {
+        cartDot.style.display = "none";
+      }
+    }
+
+    updateCartIndicator();
   </script>
 
 </body>
