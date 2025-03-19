@@ -22,6 +22,27 @@
       padding: 20px;
       font-size: 1.8rem;
       font-weight: bold;
+      position: relative;
+    }
+
+    /* Back Button */
+    .back-btn {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      background-color: white;
+      color: #28a745;
+      padding: 8px 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .back-btn:hover {
+      background-color: #f4f4f4;
     }
 
     /* Cart Container */
@@ -92,6 +113,30 @@
       margin: 8px 0;
     }
 
+    /* Checkout Input Fields */
+    .checkout-container {
+      margin-top: 15px;
+    }
+
+    .checkout-container input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .note-box {
+      background-color: #d4edda;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      color: #155724;
+      margin-top: 10px;
+      border: 1px solid #c3e6cb;
+    }
+
     /* Checkout Button */
     .checkout-btn {
       display: block;
@@ -105,6 +150,7 @@
       cursor: pointer;
       transition: background-color 0.3s ease-in-out;
       text-align: center;
+      margin-top: 10px;
     }
 
     .checkout-btn:hover {
@@ -139,7 +185,10 @@
 <body>
 
   <!-- Header -->
-  <header>Shopping Cart</header>
+  <header>
+    <a href="javascript:history.back()" class="back-btn">← Back</a>
+    Shopping Cart
+  </header>
 
   <!-- Cart Container -->
   <div class="cart-container">
@@ -168,7 +217,16 @@
         </select>
       </p>
       <p><strong>Grand Total:</strong> <span id="grand-total">RWF 0</span></p>
-      <button class="checkout-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+
+      <!-- Checkout Form -->
+      <div class="checkout-container">
+        <input type="text" id="customer-name" placeholder="Enter your name" required>
+        <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+        <div class="note-box">
+          Upon clicking "Proceed to Payment," you will be redirected to WhatsApp, where our team will assist you in completing your order.
+        </div>
+        <button class="checkout-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+      </div>
     </div>
   </div>
 
@@ -221,26 +279,6 @@
       cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(cart));
       loadCartItems();
-    }
-
-    function updateTotal() {
-      let subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      let deliveryFee = parseFloat(document.getElementById("delivery-option").value) || 0;
-      let grandTotal = subtotal + deliveryFee;
-      document.getElementById("grand-total").innerText = formatPrice(grandTotal);
-    }
-
-    function proceedToPayment() {
-      let orderSummary = "*Order Summary:*\n";
-      cart.forEach((item) => {
-        orderSummary += `- ${item.productName}: ${item.quantity} x RWF ${item.price} = RWF ${item.quantity * item.price}\n`;
-      });
-
-      let deliveryFee = parseFloat(document.getElementById("delivery-option").value) || 0;
-      orderSummary += `\n*Delivery Fee:* RWF ${deliveryFee.toLocaleString()}`;
-      orderSummary += `\n*Total Cost:* RWF ${(cart.reduce((sum, item) => sum + item.price * item.quantity, 0) + deliveryFee).toLocaleString()}`;
-      
-      window.open(`https://wa.me/250123456789?text=${encodeURIComponent(orderSummary)}`, "_blank");
     }
 
     loadCartItems();
