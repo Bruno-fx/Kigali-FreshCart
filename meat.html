@@ -3,299 +3,517 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fashion Categories</title>
+  <title>Fruits | Kigali Shopping Mall</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* General styles */
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #cceef7;
+      background-color: #f4f4f4;
     }
+
+    /* Header */
     header {
-      background-image: url('img/meat-header.jpg');
+      background-image: url('img/fruits-header.jpeg');
       background-size: cover;
       background-position: center;
       color: white;
-      padding: 2rem;
       text-align: center;
+      padding: 3rem;
       position: relative;
     }
-    header::after {
+
+    /* Overlay to dim the header image */
+    header::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.4);
       z-index: 1;
     }
-    header h1, header p {
+
+    header h1 {
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    /* Subtitle style */
+    header h2 {
+      margin: 0.5rem 0 0;
+      font-weight: normal;
       position: relative;
       z-index: 2;
     }
-    .home-button {
+
+    .home-btn {
       position: absolute;
-      top: 15px;
-      left: 20px;
+      top: 10px;
+      left: 10px;
       color: white;
       text-decoration: none;
       padding: 8px 16px;
       background-color: #555;
       border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
       z-index: 2;
     }
-    .home-button:hover {
-      background-color: #777;
+
+    .home-btn:hover {
+      background-color: rgba(0, 0, 0, 0.9);
     }
-    .container {
-      max-width: 1200px;
+
+    /* Product Section */
+    .products-container {
+      max-width: 1100px;
       margin: 2rem auto;
-      padding: 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Default layout */
+      gap: 15px;
+      padding: 0 20px;
     }
-    .category-card {
+
+    .product-card {
+      background: white;
+      padding: 0.8rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s;
       position: relative;
-      width: 100%;
-      padding-bottom: 100%;
       overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
     }
-    .category-card:hover {
-      transform: translateY(-10px);
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
-    .category-card img {
-      position: absolute;
-      top: 0;
-      left: 0;
+
+    .product-card img {
       width: 100%;
-      height: 100%;
+      height: 150px;
       object-fit: cover;
-      border-radius: 12px;
-      transition: opacity 0.3s;
-    }
-    .category-card:hover img {
-      opacity: 0.7;
-    }
-    .category-name {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      text-align: match-parent;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .category-overlay {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      text-align: center;
-      color: #000000;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: none;
-      transform: translateY(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .category-card:hover .category-overlay {
-      opacity: 1;
-    }
-    .partners-section {
-      text-align: center;
-      margin: 4rem 0;
-      background-color: #333;
-      padding: 2rem 1rem;
-      color: white;
-    }
-    .partners-section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ffeb3b;
-    }
-    .partner-logos {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    .partner-logo img {
-      width: 120px;
-      height: auto;
+      border-radius: 10px;
       transition: transform 0.3s;
     }
-    .partner-logo:hover img {
+
+    .product-card:hover img {
       transform: scale(1.1);
     }
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+
+    .product-card h3 {
+      font-size: 1rem;
+      color: #333;
+      margin: 8px 0;
     }
-    /* Floating Chat Button */
-    .chat-btn {
-      position: fixed;
-      bottom: 60px;
-      right: 20px;
-      background-color: #25d366; /* WhatsApp green */
+
+    .product-card p {
+      color: #666;
+      font-size: 0.8rem;
+      margin: 8px 0;
+    }
+
+    .product-card .price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #FF4500;
+      margin-bottom: 8px;
+    }
+
+    .product-card button {
+      background-color: #FF4500;
       color: white;
       border: none;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .product-card button:hover {
+      background-color: #CC3700;
+    }
+
+    /* Floating View Cart Button */
+    .view-cart-btn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .view-cart-btn img {
+      width: 50px; /* Smaller size */
+      height: 50px;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .view-cart-btn img:hover {
+      transform: scale(1.1);
+    }
+
+    .view-cart-btn span {
+      margin-top: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Red Dot Notification */
+    .cart-dot {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      display: none;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: rgba(0, 0, 0, 0.8); /* Transparent black */
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    /* Footer Layout */
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: auto;
+      text-align: left;
+    }
+
+    /* Footer Sections */
+    .footer-container div {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* Footer Headings */
+    footer h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer Links */
+    .footer-links {
+      text-align: center;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li {
+      margin: 5px 0;
+    }
+
+    .footer-links ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links ul li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Social Media */
+    .social-media {
       display: flex;
       justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow added */
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      z-index: 1000;
+      gap: 30px;
+      margin-top: 1.5rem;
     }
 
-    .chat-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
-    }
-
-    .chat-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensures the image fills the circle */
-      border-radius: 50%; /* Makes the image circular */
-    }
-
-    /* Floating Phrase */
-    .chat-text {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366; /* WhatsApp green */
-      color: white;
-      padding: 8px 15px;
-      border-radius: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      font-size: 14px;
-      font-weight: bold;
+    .social-media div {
       text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      z-index: 1000;
     }
 
-    .chat-text:hover {
+    .social-media img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
       transform: scale(1.1);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
     }
+
+    .social-media p {
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    /* Copyright */
+    .footer-bottom {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      .container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce box size on smaller screens */
-        gap: 1.5rem; /* Slightly reduce the gap between boxes */
-      }
-      .partners-section h2 {
-        font-size: 1.6rem;
-      }
-    }
+  .products-container {
+    grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Reduce width to fit 2 per row */
+    gap: 10px; /* Reduce spacing */
+  }
+
+  .product-card {
+    padding: 0.5rem; /* Reduce padding inside the box */
+  }
+
+  .product-card img {
+    height: 130px; /* Reduce image height */
+  }
+
+  .product-card h3 {
+    font-size: 0.9rem; /* Reduce font size */
+  }
+
+  .product-card p {
+    font-size: 0.8rem; /* Reduce text size */
+  }
+
+  .product-card .price {
+    font-size: 0.9rem; /* Reduce price text size */
+  }
+
+  .product-card button {
+    padding: 6px 12px; /* Reduce button size */
+    font-size: 0.8rem;
+  }
+}
+
+/* Further Reduce for Extra Small Screens */
+@media (max-width: 480px) {
+  .products-container {
+    grid-template-columns: repeat(2, minmax(130px, 1fr)); /* Even smaller width */
+    gap: 8px; /* Reduce spacing */
+  }
+
+  .product-card img {
+    height: 110px; /* Further reduce image height */
+  }
+
+  .product-card h3 {
+    font-size: 0.8rem; /* Adjust font size */
+  }
+
+  .product-card p {
+    font-size: 0.7rem;
+  }
+
+  .product-card .price {
+    font-size: 0.8rem;
+  }
+
+  .product-card button {
+    padding: 5px 10px; /* Make button even smaller */
+    font-size: 0.7rem;
+  }
+}
   </style>
 </head>
 <body>
 
-<header>
-  <a href="index.html" class="home-button">Home</a>
-  <h1>Discover The Best Fresh Fish and Meats you can get on the Market</h1>
-  <p>Explore all kinds of the most trustworthy and delicious fresh meat that will be delivered to you.</p>
-</header>
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="home-btn">Home</a>
+    <h1>Fruits Category</h1>
+    <h2>Your trusted source for fresh fruits!</h2>
+  </header>
 
-<section class="container">
-  <div class="category-card">
-    <a href="fish.html">
-      <img src="img/fish.jpg" alt="Fish">
-      <div class="category-overlay">Tuna, Tilapia, Salmon,...</div>
-      <div class="category-name">Fish</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="beef.html">
-      <img src="img/beef.jpeg" alt="Beef">
-      <div class="category-overlay">Soft fresh and ready to cook beef</div>
-      <div class="category-name">Beef</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="chicken.html">
-      <img src="img/chicken.jpg" alt="Chicken">
-      <div class="category-overlay">Best chicken meat from local farms</div>
-      <div class="category-name">Chicken</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="pork.html">
-      <img src="img/pork.jpeg" alt="Pork">
-      <div class="category-overlay">The best akabenzi meat</div>
-      <div class="category-name">Pork</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="goat.html">
-      <img src="img/goat.jpg" alt="Goat">
-      <div class="category-overlay">Soft fresh and ready to cook goat meat</div>
-      <div class="category-name">Goat</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="rabbit.html">
-      <img src="img/rabbit.jpg" alt="Rabbit">
-      <div class="category-overlay">Delicious local rabbits meat</div>
-      <div class="category-name">Rabbit</div>
-    </a>
-  </div>
-</section>
-
-<section class="partners-section">
-  <h2>Our Partners</h2>
-  <p>We proudly collaborate with some of the finest brands to bring you quality products.</p>
-  <div class="partner-logos">
-    <div class="partner-logo"><img src="img/partner1-logo.png" alt="Partner 1"></div>
-    <div class="partner-logo"><img src="img/partner2-logo.png" alt="Partner 2"></div>
-    <div class="partner-logo"><img src="img/partner3-logo.png" alt="Partner 3"></div>
-    <div class="partner-logo"><img src="img/partner4-logo.jpg" alt="Partner 4"></div>
-  </div>
-</section>
-
-<!-- Floating Chat Button -->
-  <a href="https://wa.me/250123456789?text=Hello%20Kigali%20Shopping%20Mall%20Support!" target="_blank">
-    <div class="chat-btn">
-      <img src="img/whatsapp-icon.jpg" alt="Chat with Us">
+  <!-- Product Section -->
+  <section class="products-container">
+    <div class="product-card">
+      <img src="img/apples.png" alt="Fresh Apples">
+      <h3>Fresh Apples</h3>
+      <p>Get the best quality apples delivered fresh to you.</p>
+      <p class="price">RWF 1,500 / kg</p>
+      <button onclick="addToCart('Fresh Apples', 1500)">Add to Cart</button>
     </div>
-    <div class="chat-text">Chat with us!</div>
-  </a>
 
-<footer>
-  <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-    <h3 style="font-size: 18px;">Contact Us</h3>
-    <p>Address: Kigali Shopping Mall, Kigali, Rwanda</p>
-    <p>Phone: +250 123 456 789</p>
-    <p>Email: support@kigalimall.com</p>
+    <div class="product-card">
+      <img src="img/bananas.png" alt="Bananas">
+      <h3>Bananas</h3>
+      <p>Ripe and delicious bananas at the best price.</p>
+      <p class="price">RWF 500 / dozen</p>
+      <button onclick="addToCart('Bananas', 500)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/oranges.png" alt="Oranges">
+      <h3>Oranges</h3>
+      <p>Juicy oranges rich in Vitamin C.</p>
+      <p class="price">RWF 600 / kg</p>
+      <button onclick="addToCart('Oranges', 600)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/mangoes.png" alt="Mangoes">
+      <h3>Mangoes</h3>
+      <p>Juicy Mangoes rich in Nutrients.</p>
+      <p class="price">RWF 600 / kg</p>
+      <button onclick="addToCart('Mangoes', 600)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/passionfruits.png" alt="Passion Fruits">
+      <h3>Passion Fruits</h3>
+      <p>Delicious passion fruits at the best price.</p>
+      <p class="price">RWF 500 / kg</p>
+      <button onclick="addToCart('Passion Fruits', 500)">Add to Cart</button>
+    </div>
+
+    <!-- Pineapples -->
+<div class="product-card">
+  <img src="img/pineapples.png" alt="Pineapples">
+  <h3>Pineapples</h3>
+  <p>Sweet and juicy pineapples, freshly harvested.</p>
+  <p class="price">RWF 1,200 / piece</p>
+  <button onclick="addToCart('Pineapples', 1200)">Add to Cart</button>
+</div>
+
+<!-- Avocadoes -->
+<div class="product-card">
+  <img src="img/avocadoes.jpg" alt="Avocadoes">
+  <h3>Avocadoes</h3>
+  <p>Creamy and nutritious avocadoes, perfect for any meal.</p>
+  <p class="price">RWF 800 / kg</p>
+  <button onclick="addToCart('Avocadoes', 800)">Add to Cart</button>
+</div>
+
+<!-- Papayas -->
+<div class="product-card">
+  <img src="img/papayas.png" alt="Papayas">
+  <h3>Papayas</h3>
+  <p>Delicious and rich in vitamins, fresh papayas.</p>
+  <p class="price">RWF 900 / piece</p>
+  <button onclick="addToCart('Papayas', 900)">Add to Cart</button>
+</div>
+
+<!-- Water Melons -->
+<div class="product-card">
+  <img src="img/watermelons.png" alt="Water Melons">
+  <h3>Water Melons</h3>
+  <p>Refreshing and hydrating water melons, best for hot days.</p>
+  <p class="price">RWF 2,500 / piece</p>
+  <button onclick="addToCart('Water Melons', 2500)">Add to Cart</button>
+</div>
+
+<!-- Tree Tomatoes -->
+<div class="product-card">
+  <img src="img/treetomatoes.png" alt="Tree Tomatoes">
+  <h3>Tree Tomatoes</h3>
+  <p>Sour and flavorful tree tomatoes, rich in nutrients.</p>
+  <p class="price">RWF 1,000 / kg</p>
+  <button onclick="addToCart('Tree Tomatoes', 1000)">Add to Cart</button>
+</div>
+
+  </section>
+
+  <!-- Floating View Cart Button -->
+  <div class="view-cart-btn" onclick="window.location.href='cart.html'">
+    <img src="img/cart.jpg" alt="Cart Icon">
+    <span>View Cart</span>
+    <span class="cart-dot" id="cartDot"></span> <!-- Red dot -->
   </div>
-  <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
-</footer>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <!-- About FreshCart -->
+      <div class="footer-about">
+        <h3>About FreshCart</h3>
+        <p>FreshCart is your trusted online marketplace for fresh produce, dairy, bakery items, ready-to-eat meals, fresh meat, hygiene products, and more. We bring convenience to your doorstep with reliable subscriptions and on-demand delivery.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="subscriptions.html">Subscriptions</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Email: support@freshcart.com</p>
+        <p>Phone: +250 123 456 789</p>
+        <p>Location: Kigali, Rwanda</p>
+      </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-media">
+      <div>
+        <a href="#"><img src="img/facebook-icon.png" alt="Facebook"></a>
+        <p>Facebook</p>
+      </div>
+      <div>
+        <a href="#"><img src="img/instagram-icon.png" alt="Instagram"></a>
+        <p>Instagram</p>
+      </div>
+      <div>
+        <a href="#"><img src="img/twitter-icon.png" alt="Twitter"></a>
+        <p>Twitter</p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 FreshCart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function addToCart(productName, price) {
+      cart.push({ productName, price, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartIndicator();
+      alert(`${productName} added to cart!`);
+    }
+
+    function updateCartIndicator() {
+      const cartDot = document.getElementById("cartDot");
+      if (cart.length > 0) {
+        cartDot.style.display = "block";
+      } else {
+        cartDot.style.display = "none";
+      }
+    }
+
+    updateCartIndicator();
+  </script>
 
 </body>
 </html>
