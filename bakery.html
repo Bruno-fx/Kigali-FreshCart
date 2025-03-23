@@ -70,6 +70,28 @@
       background-color: rgba(0, 0, 0, 0.9);
     }
 
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    .filter-btn {
+      background-color: #ff4500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .filter-btn:hover {
+      background-color: #cc3700;
+    }
+
     /* Product Section */
     .products-container {
       max-width: 1100px;
@@ -345,10 +367,19 @@
     <h2>Your trusted source for well-baked delicious pastries!</h2>
   </header>
 
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <button class="filter-btn" onclick="filterProducts('all')">All</button>
+    <button class="filter-btn" onclick="filterProducts('breads')">Breads</button>
+    <button class="filter-btn" onclick="filterProducts('donuts')">Donuts</button>
+    <button class="filter-btn" onclick="filterProducts('cakes')">Cakes</button>
+    <button class="filter-btn" onclick="filterProducts('specialties')">Specialties</button>
+  </div>
+
   <!-- Product Section -->
   <section class="products-container">
     <!-- Sandwich -->
-    <div class="product-card">
+    <div class="product-card breads">
       <img src="img/sandwich.jpg" alt="Sandwich">
       <h3>Sandwich</h3>
       <p>Freshly baked sandwich bread, perfect for your favorite fillings.</p>
@@ -357,7 +388,7 @@
     </div>
   
     <!-- Pain Coupé -->
-    <div class="product-card">
+    <div class="product-card breads">
       <img src="img/pain-coupe.jpg" alt="Pain Coupé">
       <h3>Pain Coupé</h3>
       <p>Soft sliced bread, ideal for breakfast and snacks.</p>
@@ -366,7 +397,7 @@
     </div>
   
     <!-- Pain Français -->
-    <div class="product-card">
+    <div class="product-card breads">
       <img src="img/pain-francais.jpg" alt="Pain Français">
       <h3>Pain Français</h3>
       <p>Classic French bread with a crispy crust and soft interior.</p>
@@ -375,7 +406,7 @@
     </div>
   
     <!-- Pain Viande -->
-    <div class="product-card">
+    <div class="product-card breads">
       <img src="img/pain-viande.jpg" alt="Pain Viande">
       <h3>Pain Viande</h3>
       <p>Bread filled with seasoned meat for a delicious snack.</p>
@@ -384,7 +415,7 @@
     </div>
   
     <!-- Pain Crème -->
-    <div class="product-card">
+    <div class="product-card breads">
       <img src="img/pain-creme.jpg" alt="Pain Crème">
       <h3>Pain Crème</h3>
       <p>Soft cream-filled bread for a sweet treat.</p>
@@ -393,7 +424,7 @@
     </div>
   
     <!-- Pain Chocolat -->
-    <div class="product-card">
+    <div class="product-card breads">
       <img src="img/pain-chocolat.jpg" alt="Pain Chocolat">
       <h3>Pain Chocolat</h3>
       <p>Delicious pastry filled with rich chocolate.</p>
@@ -402,7 +433,7 @@
     </div>
   
     <!-- Donuts -->
-    <div class="product-card">
+    <div class="product-card donuts">
       <img src="img/donuts.jpg" alt="Donuts">
       <h3>Donuts</h3>
       <p>Classic fried donuts with a soft and fluffy texture.</p>
@@ -411,7 +442,7 @@
     </div>
   
     <!-- Round Donuts -->
-    <div class="product-card">
+    <div class="product-card donuts">
       <img src="img/round-donuts.jpg" alt="Round Donuts">
       <h3>Round Donuts</h3>
       <p>Perfectly round and sweetly glazed donuts.</p>
@@ -420,7 +451,7 @@
     </div>
   
     <!-- Special Donuts -->
-    <div class="product-card">
+    <div class="product-card donuts">
       <img src="img/special-donuts.jpg" alt="Special Donuts">
       <h3>Special Donuts</h3>
       <p>Premium flavored donuts with assorted toppings.</p>
@@ -429,7 +460,7 @@
     </div>
   
     <!-- Chocolate Glazed Donuts -->
-    <div class="product-card">
+    <div class="product-card donuts">
       <img src="img/chocolate-glazed-donuts.jpg" alt="Chocolate Glazed Donuts">
       <h3>Chocolate Glazed Donuts</h3>
       <p>Soft donuts coated with a rich chocolate glaze.</p>
@@ -438,7 +469,7 @@
     </div>
   
     <!-- Cup Cakes -->
-    <div class="product-card">
+    <div class="product-card cakes">
       <img src="img/cupcakes.jpg" alt="Cup Cakes">
       <h3>Cup Cakes</h3>
       <p>Moist and delicious cupcakes in various flavors.</p>
@@ -447,7 +478,7 @@
     </div>
   
     <!-- Pancakes -->
-    <div class="product-card">
+    <div class="product-card cakes">
       <img src="img/pancakes.jpg" alt="Pan Cakes">
       <h3>Pan Cakes</h3>
       <p>Soft and fluffy pancakes, perfect for breakfast.</p>
@@ -456,7 +487,7 @@
     </div>
   
     <!-- Chocolate Cakes -->
-    <div class="product-card">
+    <div class="product-card cakes">
       <img src="img/chocolate-cake.jpg" alt="Chocolate Cake">
       <h3>Chocolate Cake</h3>
       <p>Rich and moist chocolate cake, perfect for any occasion.</p>
@@ -465,7 +496,7 @@
     </div>
   
     <!-- Banana Cakes -->
-    <div class="product-card">
+    <div class="product-card cakes">
       <img src="img/banana-cake.jpg" alt="Banana Cake">
       <h3>Banana Cake</h3>
       <p>Delicious banana cake with a soft, fluffy texture.</p>
@@ -474,7 +505,7 @@
     </div>
   
     <!-- Chapati -->
-    <div class="product-card">
+    <div class="product-card cakes">
       <img src="img/chapati.jpg" alt="Chapati">
       <h3>Chapati</h3>
       <p>Traditional flatbread, great with tea or as a side dish.</p>
@@ -483,7 +514,7 @@
     </div>
   
     <!-- Samosa -->
-    <div class="product-card">
+    <div class="product-card specialties">
       <img src="img/samosa.jpg" alt="Samosa">
       <h3>Samosa</h3>
       <p>Deep-fried, crispy, and filled with spiced meat or veggies.</p>
@@ -492,7 +523,7 @@
     </div>
   
     <!-- Burgers -->
-    <div class="product-card">
+    <div class="product-card specialties">
       <img src="img/burger.jpg" alt="Burger">
       <h3>Burger</h3>
       <p>Juicy burger with fresh ingredients and homemade bun.</p>
@@ -501,7 +532,7 @@
     </div>
   
     <!-- Pizza -->
-    <div class="product-card">
+    <div class="product-card specialties">
       <img src="img/pizza.jpg" alt="Pizza">
       <h3>Pizza</h3>
       <p>Delicious cheesy pizza with fresh toppings.</p>
@@ -590,6 +621,25 @@
     }
 
     updateCartIndicator();
+
+    function filterProducts(category) {
+      let products = document.querySelectorAll('.product-card');
+
+      products.forEach(product => {
+        product.style.display = 'none'; // Hide all products
+      });
+
+      if (category === 'all') {
+        products.forEach(product => {
+          product.style.display = 'block'; // Show all
+        });
+      } else {
+        let selectedProducts = document.querySelectorAll(`.${category}`);
+        selectedProducts.forEach(product => {
+          product.style.display = 'block'; // Show only selected
+        });
+      }
+    }
   </script>
 
 </body>
