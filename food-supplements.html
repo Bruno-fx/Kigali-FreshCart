@@ -70,6 +70,28 @@
       background-color: rgba(0, 0, 0, 0.9);
     }
 
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    .filter-btn {
+      background-color: #ff4500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .filter-btn:hover {
+      background-color: #cc3700;
+    }
+
     /* Product Section */
     .products-container {
       max-width: 1100px;
@@ -345,94 +367,148 @@
     <h2>Your trusted source for fresh fruits!</h2>
   </header>
 
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <button class="filter-btn" onclick="filterProducts('all')">All</button>
+    <button class="filter-btn" onclick="filterProducts('table')">On Table</button>
+    <button class="filter-btn" onclick="filterProducts('kitchen')">Cooking Supplements</button>
+  </div>
+
   <!-- Product Section -->
-  <section class="products-container">
+  <section class="products-container table"> 
     <div class="product-card">
-      <img src="img/apples.png" alt="Fresh Apples">
-      <h3>Fresh Apples</h3>
-      <p>Get the best quality apples delivered fresh to you.</p>
-      <p class="price">RWF 1,500 / kg</p>
-      <button onclick="addToCart('Fresh Apples', 1500)">Add to Cart</button>
+      <img src="img/mayonnaise.jpg" alt="Mayonnaise">
+      <h3>Mayonnaise</h3>
+      <p>Creamy and smooth mayonnaise for all meals.</p>
+      <p class="price">RWF 3,500 / jar</p>
+      <button onclick="addToCart('Mayonnaise', 3500)">Add to Cart</button>
     </div>
-
-    <div class="product-card">
-      <img src="img/bananas.png" alt="Bananas">
-      <h3>Bananas</h3>
-      <p>Ripe and delicious bananas at the best price.</p>
-      <p class="price">RWF 500 / dozen</p>
-      <button onclick="addToCart('Bananas', 500)">Add to Cart</button>
+  
+    <div class="product-card table">
+      <img src="img/ketchup.jpg" alt="Ketchup">
+      <h3>Ketchup</h3>
+      <p>Rich tomato ketchup for burgers and fries.</p>
+      <p class="price">RWF 2,500 / bottle</p>
+      <button onclick="addToCart('Ketchup', 2500)">Add to Cart</button>
     </div>
-
-    <div class="product-card">
-      <img src="img/oranges.png" alt="Oranges">
-      <h3>Oranges</h3>
-      <p>Juicy oranges rich in Vitamin C.</p>
-      <p class="price">RWF 600 / kg</p>
-      <button onclick="addToCart('Oranges', 600)">Add to Cart</button>
+  
+    <div class="product-card table">
+      <img src="img/mustard.jpg" alt="Mustard">
+      <h3>Mustard</h3>
+      <p>Classic mustard with a bold flavor.</p>
+      <p class="price">RWF 3,000 / bottle</p>
+      <button onclick="addToCart('Mustard', 3000)">Add to Cart</button>
     </div>
-
-    <div class="product-card">
-      <img src="img/mangoes.png" alt="Mangoes">
-      <h3>Mangoes</h3>
-      <p>Juicy Mangoes rich in Nutrients.</p>
-      <p class="price">RWF 600 / kg</p>
-      <button onclick="addToCart('Mangoes', 600)">Add to Cart</button>
+  
+    <div class="product-card table">
+      <img src="img/bbq-sauce.jpg" alt="Barbecue Sauce">
+      <h3>Barbecue Sauce</h3>
+      <p>Perfect smoky BBQ sauce for meats and grills.</p>
+      <p class="price">RWF 4,000 / bottle</p>
+      <button onclick="addToCart('Barbecue Sauce', 4000)">Add to Cart</button>
     </div>
-
-    <div class="product-card">
-      <img src="img/passionfruits.png" alt="Passion Fruits">
-      <h3>Passion Fruits</h3>
-      <p>Delicious passion fruits at the best price.</p>
-      <p class="price">RWF 500 / kg</p>
-      <button onclick="addToCart('Passion Fruits', 500)">Add to Cart</button>
+  
+    <div class="product-card table">
+      <img src="img/chili-sauce.jpg" alt="Chili Sauce">
+      <h3>Chili Sauce</h3>
+      <p>Hot chili sauce to spice up your meals.</p>
+      <p class="price">RWF 3,800 / bottle</p>
+      <button onclick="addToCart('Chili Sauce', 3800)">Add to Cart</button>
     </div>
-
-    <!-- Pineapples -->
-<div class="product-card">
-  <img src="img/pineapples.png" alt="Pineapples">
-  <h3>Pineapples</h3>
-  <p>Sweet and juicy pineapples, freshly harvested.</p>
-  <p class="price">RWF 1,200 / piece</p>
-  <button onclick="addToCart('Pineapples', 1200)">Add to Cart</button>
-</div>
-
-<!-- Avocadoes -->
-<div class="product-card">
-  <img src="img/avocadoes.jpg" alt="Avocadoes">
-  <h3>Avocadoes</h3>
-  <p>Creamy and nutritious avocadoes, perfect for any meal.</p>
-  <p class="price">RWF 800 / kg</p>
-  <button onclick="addToCart('Avocadoes', 800)">Add to Cart</button>
-</div>
-
-<!-- Papayas -->
-<div class="product-card">
-  <img src="img/papayas.png" alt="Papayas">
-  <h3>Papayas</h3>
-  <p>Delicious and rich in vitamins, fresh papayas.</p>
-  <p class="price">RWF 900 / piece</p>
-  <button onclick="addToCart('Papayas', 900)">Add to Cart</button>
-</div>
-
-<!-- Water Melons -->
-<div class="product-card">
-  <img src="img/watermelons.png" alt="Water Melons">
-  <h3>Water Melons</h3>
-  <p>Refreshing and hydrating water melons, best for hot days.</p>
-  <p class="price">RWF 2,500 / piece</p>
-  <button onclick="addToCart('Water Melons', 2500)">Add to Cart</button>
-</div>
-
-<!-- Tree Tomatoes -->
-<div class="product-card">
-  <img src="img/treetomatoes.png" alt="Tree Tomatoes">
-  <h3>Tree Tomatoes</h3>
-  <p>Sour and flavorful tree tomatoes, rich in nutrients.</p>
-  <p class="price">RWF 1,000 / kg</p>
-  <button onclick="addToCart('Tree Tomatoes', 1000)">Add to Cart</button>
-</div>
-
+  
+    <div class="product-card table">
+      <img src="img/soy-sauce.jpg" alt="Soy Sauce">
+      <h3>Soy Sauce</h3>
+      <p>Rich and authentic soy sauce for seasoning.</p>
+      <p class="price">RWF 3,500 / bottle</p>
+      <button onclick="addToCart('Soy Sauce', 3500)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card table">
+      <img src="img/honey.jpg" alt="Honey">
+      <h3>Honey</h3>
+      <p>Pure natural honey for a healthy diet.</p>
+      <p class="price">RWF 7,500 / jar</p>
+      <button onclick="addToCart('Honey', 7500)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card table">
+      <img src="img/peanut-butter.jpg" alt="Peanut Butter">
+      <h3>Peanut Butter</h3>
+      <p>Rich and creamy peanut butter.</p>
+      <p class="price">RWF 6,500 / jar</p>
+      <button onclick="addToCart('Peanut Butter', 6500)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card table">
+      <img src="img/nutella.jpg" alt="Nutella">
+      <h3>Nutella</h3>
+      <p>Delicious chocolate-hazelnut spread.</p>
+      <p class="price">RWF 8,000 / jar</p>
+      <button onclick="addToCart('Nutella', 8000)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card table">
+      <img src="img/salad-dressing.jpg" alt="Salad Dressing">
+      <h3>Salad Dressing</h3>
+      <p>Flavored salad dressing for your healthy meals.</p>
+      <p class="price">RWF 3,200 / bottle</p>
+      <button onclick="addToCart('Salad Dressing', 3200)">Add to Cart</button>
+    </div>
+  
+    <!-- In Kitchen Supplements -->
+    <h2>In Kitchen Supplements</h2>
+  
+    <div class="product-card kitchen">
+      <img src="img/black-pepper.jpg" alt="Black Pepper">
+      <h3>Black Pepper</h3>
+      <p>Aromatic black pepper for seasoning.</p>
+      <p class="price">RWF 2,800 / pack</p>
+      <button onclick="addToCart('Black Pepper', 2800)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card kitchen">
+      <img src="img/tomato-paste.jpg" alt="Tomato Paste">
+      <h3>Tomato Paste</h3>
+      <p>Rich tomato paste for cooking.</p>
+      <p class="price">RWF 3,000 / can</p>
+      <button onclick="addToCart('Tomato Paste', 3000)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card kitchen">
+      <img src="img/curry-powder.jpg" alt="Curry Powder">
+      <h3>Curry Powder</h3>
+      <p>Flavorful curry spice blend.</p>
+      <p class="price">RWF 2,500 / pack</p>
+      <button onclick="addToCart('Curry Powder', 2500)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card kitchen">
+      <img src="img/ginger-powder.jpg" alt="Ginger Powder">
+      <h3>Ginger Powder</h3>
+      <p>Organic ginger powder for cooking.</p>
+      <p class="price">RWF 3,500 / pack</p>
+      <button onclick="addToCart('Ginger Powder', 3500)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card kitchen">
+      <img src="img/garlic-powder.jpg" alt="Garlic Powder">
+      <h3>Garlic Powder</h3>
+      <p>Pure garlic powder for a strong taste.</p>
+      <p class="price">RWF 2,700 / pack</p>
+      <button onclick="addToCart('Garlic Powder', 2700)">Add to Cart</button>
+    </div>
+  
+    <div class="product-card kitchen">
+      <img src="img/paprika.jpg" alt="Paprika">
+      <h3>Paprika</h3>
+      <p>Sweet and smoky paprika spice.</p>
+      <p class="price">RWF 3,200 / pack</p>
+      <button onclick="addToCart('Paprika', 3200)">Add to Cart</button>
+    </div>
+  
   </section>
+  
 
   <!-- Floating View Cart Button -->
   <div class="view-cart-btn" onclick="window.location.href='cart.html'">
@@ -513,6 +589,25 @@
     }
 
     updateCartIndicator();
+
+    function filterProducts(category) {
+      let products = document.querySelectorAll('.product-card');
+
+      products.forEach(product => {
+        product.style.display = 'none'; // Hide all products
+      });
+
+      if (category === 'all') {
+        products.forEach(product => {
+          product.style.display = 'block'; // Show all
+        });
+      } else {
+        let selectedProducts = document.querySelectorAll(`.${category}`);
+        selectedProducts.forEach(product => {
+          product.style.display = 'block'; // Show only selected
+        });
+      }
+    }
   </script>
 
 </body>
