@@ -271,14 +271,15 @@ header h3 {
       <p><strong>Grand Total:</strong> <span id="grand-total">RWF 0</span></p>
 
       <!-- Checkout Form -->
-      <div class="checkout-container">
-        <input type="text" id="customer-name" placeholder="Enter your name" required>
-        <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
-        <div class="note-box">
-          Upon clicking "Proceed to Payment," you will be redirected to WhatsApp, where our team will assist you in completing your order.
-        </div>
-        <button class="checkout-btn" onclick="proceedToPayment()">Proceed to Payment</button>
-      </div>
+<div class="checkout-container">
+  <input type="text" id="customer-name" placeholder="Enter your name" required>
+  <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+  <input type="text" id="customer-location" placeholder="Enter your location" required>
+  <div class="note-box">
+    Upon clicking "Proceed to Payment," you will be redirected to WhatsApp, directly click send for us to get your cart summary, our team will also assist you in completing your order.
+  </div>
+  <button class="checkout-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+</div>
     </div>
   </div>
 
@@ -302,7 +303,7 @@ header h3 {
         subtotal += total;
         cartItemsContainer.innerHTML += `
           <tr>
-            <td>${item.productName}</td>
+            <td>${item.productName} (${item.unit})</td>
             <td>${formatPrice(item.price)}</td>
             <td>
               <div class="quantity-controls">
@@ -344,10 +345,16 @@ header h3 {
     function proceedToPayment() {
       const name = document.getElementById("customer-name").value.trim();
       const phone = document.getElementById("customer-phone").value.trim();
+      const location = document.getElementById("customer-location").value.trim();
       const deliveryFee = parseInt(document.getElementById("delivery-option").value) || 0;
-      
-      if (!name || !phone) {
-        alert("Please enter your name and phone number.");
+  
+      if (!name || !phone || !location) {
+        alert("Please fill in your Name, Phone Number, and Location.");
+        return;
+      }
+  
+      if (deliveryFee === 0) {
+        alert("Please select a delivery option.");
         return;
       }
   
@@ -356,11 +363,11 @@ header h3 {
         return;
       }
   
-      let message = `🛒 *FreshCart Order Summary*%0A%0A👤 *Customer Name:* ${name}%0A📞 *Phone:* ${phone}%0A%0A`;
+      let message = `🛒 *FreshCart Order Summary*%0A%0A👤 *Customer Name:* ${name}%0A📞 *Phone:* ${phone}%0A📍 *Location:* ${location}%0A%0A`;
       message += `🛍️ *Order Details:*%0A`;
   
       cart.forEach(item => {
-        message += `🔹 ${item.productName} - ${item.quantity} x ${formatPrice(item.price)} = ${formatPrice(item.price * item.quantity)}%0A`;
+        message += `🔹 ${item.productName} (${item.unit}) - ${item.quantity} x ${formatPrice(item.price)} = ${formatPrice(item.price * item.quantity)}%0A`;
       });
   
       message += `%0A🚚 *Delivery Fee:* ${formatPrice(deliveryFee)}`;
@@ -373,6 +380,7 @@ header h3 {
   
     loadCartItems();
   </script>
+  
   
 
 </body>
