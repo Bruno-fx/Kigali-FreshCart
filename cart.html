@@ -16,34 +16,83 @@
 
     /* Header */
     header {
-      background-color: #28a745;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 1.8rem;
-      font-weight: bold;
-      position: relative;
-    }
+  background: url('img/fruits-header.jpeg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem; /* Increased height */
+  position: relative;
+}
 
-    /* Back Button */
-    .back-btn {
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
-      background-color: white;
-      color: #28a745;
-      padding: 8px 15px;
-      font-size: 1rem;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease-in-out;
-    }
+/* Overlay for better readability */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
 
-    .back-btn:hover {
-      background-color: #f4f4f4;
-    }
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+header h3 {
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin-top: 8px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+    /* Back Button Styling */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: white;
+  color: #000000;
+  padding: 8px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+  z-index: 3;
+}
+
+.back-btn:hover {
+  background-color: #f4f4f4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    padding: 6rem 2rem; /* Increase height for better spacing */
+  }
+
+  .back-btn {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header h3 {
+    font-size: 1.1rem;
+  }
+}
 
     /* Cart Container */
     .cart-container {
@@ -187,7 +236,10 @@
   <!-- Header -->
   <header>
     <a href="javascript:history.back()" class="back-btn">← Back</a>
-    Shopping Cart
+    <div class="header-content">
+      <h1>Shopping Cart</h1>
+      <h3>Review Your Items Before Checkout</h3>
+    </div>
   </header>
 
   <!-- Cart Container -->
