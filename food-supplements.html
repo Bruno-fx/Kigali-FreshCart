@@ -375,161 +375,129 @@
   </div>
 
   <!-- Product Section -->
-  <section class="products-container">
+<section class="products-container">
+  
+  <div class="product-card">
+    <img src="img/green-vegetables.jpg" alt="Green Vegetables">
+    <h3>Green Vegetables</h3>
+    <p>Fresh and healthy green vegetables, rich in nutrients.</p>
+    <p class="price">RWF 800 / kg</p>
+    <button onclick="addToCart('Green Vegetables', 800, 'kg')">Add to Cart</button>
+  </div>
 
-    <div class="product-card table">
-      <img src="img/mayonnaise.jpg" alt="Mayonnaise">
-      <h3>Mayonnaise</h3>
-      <p>Creamy and smooth mayonnaise for all meals.</p>
-      <p class="price">RWF 3,500 / jar</p>
-      <button onclick="addToCart('Mayonnaise', 3500)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/ketchup.jpg" alt="Ketchup">
-      <h3>Ketchup</h3>
-      <p>Rich tomato ketchup for burgers and fries.</p>
-      <p class="price">RWF 2,500 / bottle</p>
-      <button onclick="addToCart('Ketchup', 2500)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/mustard.jpg" alt="Mustard">
-      <h3>Mustard</h3>
-      <p>Classic mustard with a bold flavor.</p>
-      <p class="price">RWF 3,000 / bottle</p>
-      <button onclick="addToCart('Mustard', 3000)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/bbq-sauce.jpg" alt="Barbecue Sauce">
-      <h3>Barbecue Sauce</h3>
-      <p>Perfect smoky BBQ sauce for meats and grills.</p>
-      <p class="price">RWF 4,000 / bottle</p>
-      <button onclick="addToCart('Barbecue Sauce', 4000)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/chili-sauce.jpg" alt="Chili Sauce">
-      <h3>Chili Sauce</h3>
-      <p>Hot chili sauce to spice up your meals.</p>
-      <p class="price">RWF 3,800 / bottle</p>
-      <button onclick="addToCart('Chili Sauce', 3800)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/soy-sauce.jpg" alt="Soy Sauce">
-      <h3>Soy Sauce</h3>
-      <p>Rich and authentic soy sauce for seasoning.</p>
-      <p class="price">RWF 3,500 / bottle</p>
-      <button onclick="addToCart('Soy Sauce', 3500)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/honey.jpg" alt="Honey">
-      <h3>Honey</h3>
-      <p>Pure natural honey for a healthy diet.</p>
-      <p class="price">RWF 7,500 / jar</p>
-      <button onclick="addToCart('Honey', 7500)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/peanut-butter.jpg" alt="Peanut Butter">
-      <h3>Peanut Butter</h3>
-      <p>Rich and creamy peanut butter.</p>
-      <p class="price">RWF 6,500 / jar</p>
-      <button onclick="addToCart('Peanut Butter', 6500)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/nutella.jpg" alt="Nutella">
-      <h3>Nutella</h3>
-      <p>Delicious chocolate-hazelnut spread.</p>
-      <p class="price">RWF 8,000 / jar</p>
-      <button onclick="addToCart('Nutella', 8000)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card table">
-      <img src="img/salad-dressing.jpg" alt="Salad Dressing">
-      <h3>Salad Dressing</h3>
-      <p>Flavored salad dressing for your healthy meals.</p>
-      <p class="price">RWF 3,200 / bottle</p>
-      <button onclick="addToCart('Salad Dressing', 3200)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/black-pepper.jpg" alt="Black Pepper">
-      <h3>Black Pepper</h3>
-      <p>Aromatic black pepper for seasoning.</p>
-      <p class="price">RWF 2,800 / pack</p>
-      <button onclick="addToCart('Black Pepper', 2800)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/tomato-paste.jpg" alt="Tomato Paste">
-      <h3>Tomato Paste</h3>
-      <p>Rich tomato paste for cooking.</p>
-      <p class="price">RWF 3,000 / can</p>
-      <button onclick="addToCart('Tomato Paste', 3000)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/curry-powder.jpg" alt="Curry Powder">
-      <h3>Curry Powder</h3>
-      <p>Flavorful curry spice blend.</p>
-      <p class="price">RWF 2,500 / pack</p>
-      <button onclick="addToCart('Curry Powder', 2500)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/ginger-powder.jpg" alt="Ginger Powder">
-      <h3>Ginger Powder</h3>
-      <p>Organic ginger powder for cooking.</p>
-      <p class="price">RWF 3,500 / pack</p>
-      <button onclick="addToCart('Ginger Powder', 3500)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/garlic-powder.jpg" alt="Garlic Powder">
-      <h3>Garlic Powder</h3>
-      <p>Pure garlic powder for a strong taste.</p>
-      <p class="price">RWF 2,700 / pack</p>
-      <button onclick="addToCart('Garlic Powder', 2700)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/paprika.jpg" alt="Paprika">
-      <h3>Paprika</h3>
-      <p>Sweet and smoky paprika spice.</p>
-      <p class="price">RWF 3,200 / pack</p>
-      <button onclick="addToCart('Paprika', 3200)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/turmeric.jpg" alt="Turmeric Powder">
-      <h3>Turmeric Powder</h3>
-      <p>Healthy turmeric powder for cooking and tea.</p>
-      <p class="price">RWF 3,000 / pack</p>
-      <button onclick="addToCart('Turmeric Powder', 3000)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/cinnamon.jpg" alt="Cinnamon Powder">
-      <h3>Cinnamon Powder</h3>
-      <p>Aromatic cinnamon powder for baking and tea.</p>
-      <p class="price">RWF 3,200 / pack</p>
-      <button onclick="addToCart('Cinnamon Powder', 3200)">Add to Cart</button>
-    </div>
-  
-    <div class="product-card kitchen">
-      <img src="img/cooking-oil.jpg" alt="Cooking Oil">
-      <h3>Cooking Oil</h3>
-      <p>Pure vegetable oil for healthy cooking.</p>
-      <p class="price">RWF 7,000 / liter</p>
-      <button onclick="addToCart('Cooking Oil', 7000)">Add to Cart</button>
-    </div>
-  
-  </section>
+  <div class="product-card">
+    <img src="img/carrots.jpg" alt="Carrots">
+    <h3>Carrots</h3>
+    <p>Crunchy and full of vitamins, perfect for meals and juices.</p>
+    <p class="price">RWF 600 / kg</p>
+    <button onclick="addToCart('Carrots', 600, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/cabbages.jpg" alt="Cabbages">
+    <h3>Cabbages</h3>
+    <p>Fresh cabbages, perfect for salads and stews.</p>
+    <p class="price">RWF 700 / kg</p>
+    <button onclick="addToCart('Cabbages', 700, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/tomatoes.jpg" alt="Tomatoes">
+    <h3>Tomatoes</h3>
+    <p>Juicy and ripe tomatoes, essential for every meal.</p>
+    <p class="price">RWF 900 / kg</p>
+    <button onclick="addToCart('Tomatoes', 900, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/eggplants.jpg" alt="Egg Plants">
+    <h3>Egg Plants</h3>
+    <p>Versatile and delicious eggplants, great for many recipes.</p>
+    <p class="price">RWF 750 / kg</p>
+    <button onclick="addToCart('Egg Plants', 750, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/onions.jpg" alt="Onions">
+    <h3>Onions</h3>
+    <p>Flavourful onions to enhance your dishes.</p>
+    <p class="price">RWF 500 / kg</p>
+    <button onclick="addToCart('Onions', 500, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/green-pepper.jpg" alt="Green Pepper">
+    <h3>Green Pepper</h3>
+    <p>Fresh green peppers, full of flavor and crunch.</p>
+    <p class="price">RWF 850 / kg</p>
+    <button onclick="addToCart('Green Pepper', 850, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/red-pepper.jpg" alt="Red Pepper">
+    <h3>Red Pepper</h3>
+    <p>Sweet and mildly spicy red peppers.</p>
+    <p class="price">RWF 950 / kg</p>
+    <button onclick="addToCart('Red Pepper', 950, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/yellow-pepper.jpg" alt="Yellow Pepper">
+    <h3>Yellow Pepper</h3>
+    <p>Bright and sweet yellow peppers, rich in vitamins.</p>
+    <p class="price">RWF 950 / kg</p>
+    <button onclick="addToCart('Yellow Pepper', 950, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/cucumber.jpg" alt="Cucumber">
+    <h3>Cucumber</h3>
+    <p>Cool and refreshing cucumbers, perfect for salads.</p>
+    <p class="price">RWF 700 / kg</p>
+    <button onclick="addToCart('Cucumber', 700, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/celeries.jpg" alt="Celeries">
+    <h3>Celeries</h3>
+    <p>Nutritious celery, great for snacks and soups.</p>
+    <p class="price">RWF 850 / bunch</p>
+    <button onclick="addToCart('Celeries', 850, 'bunch')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/broccoli.jpg" alt="Broccoli">
+    <h3>Broccoli</h3>
+    <p>Fresh green broccoli, packed with nutrients.</p>
+    <p class="price">RWF 1200 / piece</p>
+    <button onclick="addToCart('Broccoli', 1200, 'piece')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/beetroots.jpg" alt="Beetroots">
+    <h3>Beetroots</h3>
+    <p>Sweet and earthy beetroots, great for juices and salads.</p>
+    <p class="price">RWF 900 / kg</p>
+    <button onclick="addToCart('Beetroots', 900, 'kg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/spinach.jpg" alt="Spinach">
+    <h3>Spinach</h3>
+    <p>Fresh spinach, loaded with vitamins and iron.</p>
+    <p class="price">RWF 750 / bunch</p>
+    <button onclick="addToCart('Spinach', 750, 'bunch')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="img/garlic.jpg" alt="Garlic">
+    <h3>Garlic</h3>
+    <p>Flavorful garlic to enhance your cooking.</p>
+    <p class="price">RWF 650 / kg</p>
+    <button onclick="addToCart('Garlic', 650, 'kg')">Add to Cart</button>
+  </div>
+
+</section>
   
 
   <!-- Floating View Cart Button -->
@@ -592,15 +560,15 @@
   </footer>
 
   <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    function addToCart(productName, price) {
-      cart.push({ productName, price, quantity: 1 });
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    function addToCart(productName, price, unit) {
+      cart.push({ productName, price, unit, quantity: 1 });
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartIndicator();
       alert(`${productName} added to cart!`);
     }
-
+  
     function updateCartIndicator() {
       const cartDot = document.getElementById("cartDot");
       if (cart.length > 0) {
@@ -609,7 +577,7 @@
         cartDot.style.display = "none";
       }
     }
-
+  
     updateCartIndicator();
 
     function filterProducts(category) {
