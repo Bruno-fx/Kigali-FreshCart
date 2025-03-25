@@ -463,8 +463,9 @@
     <h2>Checkout</h2>
     <input type="text" id="customer-name" placeholder="Enter your name" required>
     <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+    <input type="text" id="customer-location" placeholder="Enter your location" required>
     <div class="note-box">
-      Upon clicking the "Proceed to Payment" button, you will be redirected to WhatsApp, where a member of our finance team will assist you in finalizing your payment smoothly and help you if you need any other demands.
+        Upon clicking the "Proceed to Payment" button, you will be redirected to WhatsApp, where a member of our finance team will assist you in finalizing your payment smoothly and help you if you need any other demands.
     </div>
     <button class="proceed-button" onclick="proceedToPayment()">Proceed to Payment</button>
   </div>
@@ -539,32 +540,39 @@
   function proceedToPayment() {
     const name = document.getElementById('customer-name').value.trim();
     const phone = document.getElementById('customer-phone').value.trim();
-    if (!name || !phone) {
-      alert("Please fill out all required fields.");
-      return;
+    const location = document.getElementById('customer-location').value.trim();
+    const deliveryFee = parseFloat(document.getElementById('delivery-option').value) || 0;
+
+    if (!name || !phone || !location || deliveryFee === 0) {
+        alert("Please fill out all required fields and select a delivery option before proceeding.");
+        return;
     }
+
     let orderSummary = "*Fruits Subscription Order Summary:*\n";
     let totalItems = 0;
     let grandTotal = 0;
+
     fruits.forEach((fruit) => {
-      if (fruit.quantity > 0) {
-        const itemTotal = fruit.quantity * fruit.price;
-        orderSummary += `\n- ${fruit.name} (${fruit.unit}): ${fruit.quantity} x RWF ${fruit.price} = RWF ${itemTotal.toLocaleString()}`;
-        totalItems += fruit.quantity;
-        grandTotal += itemTotal;
-      }
+        if (fruit.quantity > 0) {
+            const itemTotal = fruit.quantity * fruit.price;
+            orderSummary += `\n- ${fruit.name} (${fruit.unit}): ${fruit.quantity} x RWF ${fruit.price} = RWF ${itemTotal.toLocaleString()}`;
+            totalItems += fruit.quantity;
+            grandTotal += itemTotal;
+        }
     });
-    const deliveryFee = parseFloat(document.getElementById('delivery-option').value) || 0;
+
     if (totalItems === 0) {
-      alert("Please select at least one fruit.");
-      return;
+        alert("Please select at least one fruit before proceeding.");
+        return;
     }
-    orderSummary += `\n\nDelivery Fee: RWF ${deliveryFee.toLocaleString()}`;
+
+    orderSummary += `\n\n*Delivery Fee:* RWF ${deliveryFee.toLocaleString()}`;
     orderSummary += `\n\n*Grand Total:* RWF ${(grandTotal + deliveryFee).toLocaleString()}`;
-    orderSummary += `\n\n*Customer Details:*\n- Name: ${name}\n- Phone: ${phone}`;
+    orderSummary += `\n\n*Customer Details:*\n- Name: ${name}\n- Phone: ${phone}\n- Location: ${location}`;
+
     const whatsappNumber = "250727725180";
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderSummary)}`, '_blank');
-  }
+}
 
   // Remove scroll event for header so it stays visible at all times
 
