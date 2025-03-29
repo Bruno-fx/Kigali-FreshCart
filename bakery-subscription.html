@@ -3,285 +3,582 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fashion Categories</title>
+  <title>Fruits Subscription - Kigali Shopping Mall</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #cceef7;
+      /* Gradient background */
+      background: linear-gradient(to bottom, #f3eb93, #f8f9fa);
+      width: 100%;
+      overflow-x: hidden;
     }
     header {
-      background-image: url('img/bakery-header.jpg');
+      padding: 2rem;
+      min-height: 150px;
+      background-image: url('img/fruits-header.jpeg'); /* Updated header background image */
       background-size: cover;
       background-position: center;
       color: white;
-      padding: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       position: relative;
+      /* Always visible */
+      opacity: 1;
     }
-    header::after {
+    /* Overlay to dim the header image */
+    header::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.4);
       z-index: 1;
     }
-    header h1, header p {
+    /* Title style with text shadow */
+    header h1 {
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    /* Subtitle style */
+    header h2 {
+      margin: 0.5rem 0 0;
+      font-weight: normal;
       position: relative;
       z-index: 2;
     }
+    /* Home button styled and positioned top-left on larger screens */
     .home-button {
       position: absolute;
-      top: 15px;
-      left: 20px;
+      top: 10px;
+      left: 10px;
       color: white;
       text-decoration: none;
       padding: 8px 16px;
       background-color: #555;
       border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
       z-index: 2;
     }
     .home-button:hover {
       background-color: #777;
     }
-    .container {
-      max-width: 1200px;
+    /* On smaller screens, let the home button be static so it doesn't overlap */
+    @media (max-width: 480px) {
+      .home-button {
+        position: static;
+        margin-bottom: 10px;
+      }
+    }
+    .cart-container {
+      max-width: 800px;
       margin: 2rem auto;
       padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      justify-items: center;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow-x: hidden;
+      box-sizing: border-box;
     }
-    .category-card {
-      position: relative;
+    table {
       width: 100%;
-      padding-bottom: 100%;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-    }
-    .category-card:hover {
-      transform: translateY(-10px);
-    }
-    .category-card img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: opacity 0.3s;
-    }
-    .category-card:hover img {
-      opacity: 0.7;
-    }
-    .category-name {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      text-align: match-parent;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .category-overlay {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      text-align: center;
-      color: #000000;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: none;
-      transform: translateY(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .category-card:hover .category-overlay {
-      opacity: 1;
-    }
-    .partners-section {
-      text-align: center;
-      margin: 4rem 0;
-      background-color: #333;
-      padding: 2rem 1rem;
-      color: white;
-    }
-    .partners-section h2 {
-      font-size: 2rem;
+      border-collapse: collapse;
       margin-bottom: 1rem;
-      color: #ffeb3b;
     }
-    .partner-logos {
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f4e75f;
+    }
+    .product-container {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    .partner-logo img {
-      width: 120px;
-      height: auto;
-      transition: transform 0.3s;
+    .product-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
     }
-    .partner-logo:hover img {
-      transform: scale(1.1);
+    .product-name {
+      font-size: 0.9rem;
+      color: #333;
+      font-weight: 500;
+    }
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .quantity-controls button {
+      padding: 5px 10px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ddd;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    .quantity-controls button:hover {
+      background-color: #ccc;
+    }
+    .summary-container {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .summary-container h2 {
+      margin-top: 0;
+    }
+    #product-summary {
+      background-color: #e0e0e0;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    #product-summary table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #product-summary th, #product-summary td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    .checkout-container {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .checkout-container input, .checkout-container select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .note-box {
+      padding: 1rem;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+    .proceed-button {
+      padding: 1rem;
+      font-size: 1rem;
+      background-color: #FF4500;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .proceed-button:hover {
+      background-color: #FF6347;
     }
     footer {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 1rem;
-      margin-top: 2rem;
-    }
-    /* Floating Chat Button */
-    .chat-btn {
-      position: fixed;
-      bottom: 60px;
-      right: 20px;
-      background-color: #25d366; /* WhatsApp green */
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow added */
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      z-index: 1000;
-    }
-
-    .chat-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
-    }
-
-    .chat-btn img {
       width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensures the image fills the circle */
-      border-radius: 50%; /* Makes the image circular */
-    }
-
-    /* Floating Phrase */
-    .chat-text {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366; /* WhatsApp green */
-      color: white;
-      padding: 8px 15px;
-      border-radius: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      font-size: 14px;
-      font-weight: bold;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      z-index: 1000;
-    }
-
-    .chat-text:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+      box-sizing: border-box;
     }
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8rem;
+      .cart-container {
+        padding: 0.5rem;
       }
-      header p {
-        font-size: 1rem;
+      table th, table td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
       }
-      .container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce box size on smaller screens */
-        gap: 1.5rem; /* Slightly reduce the gap between boxes */
+      .product-image {
+        width: 60px;
+        height: 60px;
       }
-      .partners-section h2 {
-        font-size: 1.6rem;
+    }
+    @media (max-width: 480px) {
+      .quantity-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .proceed-button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+    }
+    @media (max-width: 768px) {
+      footer {
+        padding: 0.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      footer {
+        font-size: 0.9rem;
+        padding: 0.6rem;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
+<header id="main-header">
   <a href="index.html" class="home-button">Home</a>
-  <h1>Discover The Most Delicious Baked Food Outta here in Kigali</h1>
-  <p>Explore the most nutritious and delicious pastry baked by professionals delivered to you.</p>
+  <h1>Fruits Subscription</h1>
+  <h2>Your trusted source for fresh fruits!</h2>
 </header>
 
-<section class="container">
-  <div class="category-card">
-    <a href="breads.html">
-      <img src="img/breads.jpg" alt="Breads">
-      <div class="category-overlay">Sandwich, pain coupe, croissants,...</div>
-      <div class="category-name">Breads</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="donuts.html">
-      <img src="img/donuts.jpg" alt="Donuts">
-      <div class="category-overlay">Round donuts, special donuts,...</div>
-      <div class="category-name">Donuts</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="cakes.html">
-      <img src="img/cakes.jpg" alt="Cakes">
-      <div class="category-overlay">Cupcakes, banana cakes, chocolate cakes,...</div>
-      <div class="category-name">Cakes</div>
-    </a>
-  </div>
-  <div class="category-card">
-    <a href="specialties.html">
-      <img src="img/specialties.jpg" alt="Specialties">
-      <div class="category-overlay">Pizzas, Burgers, Samosas,...</div>
-      <div class="category-name">Specialties</div>
-    </a>
-  </div>
-</section>
+<!-- Moving Text Bar Below Header -->
+<div class="subscription-info-bar">
+  <marquee behavior="scroll" direction="left">
+    🛒 FreshCart Subscription: Enjoy your favorite fruits package of your choice delivered at your doorstep weekly per months subscribed for!  🚀
+  </marquee>
+</div>
 
-<section class="partners-section">
-  <h2>Our Partners</h2>
-  <p>We proudly collaborate with some of the finest brands to bring you quality products.</p>
-  <div class="partner-logos">
-    <div class="partner-logo"><img src="img/partner1-logo.png" alt="Partner 1"></div>
-    <div class="partner-logo"><img src="img/partner2-logo.png" alt="Partner 2"></div>
-    <div class="partner-logo"><img src="img/partner3-logo.png" alt="Partner 3"></div>
-    <div class="partner-logo"><img src="img/partner4-logo.jpg" alt="Partner 4"></div>
+<section class="cart-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Fruit</th>
+        <th>Price/Unit</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="fruit-items">
+      <tr data-fruit="Bananas">
+        <td>
+          <div class="product-container">
+            <img src="img/bananas.png" alt="Bananas" class="product-image">
+            <div class="product-name">Bananas (dozen(s))</div>
+          </div>
+        </td>
+        <td>RWF 500</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(0, -1)">-</button>
+            <span id="quantity-0">0</span>
+            <button onclick="updateFruitQuantity(0, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-0">RWF 0</td>
+      </tr>
+      <tr data-fruit="Apples">
+        <td>
+          <div class="product-container">
+            <img src="img/apples.png" alt="Apples" class="product-image">
+            <div class="product-name">Apples (kilogram(s))</div>
+          </div>
+        </td>
+        <td>RWF 700</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(1, -1)">-</button>
+            <span id="quantity-1">0</span>
+            <button onclick="updateFruitQuantity(1, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-1">RWF 0</td>
+      </tr>
+      <tr data-fruit="Oranges">
+        <td>
+          <div class="product-container">
+            <img src="img/oranges.png" alt="Oranges" class="product-image">
+            <div class="product-name">Oranges (kilogram(s))</div>
+          </div>
+        </td>
+        <td>RWF 600</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(2, -1)">-</button>
+            <span id="quantity-2">0</span>
+            <button onclick="updateFruitQuantity(2, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-2">RWF 0</td>
+      </tr>
+      <tr data-fruit="Berries">
+        <td>
+          <div class="product-container">
+            <img src="img/berries.png" alt="Berries" class="product-image">
+            <div class="product-name">Berries (pack(s))</div>
+          </div>
+        </td>
+        <td>RWF 1200</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(3, -1)">-</button>
+            <span id="quantity-3">0</span>
+            <button onclick="updateFruitQuantity(3, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-3">RWF 0</td>
+      </tr>
+      <tr data-fruit="Papayas">
+        <td>
+          <div class="product-container">
+            <img src="img/papayas.png" alt="Papayas" class="product-image">
+            <div class="product-name">Papayas (piece(s))</div>
+          </div>
+        </td>
+        <td>RWF 800</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(4, -1)">-</button>
+            <span id="quantity-4">0</span>
+            <button onclick="updateFruitQuantity(4, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-4">RWF 0</td>
+      </tr>
+      <tr data-fruit="Water Melons">
+        <td>
+          <div class="product-container">
+            <img src="img/watermelons.png" alt="Water Melons" class="product-image">
+            <div class="product-name">Water Melons (piece(s))</div>
+          </div>
+        </td>
+        <td>RWF 1500</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(5, -1)">-</button>
+            <span id="quantity-5">0</span>
+            <button onclick="updateFruitQuantity(5, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-5">RWF 0</td>
+      </tr>
+      <tr data-fruit="Mangoes">
+        <td>
+          <div class="product-container">
+            <img src="img/mangoes.png" alt="Mangoes" class="product-image">
+            <div class="product-name">Mangoes (kilogram(s))</div>
+          </div>
+        </td>
+        <td>RWF 900</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(6, -1)">-</button>
+            <span id="quantity-6">0</span>
+            <button onclick="updateFruitQuantity(6, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-6">RWF 0</td>
+      </tr>
+      <tr data-fruit="Pineapples">
+        <td>
+          <div class="product-container">
+            <img src="img/pineapples.png" alt="Pineapples" class="product-image">
+            <div class="product-name">Pineapples (piece(s))</div>
+          </div>
+        </td>
+        <td>RWF 1100</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(7, -1)">-</button>
+            <span id="quantity-7">0</span>
+            <button onclick="updateFruitQuantity(7, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-7">RWF 0</td>
+      </tr>
+      <tr data-fruit="Passion Fruits">
+        <td>
+          <div class="product-container">
+            <img src="img/passionfruits.png" alt="Passion Fruits" class="product-image">
+            <div class="product-name">Passion Fruits (pack(s))</div>
+          </div>
+        </td>
+        <td>RWF 400</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(8, -1)">-</button>
+            <span id="quantity-8">0</span>
+            <button onclick="updateFruitQuantity(8, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-8">RWF 0</td>
+      </tr>
+      <tr data-fruit="Tree Tomatoes">
+        <td>
+          <div class="product-container">
+            <img src="img/treetomatoes.png" alt="Tree Tomatoes" class="product-image">
+            <div class="product-name">Tree Tomatoes (kilogram(s))</div>
+          </div>
+        </td>
+        <td>RWF 600</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(9, -1)">-</button>
+            <span id="quantity-9">0</span>
+            <button onclick="updateFruitQuantity(9, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-9">RWF 0</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Summary Section -->
+  <div class="summary-container">
+    <h2>Order Summary</h2>
+    <!-- Organized Product Summary Table -->
+    <div id="product-summary"></div>
+    <p id="subtotal">Subtotal: RWF 0</p>
+    <label for="delivery-option">Delivery Option:</label>
+    <select id="delivery-option" onchange="updateGlobalTotal()">
+      <option value="0">Select Delivery Option</option>
+      <option value="1500">Motorcycle - RWF 1,500</option>
+      <option value="15000">Car - RWF 15,000</option>
+    </select>
+    <p id="delivery-fee">Delivery Fee: RWF 0</p>
+    <p id="grand-total">Grand Total: RWF 0</p>
   </div>
-</section>
 
-<!-- Floating Chat Button -->
-  <a href="https://wa.me/250123456789?text=Hello%20Kigali%20Shopping%20Mall%20Support!" target="_blank">
-    <div class="chat-btn">
-      <img src="img/whatsapp-icon.jpg" alt="Chat with Us">
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <input type="text" id="customer-name" placeholder="Enter your name" required>
+    <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+    <input type="text" id="customer-location" placeholder="Enter your location" required>
+    <div class="note-box">
+        Upon clicking the "Proceed to Payment" button, you will be redirected to WhatsApp, where a member of our finance team will assist you in finalizing your payment smoothly and help you if you need any other demands.
     </div>
-    <div class="chat-text">Chat with us!</div>
-  </a>
+    <button class="proceed-button" onclick="proceedToPayment()">Proceed to Payment</button>
+  </div>
+</section>
 
 <footer>
-  <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-    <h3 style="font-size: 18px;">Contact Us</h3>
-    <p>Address: Kigali Shopping Mall, Kigali, Rwanda</p>
-    <p>Phone: +250 123 456 789</p>
-    <p>Email: support@kigalimall.com</p>
-  </div>
   <p>&copy; 2024 Kigali Shopping Mall. All rights reserved.</p>
 </footer>
+
+<script>
+  // Array of fixed fruits with price, initial quantity, and unit
+  const fruits = [
+    { name: "Bananas", price: 500, quantity: 0, unit: "dozen(s)" },
+    { name: "Apples", price: 700, quantity: 0, unit: "kilogram(s)" },
+    { name: "Oranges", price: 600, quantity: 0, unit: "kilogram(s)" },
+    { name: "Berries", price: 1200, quantity: 0, unit: "pack(s)" },
+    { name: "Papayas", price: 800, quantity: 0, unit: "piece(s)" },
+    { name: "Water Melons", price: 1500, quantity: 0, unit: "piece(s)" },
+    { name: "Mangoes", price: 900, quantity: 0, unit: "kilogram(s)" },
+    { name: "Pineapples", price: 1100, quantity: 0, unit: "piece(s)" },
+    { name: "Passion Fruits", price: 400, quantity: 0, unit: "pack(s)" },
+    { name: "Tree Tomatoes", price: 600, quantity: 0, unit: "kilogram(s)" }
+  ];
+
+  function updateFruitQuantity(index, change) {
+    fruits[index].quantity = Math.max(0, fruits[index].quantity + change);
+    document.getElementById(`quantity-${index}`).innerText = fruits[index].quantity;
+    const total = fruits[index].quantity * fruits[index].price;
+    document.getElementById(`total-${index}`).innerText = `RWF ${total.toLocaleString()}`;
+    updateGlobalTotal();
+  }
+
+  function updateProductSummary() {
+    let summary = `<table style="width:100%; border-collapse: collapse;">
+       <thead>
+         <tr>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Fruit</th>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Quantity</th>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Unit</th>
+           <th style="border: 1px solid #ccc; padding: 0.5rem;">Total Price</th>
+         </tr>
+       </thead>
+       <tbody>`;
+    fruits.forEach((fruit) => {
+      if (fruit.quantity > 0) {
+        const totalPrice = fruit.quantity * fruit.price;
+        summary += `<tr>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">${fruit.name}</td>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">${fruit.quantity}</td>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">${fruit.unit}</td>
+           <td style="border: 1px solid #ccc; padding: 0.5rem;">RWF ${totalPrice.toLocaleString()}</td>
+         </tr>`;
+      }
+    });
+    summary += `</tbody></table>`;
+    document.getElementById("product-summary").innerHTML = summary;
+  }
+
+  function updateGlobalTotal() {
+    let subtotal = 0;
+    fruits.forEach((fruit) => {
+      subtotal += fruit.quantity * fruit.price;
+    });
+    document.getElementById('subtotal').innerText = `Subtotal: RWF ${subtotal.toLocaleString()}`;
+    const deliveryFee = parseFloat(document.getElementById('delivery-option').value) || 0;
+    document.getElementById('delivery-fee').innerText = `Delivery Fee: RWF ${deliveryFee.toLocaleString()}`;
+    let grandTotal = subtotal + deliveryFee;
+    document.getElementById('grand-total').innerText = `Grand Total: RWF ${grandTotal.toLocaleString()}`;
+    updateProductSummary();
+  }
+
+  function proceedToPayment() {
+    const name = document.getElementById('customer-name').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+    const location = document.getElementById('customer-location').value.trim();
+    const deliveryFee = parseFloat(document.getElementById('delivery-option').value) || 0;
+
+    if (!name || !phone || !location || deliveryFee === 0) {
+        alert("Please fill out all required fields and select a delivery option before proceeding.");
+        return;
+    }
+
+    let orderSummary = "*Fruits Subscription Order Summary:*\n";
+    let totalItems = 0;
+    let grandTotal = 0;
+
+    fruits.forEach((fruit) => {
+        if (fruit.quantity > 0) {
+            const itemTotal = fruit.quantity * fruit.price;
+            orderSummary += `\n- ${fruit.name} (${fruit.unit}): ${fruit.quantity} x RWF ${fruit.price} = RWF ${itemTotal.toLocaleString()}`;
+            totalItems += fruit.quantity;
+            grandTotal += itemTotal;
+        }
+    });
+
+    if (totalItems === 0) {
+        alert("Please select at least one fruit before proceeding.");
+        return;
+    }
+
+    orderSummary += `\n\n*Delivery Fee:* RWF ${deliveryFee.toLocaleString()}`;
+    orderSummary += `\n\n*Grand Total:* RWF ${(grandTotal + deliveryFee).toLocaleString()}`;
+    orderSummary += `\n\n*Customer Details:*\n- Name: ${name}\n- Phone: ${phone}\n- Location: ${location}`;
+
+    const whatsappNumber = "250727725180";
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderSummary)}`, '_blank');
+}
+
+  // Remove scroll event for header so it stays visible at all times
+
+  // Initialize global total and product summary on load
+  updateGlobalTotal();
+</script>
 
 </body>
 </html>
