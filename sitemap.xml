@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+  <!-- Homepage (Highest Priority) -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Product Categories -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/fruits</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Example Category Page (Replace with your categories) -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/products/vegetables</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- About Us -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/about</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/contact</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Faq (If applicable) -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/faq</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Example Blog Post (Add individual posts) -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/blog/how-to-choose-fresh-vegetables</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Cart/Checkout (Lower priority since it’s dynamic) -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/cart</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms & Conditions -->
+  <url>
+    <loc>https://kigalifreshcart.netlify.app/terms</loc>
+    <lastmod>2025-03-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+</urlset>
