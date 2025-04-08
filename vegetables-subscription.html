@@ -614,6 +614,23 @@
         </td>
         <td id="total-19">RWF 0</td>
       </tr>
+      <tr data-fruit="Garlic">
+        <td>
+          <div class="product-container">
+            <img src="img/garlic.jpg" alt="Garlic" class="product-image">
+            <div class="product-name">Garlic (250g)</div>
+          </div>
+        </td>
+        <td>RWF 1,500</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateFruitQuantity(20, -1)">-</button>
+            <span id="quantity-20">0</span>
+            <button onclick="updateFruitQuantity(20, 1)">+</button>
+          </div>
+        </td>
+        <td id="total-20">RWF 0</td>
+      </tr>
     </tbody>
   </table>
   
@@ -671,7 +688,8 @@
     { name: "Celeries", price: 500, quantity: 0, unit: "bunch(s)" },
     { name: "Broccoli", price: 1000, quantity: 0, unit: "piece(s)" },
     { name: "Beetroots", price: 600, quantity: 0, unit: "bundle(s)" },
-    { name: "Spinach", price: 600, quantity: 0, unit: "bunch(s)" }
+    { name: "Spinach", price: 600, quantity: 0, unit: "bunch(s)" },
+    { name: "Garlic", price: 1500, quantity: 0, unit: "250g" }
   ];
 
   function updateFruitQuantity(index, change) {
