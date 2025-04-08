@@ -277,7 +277,7 @@
             <div class="product-name">Bananas(gros-michel) (dozen(s))</div>
           </div>
         </td>
-        <td>RWF 4000</td>
+        <td>RWF 4,000</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(0, -1)">-</button>
@@ -295,7 +295,7 @@
               <div class="product-name">Bananas(Kamara) (dozen(s))</div>
             </div>
           </td>
-          <td>RWF 2500</td>
+          <td>RWF 2,500</td>
           <td>
             <div class="quantity-controls">
               <button onclick="updateFruitQuantity(0, -1)">-</button>
@@ -487,7 +487,7 @@
             <div class="product-name">Papayas (piece(s))</div>
           </div>
         </td>
-        <td>RWF 3000</td>
+        <td>RWF 3,000</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(4, -1)">-</button>
@@ -504,7 +504,7 @@
             <div class="product-name">Water Melons (piece(s))</div>
           </div>
         </td>
-        <td>RWF 8500</td>
+        <td>RWF 8,500</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(5, -1)">-</button>
@@ -521,7 +521,7 @@
             <div class="product-name">Mangoes (kg(s))</div>
           </div>
         </td>
-        <td>RWF 2500</td>
+        <td>RWF 2,500</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(6, -1)">-</button>
@@ -538,7 +538,7 @@
             <div class="product-name">Pineapples (piece(s))</div>
           </div>
         </td>
-        <td>RWF 2000</td>
+        <td>RWF 2,000</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(7, -1)">-</button>
@@ -555,7 +555,7 @@
             <div class="product-name">Passion Fruits (pack(s))</div>
           </div>
         </td>
-        <td>RWF 3000</td>
+        <td>RWF 3,000</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(8, -1)">-</button>
@@ -572,7 +572,7 @@
             <div class="product-name">Tree Tomatoes (kg(s))</div>
           </div>
         </td>
-        <td>RWF 3000</td>
+        <td>RWF 3,000</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(9, -1)">-</button>
@@ -620,17 +620,22 @@
 <script>
   // Array of fixed fruits with price, initial quantity, and unit
   const fruits = [
-    { name: "Bananas", price: 500, quantity: 0, unit: "dozen(s)" },
-    { name: "Apples", price: 700, quantity: 0, unit: "kilogram(s)" },
-    { name: "Oranges", price: 600, quantity: 0, unit: "kilogram(s)" },
-    { name: "Berries", price: 1200, quantity: 0, unit: "pack(s)" },
-    { name: "Papayas", price: 800, quantity: 0, unit: "piece(s)" },
-    { name: "Water Melons", price: 1500, quantity: 0, unit: "piece(s)" },
-    { name: "Mangoes", price: 900, quantity: 0, unit: "kilogram(s)" },
-    { name: "Pineapples", price: 1100, quantity: 0, unit: "piece(s)" },
-    { name: "Passion Fruits", price: 400, quantity: 0, unit: "pack(s)" },
-    { name: "Tree Tomatoes", price: 600, quantity: 0, unit: "kilogram(s)" }
-  ];
+  { name: "Bananas (Gros-Michel)", price: 4000, quantity: 0, unit: "dozen(s)" },
+  { name: "Bananas (Kamara)", price: 2500, quantity: 0, unit: "dozen(s)" },
+  { name: "Avocadoes", price: 800, quantity: 0, unit: "piece(s)" },
+  { name: "Mandarins", price: 2500, quantity: 0, unit: "kg(s)" },
+  { name: "Maracujas", price: 2500, quantity: 0, unit: "kg(s)" },
+  { name: "Lemons", price: 1500, quantity: 0, unit: "kg(s)" },
+  { name: "Grapefruits", price: 800, quantity: 0, unit: "piece(s)" },
+  { name: "Strawberries", price: 2500, quantity: 0, unit: "250g" },
+  { name: "Apples", price: 1000, quantity: 0, unit: "piece(s)" },
+  { name: "Green Oranges", price: 1600, quantity: 0, unit: "kg(s)" },
+  { name: "Red Oranges", price: 3600, quantity: 0, unit: "kg(s)" },
+  { name: "Berries", price: 2500, quantity: 0, unit: "250g" }, // Assuming berries == strawberries here
+  { name: "Papayas", price: 3000, quantity: 0, unit: "piece(s)" },
+  { name: "Water Melons", price: 8500, quantity: 0, unit: "piece(s)" }
+];
+
 
   function updateFruitQuantity(index, change) {
     fruits[index].quantity = Math.max(0, fruits[index].quantity + change);
