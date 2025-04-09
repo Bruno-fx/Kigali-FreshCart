@@ -277,7 +277,7 @@
             <div class="product-name">Fresh Milk (litre(s))</div>
           </div>
         </td>
-        <td>RWF 1000</td>
+        <td>RWF 1,500</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(0, -1)">-</button>
@@ -291,10 +291,10 @@
         <td>
           <div class="product-container">
             <img src="img/sour-milk.jpg" alt="Sour Milk" class="product-image">
-            <div class="product-name">Sour Milk (kilogram(s))</div>
+            <div class="product-name">Sour Milk (litre(s))</div>
           </div>
         </td>
-        <td>RWF 1000</td>
+        <td>RWF 1,800</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(1, -1)">-</button>
@@ -311,7 +311,7 @@
             <div class="product-name">Eggs (piece(s))</div>
           </div>
         </td>
-        <td>RWF 250</td>
+        <td>RWF 300</td>
         <td>
           <div class="quantity-controls">
             <button onclick="updateFruitQuantity(2, -1)">-</button>
@@ -359,16 +359,9 @@
 <script>
   // Array of fixed fruits with price, initial quantity, and unit
   const fruits = [
-    { name: "Bananas", price: 500, quantity: 0, unit: "dozen(s)" },
-    { name: "Apples", price: 700, quantity: 0, unit: "kilogram(s)" },
-    { name: "Oranges", price: 600, quantity: 0, unit: "kilogram(s)" },
-    { name: "Berries", price: 1200, quantity: 0, unit: "pack(s)" },
-    { name: "Papayas", price: 800, quantity: 0, unit: "piece(s)" },
-    { name: "Water Melons", price: 1500, quantity: 0, unit: "piece(s)" },
-    { name: "Mangoes", price: 900, quantity: 0, unit: "kilogram(s)" },
-    { name: "Pineapples", price: 1100, quantity: 0, unit: "piece(s)" },
-    { name: "Passion Fruits", price: 400, quantity: 0, unit: "pack(s)" },
-    { name: "Tree Tomatoes", price: 600, quantity: 0, unit: "kilogram(s)" }
+    { name: "Fresh Milk", price: 1500, quantity: 0, unit: "litre(s)" },
+    { name: "Sour Milk", price: 1800, quantity: 0, unit: "litre(s)" },
+    { name: "Eggs", price: 300, quantity: 0, unit: "piece(s)" }
   ];
 
   function updateFruitQuantity(index, change) {
