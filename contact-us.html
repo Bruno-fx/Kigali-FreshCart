@@ -1,235 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - FreshCart</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Consistent with existing styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom, #f3eb93, #f8f9fa);
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - FreshCart</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #f3eb93, #f8f9fa);
+      margin: 0;
+      padding: 0;
+    }
 
-        .contact-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 30px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
+    header {
+      background-image: url('img/contact-header.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+      position: relative;
+    }
 
-        .contact-info {
-            padding-right: 30px;
-        }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
 
-        .contact-form {
-            padding-left: 30px;
-            border-left: 2px solid #f4e75f;
-        }
+    header h1, header h2 {
+      position: relative;
+      z-index: 2;
+      margin: 0.3rem 0;
+      text-shadow: 1px 1px 3px black;
+    }
 
-        h2 {
-            color: #2c3e50;
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
+    .home-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 3;
+      color: white;
+      background-color: #FF4500;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
 
-        .contact-item {
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+    .home-button:hover {
+      background-color: #FF6347;
+    }
 
-        .contact-icon {
-            font-size: 24px;
-            color: #FF4500;
-            min-width: 40px;
-            text-align: center;
-        }
+    .contact-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
 
-        .contact-details h3 {
-            margin: 0 0 5px 0;
-            color: #2c3e50;
-        }
+    .contact-info {
+      padding-right: 30px;
+    }
 
-        .contact-details p {
-            margin: 0;
-            color: #666;
-        }
+    .contact-form {
+      padding-left: 30px;
+      border-left: 2px solid #f4e75f;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    h2 {
+      color: #2c3e50;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
 
-        input, textarea, select {
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    .contact-item {
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-        textarea {
-            height: 120px;
-            resize: vertical;
-        }
+    .contact-icon {
+      font-size: 24px;
+      color: #FF4500;
+      min-width: 40px;
+      text-align: center;
+    }
 
-        button {
-            background-color: #FF4500;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            width: fit-content;
-        }
+    .contact-details h3 {
+      margin: 0 0 5px 0;
+      color: #2c3e50;
+    }
 
-        button:hover {
-            background-color: #FF6347;
-        }
+    .contact-details p {
+      margin: 0;
+      color: #666;
+    }
 
-        .map-container {
-            margin-top: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+    .social-links a {
+      color: #FF4500;
+      margin-right: 15px;
+      font-size: 20px;
+    }
 
-        @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-            .contact-form {
-                border-left: none;
-                padding-left: 0;
-                border-top: 2px solid #f4e75f;
-                padding-top: 30px;
-            }
-        }
-    </style>
+    input, textarea, select {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #FF4500;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      width: fit-content;
+    }
+
+    button:hover {
+      background-color: #FF6347;
+    }
+
+    .map-container {
+      margin-top: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .contact-form {
+        border-left: none;
+        padding-left: 0;
+        border-top: 2px solid #f4e75f;
+        padding-top: 30px;
+      }
+
+      .home-button {
+        position: static;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Use your existing header -->
-    <header id="main-header">
-        <a href="index.html" class="home-button">Back</a>
-        <h1>Contact FreshCart</h1>
-        <h2>We're here to help!</h2>
-    </header>
 
-    <div class="contact-container">
-        <div class="contact-info">
-            <h2>Get in Touch</h2>
-            
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt contact-icon"></i>
-                <div class="contact-details">
-                    <h3>Visit Us</h3>
-                    <p>Kigali Heights, 4th Floor<br>KG 123 St, Kigali, Rwanda</p>
-                </div>
-            </div>
+  <header>
+    <a href="index.html" class="home-button">Home</a>
+    <h1>Contact FreshCart</h1>
+    <h2>We’re here to help!</h2>
+  </header>
 
-            <div class="contact-item">
-                <i class="fas fa-phone-alt contact-icon"></i>
-                <div class="contact-details">
-                    <h3>Call Us</h3>
-                    <p>+250 788 123 456<br>Mon-Sat: 8AM - 6PM</p>
-                </div>
-            </div>
+  <div class="contact-container">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
 
-            <div class="contact-item">
-                <i class="fas fa-envelope contact-icon"></i>
-                <div class="contact-details">
-                    <h3>Email Us</h3>
-                    <p>support@freshcart.rw<br>orders@freshcart.rw</p>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <i class="fas fa-users contact-icon"></i>
-                <div class="contact-details">
-                    <h3>Social Media</h3>
-                    <div class="social-links">
-                        <a href="https://facebook.com/freshcart" target="_blank" class="social-icon">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://instagram.com/freshcart" target="_blank" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://tiktok.com/@freshcart_kgl" target="_blank" class="social-icon">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.47053050997!2d30.059703814753906!3d-1.953774998570916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca76b47381c23%3A0x45a87f8b0b247e3e!2sKigali%20Heights!5e0!3m2!1sen!2srw!4v1624456789012!5m2!1sen!2srw" 
-                        width="100%" 
-                        height="200" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                </iframe>
-            </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt contact-icon"></i>
+        <div class="contact-details">
+          <h3>Visit Us</h3>
+          <p>Kigali Heights, 4th Floor<br>KG 123 St, Kigali, Rwanda</p>
         </div>
+      </div>
 
-        <div class="contact-form">
-            <h2>Send a Message</h2>
-            <form id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                </div>
-                
-                <div class="form-group">
-                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-                </div>
-                
-                <div class="form-group">
-                    <select id="subject" name="subject" required>
-                        <option value="">Select Inquiry Type</option>
-                        <option value="order">Order Inquiry</option>
-                        <option value="delivery">Delivery Issue</option>
-                        <option value="account">Account Help</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                </div>
-                
-                <button type="submit">Send Message</button>
-            </form>
+      <div class="contact-item">
+        <i class="fas fa-phone-alt contact-icon"></i>
+        <div class="contact-details">
+          <h3>Call Us</h3>
+          <p>+250 788 123 456<br>Mon–Sat: 8AM – 6PM</p>
         </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-envelope contact-icon"></i>
+        <div class="contact-details">
+          <h3>Email Us</h3>
+          <p>support@freshcart.rw<br>orders@freshcart.rw</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-users contact-icon"></i>
+        <div class="contact-details">
+          <h3>Social Media</h3>
+          <div class="social-links">
+            <a href="https://facebook.com/freshcart" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/freshcart" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@freshcart_kgl" target="_blank"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18..." 
+                width="100%" 
+                height="200" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+        </iframe>
+      </div>
     </div>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Thank you for your message! We will respond within 24 hours.');
-            this.reset();
-        });
-    </script>
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <form id="contactForm" action="mailto:kigalifreshcart@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="Name" placeholder="Your Name" required>
+        <input type="email" name="Email" placeholder="Your Email" required>
+        <input type="tel" name="Phone" placeholder="Phone Number" required>
+        <select name="Subject" required>
+          <option value="">Select Inquiry Type</option>
+          <option value="Order">Order Inquiry</option>
+          <option value="Delivery">Delivery Issue</option>
+          <option value="Account">Account Help</option>
+          <option value="Other">Other</option>
+        </select>
+        <textarea name="Message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
 
-    <!-- Include your existing footer here -->
+  <footer>
+    <p>&copy; 2024 Kigali FreshCart. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
