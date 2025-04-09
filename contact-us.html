@@ -1,218 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Kigali Shopping Mall</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FreshCart</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Consistent with existing styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #f3eb93, #f8f9fa);
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Header Section */
-    header {
-      background-color: #333;
-      padding: 1rem;
-      text-align: center;
-      color: white;
-    }
+        .contact-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
 
-    .home-btn {
-      display: inline-block;
-      background-color: #FF6347;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-bottom: 1rem;
-    }
+        .contact-info {
+            padding-right: 30px;
+        }
 
-    .home-btn:hover {
-      background-color: #FF4500;
-    }
+        .contact-form {
+            padding-left: 30px;
+            border-left: 2px solid #f4e75f;
+        }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+        h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
 
-    /* Main Content */
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
+        .contact-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    h2 {
-      font-size: 2rem;
-      color: #444;
-      margin-bottom: 1.5rem;
-    }
+        .contact-icon {
+            font-size: 24px;
+            color: #FF4500;
+            min-width: 40px;
+            text-align: center;
+        }
 
-    .contact-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: center;
-    }
+        .contact-details h3 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
 
-    /* Contact Form */
-    .contact-form {
-      flex: 1;
-      min-width: 300px;
-      max-width: 600px;
-      padding: 2rem;
-      background-color: #fff;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-    }
+        .contact-details p {
+            margin: 0;
+            color: #666;
+        }
 
-    .contact-form h3 {
-      font-size: 1.5rem;
-      color: #FF6347;
-      margin-bottom: 1rem;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .contact-form label {
-      display: block;
-      font-size: 1rem;
-      color: #555;
-      margin: 1rem 0 0.5rem;
-    }
+        input, textarea, select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 0.35rem;
-      font-size: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      margin-bottom: 1rem;
-    }
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
 
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 150px;
-    }
+        button {
+            background-color: #FF4500;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: fit-content;
+        }
 
-    .contact-form button {
-      background-color: #32CD32;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease-in-out;
-    }
+        button:hover {
+            background-color: #FF6347;
+        }
 
-    .contact-form button:hover {
-      background-color: #228B22;
-    }
+        .map-container {
+            margin-top: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-    /* Contact Information */
-    .contact-info {
-      flex: 1;
-      min-width: 300px;
-      padding: 2rem;
-      background-color: #fff;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-    }
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
 
-    .contact-info h3 {
-      font-size: 1.5rem;
-      color: #FF6347;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info p, .contact-info a {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.6;
-      margin: 0.5rem 0;
-      text-decoration: none;
-    }
-
-    .contact-info a:hover {
-      color: #FF6347;
-      text-decoration: underline;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .contact-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .home-btn {
-        font-size: 0.9rem;
-        padding: 0.5rem;
-      }
-
-      .contact-container {
-        gap: 1.5rem;
-      }
-    }
-  </style>
+            .contact-form {
+                border-left: none;
+                padding-left: 0;
+                border-top: 2px solid #f4e75f;
+                padding-top: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Use your existing header -->
+    <header id="main-header">
+        <a href="index.html" class="home-button">Back</a>
+        <h1>Contact FreshCart</h1>
+        <h2>We're here to help!</h2>
+    </header>
 
-  <!-- Header Section -->
-  <header>
-    <a href="index.html" class="home-btn">Home</a>
-    <h1>Contact Us</h1>
-  </header>
-
-  <!-- Main Content -->
-  <main>
-    <h2>We'd Love to Hear from You!</h2>
     <div class="contact-container">
-      
-      <!-- Contact Form -->
-      <div class="contact-form">
-        <h3>Get in Touch</h3>
-        <form>
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" required>
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <div class="contact-details">
+                    <h3>Visit Us</h3>
+                    <p>Kigali Heights, 4th Floor<br>KG 123 St, Kigali, Rwanda</p>
+                </div>
+            </div>
 
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt contact-icon"></i>
+                <div class="contact-details">
+                    <h3>Call Us</h3>
+                    <p>+250 788 123 456<br>Mon-Sat: 8AM - 6PM</p>
+                </div>
+            </div>
 
-          <label for="message">Your Message</label>
-          <textarea id="message" name="message" required></textarea>
+            <div class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
+                <div class="contact-details">
+                    <h3>Email Us</h3>
+                    <p>support@freshcart.rw<br>orders@freshcart.rw</p>
+                </div>
+            </div>
 
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
+            <div class="contact-item">
+                <i class="fas fa-users contact-icon"></i>
+                <div class="contact-details">
+                    <h3>Social Media</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com/freshcart" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com/freshcart" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@freshcart_kgl" target="_blank" class="social-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-      <!-- Contact Information -->
-      <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p><strong>Address:</strong> Kigali Shopping Mall, City Center, Kigali, Rwanda</p>
-        <p><strong>Phone:</strong> <a href="tel:+250123456789">+250 123 456 789</a></p>
-        <p><strong>Email:</strong> <a href="mailto:contact@kigalishoppingmall.com">contact@kigalishoppingmall.com</a></p>
-        <p><strong>Working Hours:</strong> Mon - Sat: 8am - 8pm</p>
-      </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.47053050997!2d30.059703814753906!3d-1.953774998570916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca76b47381c23%3A0x45a87f8b0b247e3e!2sKigali%20Heights!5e0!3m2!1sen!2srw!4v1624456789012!5m2!1sen!2srw" 
+                        width="100%" 
+                        height="200" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                </div>
+                
+                <div class="form-group">
+                    <select id="subject" name="subject" required>
+                        <option value="">Select Inquiry Type</option>
+                        <option value="order">Order Inquiry</option>
+                        <option value="delivery">Delivery Issue</option>
+                        <option value="account">Account Help</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
     </div>
-  </main>
 
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message! We will respond within 24 hours.');
+            this.reset();
+        });
+    </script>
+
+    <!-- Include your existing footer here -->
 </body>
 </html>
