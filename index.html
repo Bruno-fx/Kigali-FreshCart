@@ -292,6 +292,12 @@
       height: 24px;
       margin-right: 8px;
     }
+    
+    /* follow us hover */
+    a:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    }
 
     /* Red Dot for Cart Notification */
     .cart-dot {
@@ -505,14 +511,29 @@
         <p>"I found everything I needed, and the shopping process was so easy." - Mark L.</p>
       </div>
   
-      <!-- Follow Us Section -->
-      <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-        <h3 style="font-size: 18px;">Follow Us</h3>
-        <p>Stay connected with us on social media:</p>
-        <a href="#" style="color: white; margin-right: 10px;">Facebook</a>
-        <a href="#" style="color: white; margin-right: 10px;">Instagram</a>
-        <a href="#" style="color: white;">Twitter</a>
-      </div>
+      <!-- Add this in your <head> section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Follow Us Section with Icons -->
+<div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+  <h3 style="font-size: 18px;">Follow Us</h3>
+  <p>Stay connected with us on social media:</p>
+  <a href="https://www.facebook.com/Kigali FreshCart" 
+     target="_blank" 
+     style="color: white; margin-right: 15px; text-decoration: none; font-size: 24px;">
+    <i class="fab fa-facebook"></i>
+  </a>
+  <a href="https://www.instagram.com/@freshcart_kgl" 
+     target="_blank" 
+     style="color: white; margin-right: 15px; text-decoration: none; font-size: 24px;">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.tiktok.com/@freshcart_kgl" 
+     target="_blank" 
+     style="color: white; text-decoration: none; font-size: 24px;">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
   
       <!-- Contact Info Section -->
       <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
