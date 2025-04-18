@@ -155,6 +155,51 @@
       font-size: 0.9rem;
     }
 
+    .info-banner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: white;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 200px;
+}
+
+.info-item img {
+  width: 30px;
+  height: 30px;
+}
+
+.info-item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.info-item p {
+  margin: 3px 0 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background-color: #ccc;
+}
+
+
     @media (max-width: 768px) {
       .contact-container {
         grid-template-columns: 1fr;
@@ -183,6 +228,46 @@
     <h1>Contact FreshCart</h1>
     <h2>We’re here to help!</h2>
   </header>
+
+  <section class="info-banner">
+    <div class="info-item">
+      <img src="img/delivery-icon.jpg" alt="Free Delivery Icon">
+      <div>
+        <h3>Free Delivery</h3>
+        <p>Products above 20,000 RWF</p>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+  
+    <div class="info-item">
+      <img src="img/nextday-icon.jpg" alt="Next Day Delivery Icon">
+      <div>
+        <h3>Next Day Delivery</h3>
+        <p>Orders made after 8 PM</p>
+      </div>
+    </div>
+  
+    <div class="divider"></div>
+  
+    <div class="info-item">
+      <img src="img/support-icon.png" alt="Support Icon">
+      <div>
+        <h3>Available for You</h3>
+        <p>Via WhatsApp 9AM/7PM</p>
+      </div>
+    </div>
+  
+    <div class="divider"></div>
+  
+    <div class="info-item">
+      <img src="img/refund-icon.jpg" alt="Refund Icon">
+      <div>
+        <h3>Satisfaction Guaranteed</h3>
+        <p>Refund or replacement within 24hrs</p>
+      </div>
+    </div>
+  </section>
 
   <div class="contact-container">
     <div class="contact-info">
