@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruits | Kigali Shopping Mall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background-image: url('img/fruits-header.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 3rem;
+      position: relative;
+    }
+
+    /* Overlay to dim the header image */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+
+    header h1 {
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    /* Subtitle style */
+    header h2 {
+      margin: 0.5rem 0 0;
+      font-weight: normal;
+      position: relative;
+      z-index: 2;
+    }
+
+    .home-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background-color: #555;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      z-index: 2;
+    }
+
+    .home-btn:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    .filter-btn {
+      background-color: #ff4500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .filter-btn:hover {
+      background-color: #cc3700;
+    }
+
+    /* Product Section */
+    .products-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Default layout */
+      gap: 15px;
+      padding: 0 20px;
+    }
+
+    .product-card {
+      background: white;
+      padding: 0.8rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .product-card h3 {
+      font-size: 1rem;
+      color: #333;
+      margin: 8px 0;
+    }
+
+    .product-card p {
+      color: #666;
+      font-size: 0.8rem;
+      margin: 8px 0;
+    }
+
+    .product-card .price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #FF4500;
+      margin-bottom: 8px;
+    }
+
+    .product-card button {
+      background-color: #FF4500;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .product-card button:hover {
+      background-color: #CC3700;
+    }
+
+    /* Floating View Cart Button */
+    .view-cart-btn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .view-cart-btn img {
+      width: 50px; /* Smaller size */
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .view-cart-btn img:hover {
+      transform: scale(1.1);
+    }
+
+    .view-cart-btn span {
+      margin-top: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Red Dot Notification */
+    .cart-dot {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      display: none;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: rgba(0, 0, 0, 0.8); /* Transparent black */
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    /* Footer Layout */
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: auto;
+      text-align: left;
+    }
+
+    /* Footer Sections */
+    .footer-container div {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* Footer Headings */
+    footer h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer Links */
+    .footer-links {
+      text-align: center;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li {
+      margin: 5px 0;
+    }
+
+    .footer-links ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links ul li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Social Media */
+    .social-media {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 1.5rem;
+    }
+
+    .social-media div {
+      text-align: center;
+    }
+
+    .social-media img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+    }
+
+    .social-media p {
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    /* Copyright */
+    .footer-bottom {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+  .products-container {
+    grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Reduce width to fit 2 per row */
+    gap: 10px; /* Reduce spacing */
+  }
+
+  .product-card {
+    padding: 0.5rem; /* Reduce padding inside the box */
+  }
+
+  .product-card img {
+    height: 130px; /* Reduce image height */
+  }
+
+  .product-card h3 {
+    font-size: 0.9rem; /* Reduce font size */
+  }
+
+  .product-card p {
+    font-size: 0.8rem; /* Reduce text size */
+  }
+
+  .product-card .price {
+    font-size: 0.9rem; /* Reduce price text size */
+  }
+
+  .product-card button {
+    padding: 6px 12px; /* Reduce button size */
+    font-size: 0.8rem;
+  }
+}
+
+/* Further Reduce for Extra Small Screens */
+@media (max-width: 480px) {
+  .products-container {
+    grid-template-columns: repeat(2, minmax(130px, 1fr)); /* Even smaller width */
+    gap: 8px; /* Reduce spacing */
+  }
+
+  .product-card img {
+    height: 110px; /* Further reduce image height */
+  }
+
+  .product-card h3 {
+    font-size: 0.8rem; /* Adjust font size */
+  }
+
+  .product-card p {
+    font-size: 0.7rem;
+  }
+
+  .product-card .price {
+    font-size: 0.8rem;
+  }
+
+  .product-card button {
+    padding: 5px 10px; /* Make button even smaller */
+    font-size: 0.7rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="home-btn">Home</a>
+    <h1>Other foods</h1>
+    <h2>Discover Rwanda’s best tubers, legumes, grains, and more—fresh, local, and ready for your kitchen!</h2>
+  </header>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <button class="filter-btn" onclick="filterProducts('all')">All</button>
+    <button class="filter-btn" onclick="filterProducts('tubers')">Tubers</button>
+    <button class="filter-btn" onclick="filterProducts('legumes')">Legumes</button>
+    <button class="filter-btn" onclick="filterProducts('grains')">Grains</button>
+    <button class="filter-btn" onclick="filterProducts('others')">Others</button>
+  </div>
+
+  <!-- Product Section -->
+<section class="products-container">
+
+<!-- Tubers -->
+<div class="product-card tubers">
+    <img src="img/irish-potatoes-kinigi.jpg" alt="Irish Potatoes (Kinigi)">
+    <h3>Irish Potatoes (Kinigi)</h3>
+    <p>Fresh Kinigi variety Irish potatoes.</p>
+    <p class="price">RWF 1,050 / 1kg</p>
+    <button onclick="addToCart('Irish Potatoes (Kinigi)', 1050, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card tubers">
+    <img src="img/white-irish-potatoes.jpg" alt="White Irish Potatoes (Ibirayi by'umweru)">
+    <h3>White Irish Potatoes (Ibirayi by'umweru)</h3>
+    <p>Premium white Irish potatoes for all meals.</p>
+    <p class="price">RWF 1,250 / 1kg</p>
+    <button onclick="addToCart('White Irish Potatoes (Ibirayi by\'umweru)', 1250, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card tubers">
+    <img src="img/sweet-potatoes.jpg" alt="Sweet Potatoes (Ibijumba)">
+    <h3>Sweet Potatoes (Ibijumba)</h3>
+    <p>Sweet and nutritious potatoes, perfect for boiling or roasting.</p>
+    <p class="price">RWF 800 / 1kg</p>
+    <button onclick="addToCart('Sweet Potatoes (Ibijumba)', 800, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card tubers">
+    <img src="img/green-bananas.jpg" alt="Green Bananas (Igitoki)">
+    <h3>Green Bananas (Igitoki)</h3>
+    <p>Fresh green bananas, perfect for boiling or steaming.</p>
+    <p class="price">RWF 800 / 1kg</p>
+    <button onclick="addToCart('Green Bananas (Igitoki)', 800, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card tubers">
+    <img src="img/cassava.jpg" alt="Cassava (Imyumbati)">
+    <h3>Cassava (Imyumbati)</h3>
+    <p>Fresh cassava roots for versatile cooking.</p>
+    <p class="price">RWF 800 / 1kg</p>
+    <button onclick="addToCart('Cassava (Imyumbati)', 800, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card tubers">
+    <img src="img/yams.jpg" alt="Yams (Amateke)">
+    <h3>Yams (Amateke)</h3>
+    <p>Delicious yams, great for boiling or frying.</p>
+    <p class="price">RWF 1,300 / 1kg</p>
+    <button onclick="addToCart('Yams (Amateke)', 1300, '1kg')">Add to Cart</button>
+</div>
+
+<!-- Legumes -->
+
+<div class="product-card legumes">
+    <img src="img/red-dry-beans.jpg" alt="Red Dry Beans">
+    <h3>Red Dry Beans</h3>
+    <p>Nutritious red dry beans for healthy meals.</p>
+    <p class="price">RWF 2,200 / 1kg</p>
+    <button onclick="addToCart('Red Dry Beans', 2200, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card legumes">
+    <img src="img/yellow-dry-beans.jpg" alt="Yellow Dry Beans">
+    <h3>Yellow Dry Beans</h3>
+    <p>High-quality yellow dry beans for your kitchen.</p>
+    <p class="price">RWF 2,200 / 1kg</p>
+    <button onclick="addToCart('Yellow Dry Beans', 2200, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card legumes">
+    <img src="img/peas.jpg" alt="Peas (Amashaza)">
+    <h3>Peas (Amashaza)</h3>
+    <p>Nutritious peas for a variety of dishes.</p>
+    <p class="price">RWF 3,500 / 1kg</p>
+    <button onclick="addToCart('Peas (Amashaza)', 3500, '1kg')">Add to Cart</button>
+</div>
+
+<div class="product-card legumes">
+    <img src="img/local-peanuts.jpg" alt="Local Peanuts (Ubunyobwa)">
+    <h3>Local Peanuts (Ubunyobwa)</h3>
+    <p>Fresh local peanuts, perfect for snacking or cooking.</p>
+    <p class="price">RWF 4,300 / 1kg</p>
+    <button onclick="addToCart('Local Peanuts (Ubunyobwa)', 4300, '1kg')">Add to Cart</button>
+</div>
+
+  <!-- Grains -->
+
+  <!-- Others -->
+<div class="product-card others">
+    <img src="img/isombe.jpg" alt="Pounded Cassava Leaves (Isombe)">
+    <h3>Pounded Cassava Leaves (Isombe)</h3>
+    <p>Freshly pounded cassava leaves, ready for cooking traditional dishes.</p>
+    <p class="price">RWF 2,800 / 1kg</p>
+    <button onclick="addToCart('Pounded Cassava Leaves (Isombe)', 2800, '1kg')">Add to Cart</button>
+</div>
+
+</section>
+  
+
+  <!-- Floating View Cart Button -->
+  <div class="view-cart-btn" onclick="window.location.href='cart.html'">
+    <img src="img/cart.jpg" alt="Cart Icon">
+    <span>View Cart</span>
+    <span class="cart-dot" id="cartDot"></span> <!-- Red dot -->
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <!-- About FreshCart -->
+      <div class="footer-about">
+        <h3>About FreshCart</h3>
+        <p>FreshCart is your trusted online marketplace for fresh produce, dairy, bakery items, ready-to-eat meals, fresh meat, hygiene products, and more. We bring convenience to your doorstep with reliable subscriptions and on-demand delivery.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="subscriptions.html">Subscriptions</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Email: support@freshcart.com</p>
+        <p>Phone: +250 123 456 789</p>
+        <p>Location: Kigali, Rwanda</p>
+      </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-media">
+      <div>
+        <a href="#"><img src="img/facebook-icon.png" alt="Facebook"></a>
+        <p>Facebook</p>
+      </div>
+      <div>
+        <a href="#"><img src="img/instagram-icon.png" alt="Instagram"></a>
+        <p>Instagram</p>
+      </div>
+      <div>
+        <a href="#"><img src="img/twitter-icon.png" alt="Twitter"></a>
+        <p>Twitter</p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 FreshCart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    function addToCart(productName, price, unit) {
+      cart.push({ productName, price, unit, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartIndicator();
+      alert(`${productName} added to cart!`);
+    }
+  
+    function updateCartIndicator() {
+      const cartDot = document.getElementById("cartDot");
+      if (cart.length > 0) {
+        cartDot.style.display = "block";
+      } else {
+        cartDot.style.display = "none";
+      }
+    }
+  
+    updateCartIndicator();
+
+    function filterProducts(category) {
+      let products = document.querySelectorAll('.product-card');
+
+      products.forEach(product => {
+        product.style.display = 'none'; // Hide all products
+      });
+
+      if (category === 'all') {
+        products.forEach(product => {
+          product.style.display = 'block'; // Show all
+        });
+      } else {
+        let selectedProducts = document.querySelectorAll(`.${category}`);
+        selectedProducts.forEach(product => {
+          product.style.display = 'block'; // Show only selected
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
