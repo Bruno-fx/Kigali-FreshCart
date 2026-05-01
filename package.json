@@ -1,0 +1,16 @@
+{
+  "name": "kigali-freshcart",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static Kigali FreshCart website configured for Node.js 22+ on GitHub and hosting runners.",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo \"Static site: no build step required\""
+  },
+  "devDependencies": {
+    "serve": "latest"
+  }
+}
