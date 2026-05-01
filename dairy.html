@@ -352,7 +352,7 @@
   <!-- Product Section -->
 <section class="products-container">
 
-  <div class="product-card">
+  <div class="product-card" data-fc-id="dairy-fresh-milk-liter">
     <img src="img/fresh-milk.webp" alt="Fresh Milk">
     <h3>Fresh Milk</h3>
     <p>Pure, farm-fresh milk, full of essential nutrients.</p>
@@ -360,7 +360,7 @@
     <button onclick="addToCart('Fresh Milk', 1500, 'liter')">Add to Cart</button>
   </div>
 
-  <div class="product-card">
+  <div class="product-card" data-fc-id="dairy-fermented-milk-liter">
     <img src="img/sour-milk.webp" alt="Fermented Milk">
     <h3>Fermented Milk (Ikivuguto)</h3>
     <p>Traditional fermented milk, rich in probiotics.</p>
@@ -368,7 +368,7 @@
     <button onclick="addToCart('Fermented Milk', 1800, 'liter')">Add to Cart</button>
   </div>
 
-  <div class="product-card">
+  <div class="product-card" data-fc-id="dairy-nyanza-fermented-milk-5l-5l">
     <img src="img/inyange-whole-milk-1l.webp" alt="Inyange Whole Milk 1L Box">
     <h3>Inyange Whole Milk 1L (Box of 12)</h3>
     <p>Box of 12 pieces of Inyange Whole Milk 1L, perfect for families and offices.</p>
@@ -376,7 +376,7 @@
     <button onclick="addToCart('Inyange Whole Milk 1L (Box of 12)', 22000, 'box')">Add to Cart</button>
   </div>
 
-  <div class="product-card">
+  <div class="product-card" data-fc-id="dairy-mukamira-fermented-milk-5l-5l">
     <img src="img/inyange-whole-milk-500ml.webp" alt="Inyange Whole Milk 500ml Box">
     <h3>Inyange Whole Milk 500ml (Box of 12)</h3>
     <p>Box of 12 pieces of Inyange Whole Milk 500ml, convenient for daily use.</p>
@@ -384,7 +384,7 @@
     <button onclick="addToCart('Inyange Whole Milk 500ml (Box of 12)', 11000, 'box')">Add to Cart</button>
   </div>
 
-  <div class="product-card">
+  <div class="product-card" data-fc-id="dairy-eggs-tray-30-eggs">
     <img src="img/masaka-fermented-milk-5l.webp" alt="Masaka Fermented Milk 5L">
     <h3>Masaka Fermented Milk (Ikivuguto) 5L</h3>
     <p>Traditional Masaka fermented milk, rich and creamy, 5 liters.</p>
@@ -392,7 +392,7 @@
     <button onclick="addToCart('Masaka Fermented Milk (Ikivuguto) 5L', 6800, '5L')">Add to Cart</button>
   </div>
 
-  <div class="product-card">
+  <div class="product-card" data-fc-id="dairy-cheese-900g">
     <img src="img/inyange-fermented-milk-5l.webp" alt="Inyange Fermented Milk 5L">
     <h3>Inyange Fermented Milk (Ikivuguto) 5L</h3>
     <p>Inyange brand fermented milk, 5 liters, a favorite for many households.</p>
@@ -530,5 +530,7 @@
     updateCartIndicator();
   </script>
 
+<script src="data/freshcart-data.js"></script>
+<script src="js/freshcart-live.js"></script>
 </body>
 </html>
