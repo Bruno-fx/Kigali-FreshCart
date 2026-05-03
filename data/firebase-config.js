@@ -7,6 +7,12 @@
   4) Deploy this file with the website.
 */
 window.FRESHCART_FIREBASE = {
-  databaseURL: "",
+  apiKey: "AIzaSyAK-9tFVVNnVL80r3WrEYadmFdX3VMWVMI",
+  authDomain: "kigali-fresh-cart.firebaseapp.com",
+  projectId: "kigali-fresh-cart",
+  storageBucket: "kigali-fresh-cart.firebasestorage.app",
+  messagingSenderId: "919046854659",
+  appId: "1:919046854659:web:a47f93bca7b7e2d3d5d636",
+  measurementId: "G-XZEXZ907BV"
   path: "freshcart/config"
 };
