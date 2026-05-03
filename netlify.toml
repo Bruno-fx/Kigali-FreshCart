@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+  command = "npm install && npm run build"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/config"
+  to = "/.netlify/functions/config"
+  status = 200
+
+[[redirects]]
+  from = "/api/recover-password"
+  to = "/.netlify/functions/recover-password"
+  status = 200

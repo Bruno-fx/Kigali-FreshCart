@@ -1,0 +1,29 @@
+Kigali FreshCart online admin sync
+==================================
+
+This version includes Netlify Functions + Netlify Blobs.
+
+How to deploy:
+1. Upload this whole folder to GitHub using GitHub Desktop.
+2. Connect the GitHub repository to Netlify.
+3. Netlify will run npm install and deploy the static website plus backend functions.
+4. Open /admin.html, edit products/services/prices, then click Save Changes.
+5. Public website pages will load the saved online config for all visitors.
+
+Firebase is optional now:
+- data/firebase-config.js is still supported as a fallback.
+- You do not need Firebase if the site is deployed on Netlify with the included functions.
+
+Password recovery backend:
+- The backend function is included at /.netlify/functions/recover-password.
+- For automatic email, add these Netlify environment variables:
+  RESEND_API_KEY
+  OWNER_RECOVERY_EMAIL=kigalifreshcart@gmail.com
+  RECOVERY_FROM_EMAIL=Kigali FreshCart <your verified Resend sender>
+- For automatic SMS, add Twilio variables:
+  TWILIO_ACCOUNT_SID
+  TWILIO_AUTH_TOKEN
+  TWILIO_FROM_NUMBER
+  OWNER_RECOVERY_PHONE=+250727725180
+
+Without those private API keys, the recovery button still shows the recovery email/phone and confirms that the backend is active after deploy.

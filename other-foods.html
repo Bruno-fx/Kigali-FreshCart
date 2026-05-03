@@ -369,19 +369,11 @@
   </header>
 
   <!-- Filter Bar -->
-  <div class="filter-bar">
-    <button class="filter-btn" onclick="filterProducts('all')">All</button>
-    <button class="filter-btn" onclick="filterProducts('tubers')">Tubers</button>
-    <button class="filter-btn" onclick="filterProducts('legumes')">Legumes</button>
-    <button class="filter-btn" onclick="filterProducts('grains')">Grains</button>
-    <button class="filter-btn" onclick="filterProducts('others')">Others</button>
-  </div>
-
   <!-- Product Section -->
 <section class="products-container">
 
 <!-- Tubers -->
-<div class="product-card tubers">
+<div class="product-card tubers" data-fc-id="other-foods-red-dry-beans-1kg">
   <img src="img/irish-potatoes-kinigi.webp" alt="Irish Potatoes (Kinigi)">
   <h3>Irish Potatoes (Kinigi)</h3>
   <p>Fresh Kinigi variety Irish potatoes.</p>
@@ -389,7 +381,7 @@
   <button onclick="addToCart('Irish Potatoes (Kinigi)', 1050, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card tubers">
+<div class="product-card tubers" data-fc-id="other-foods-yellow-dry-beans-1kg">
   <img src="img/white-irish-potatoes.webp" alt="White Irish Potatoes (Ibirayi by'umweru)">
   <h3>White Irish Potatoes (Ibirayi by'umweru)</h3>
   <p>Premium white Irish potatoes for all meals.</p>
@@ -397,7 +389,7 @@
   <button onclick="addToCart('White Irish Potatoes (Ibirayi by\'umweru)', 1250, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card tubers">
+<div class="product-card tubers" data-fc-id="other-foods-amakaroni-santa-lucia-500g-carton-carton">
   <img src="img/sweet-potatoes.webp" alt="Sweet Potatoes (Ibijumba)">
   <h3>Sweet Potatoes (Ibijumba)</h3>
   <p>Sweet and nutritious potatoes, perfect for boiling or roasting.</p>
@@ -405,7 +397,7 @@
   <button onclick="addToCart('Sweet Potatoes (Ibijumba)', 800, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card tubers">
+<div class="product-card tubers" data-fc-id="other-foods-amakaroni-santa-lucia-500g-piece-piece">
   <img src="img/green-bananas.webp" alt="Green Bananas (Igitoki)">
   <h3>Green Bananas (Igitoki)</h3>
   <p>Fresh green bananas, perfect for boiling or steaming.</p>
@@ -413,7 +405,7 @@
   <button onclick="addToCart('Green Bananas (Igitoki)', 800, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card tubers">
+<div class="product-card tubers" data-fc-id="other-foods-amakaroni-santa-lucia-450g-carton-carton">
   <img src="img/cassava.webp" alt="Cassava (Imyumbati)">
   <h3>Cassava (Imyumbati)</h3>
   <p>Fresh cassava roots for versatile cooking.</p>
@@ -421,7 +413,7 @@
   <button onclick="addToCart('Cassava (Imyumbati)', 800, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card tubers">
+<div class="product-card tubers" data-fc-id="other-foods-amakaroni-santa-lucia-450g-piece-piece">
   <img src="img/yams.webp" alt="Yams (Amateke)">
   <h3>Yams (Amateke)</h3>
   <p>Delicious yams, great for boiling or frying.</p>
@@ -431,7 +423,7 @@
 
 <!-- Legumes -->
 
-<div class="product-card legumes">
+<div class="product-card legumes" data-fc-id="other-foods-amakaroni-santa-lucia-250g-carton-carton">
   <img src="img/red-dry-beans.webp" alt="Red Dry Beans">
   <h3>Red Dry Beans</h3>
   <p>Nutritious red dry beans for healthy meals.</p>
@@ -439,7 +431,7 @@
   <button onclick="addToCart('Red Dry Beans', 2200, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card legumes">
+<div class="product-card legumes" data-fc-id="other-foods-amakaroni-santa-lucia-250g-piece-piece">
   <img src="img/yellow-dry-beans.webp" alt="Yellow Dry Beans">
   <h3>Yellow Dry Beans</h3>
   <p>High-quality yellow dry beans for your kitchen.</p>
@@ -447,7 +439,7 @@
   <button onclick="addToCart('Yellow Dry Beans', 2200, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card legumes">
+<div class="product-card legumes" data-fc-id="other-foods-tz-rice-original-no1-1kg">
   <img src="img/peas.webp" alt="Peas (Amashaza)">
   <h3>Peas (Amashaza)</h3>
   <p>Nutritious peas for a variety of dishes.</p>
@@ -455,7 +447,7 @@
   <button onclick="addToCart('Peas (Amashaza)', 3500, '1kg')">Add to Cart</button>
 </div>
 
-<div class="product-card legumes">
+<div class="product-card legumes" data-fc-id="other-foods-thailand-rice-1kg">
   <img src="img/local-peanuts.webp" alt="Local Peanuts (Ubunyobwa)">
   <h3>Local Peanuts (Ubunyobwa)</h3>
   <p>Fresh local peanuts, perfect for snacking or cooking.</p>
@@ -465,7 +457,7 @@
 
   <!-- Grains -->
 
-<div class="product-card kitchen">
+<div class="product-card kitchen" data-fc-id="other-foods-indian-rice-1kg">
     <img src="img/amakaroni-santa-lucia-500g.webp" alt="Amakaroni Santa Lucia 500g Carton">
     <h3>Spaghetti Santa Lucia 500g (Carton)</h3>
     <p>Carton of 500g Santa Lucia pasta.</p>
@@ -655,5 +647,7 @@
     }
   </script>
 
+<script src="data/freshcart-data.js"></script>
+<script src="data/firebase-config.js"></script><script src="js/freshcart-cloud.js"></script><script src="js/freshcart-live.js"></script>
 </body>
 </html>

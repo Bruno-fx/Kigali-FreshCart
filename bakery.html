@@ -370,18 +370,10 @@
   </header>
 
   <!-- Filter Bar -->
-  <div class="filter-bar">
-    <button class="filter-btn" onclick="filterProducts('all')">All</button>
-    <button class="filter-btn" onclick="filterProducts('breads')">Breads</button>
-    <button class="filter-btn" onclick="filterProducts('donuts')">Donuts</button>
-    <button class="filter-btn" onclick="filterProducts('cakes')">Cakes</button>
-    <button class="filter-btn" onclick="filterProducts('specialties')">Others</button>
-  </div>
-
   <!-- Product Section -->
 <section class="products-container">
   <!-- Sandwich -->
-  <div class="product-card breads">
+  <div class="product-card breads" data-fc-id="bakery-sandwich-pack">
     <img src="img/sandwich.webp" alt="Sandwich">
     <h3>Sandwich</h3>
     <p>Freshly baked sandwich bread, perfect for your favorite fillings.</p>
@@ -390,7 +382,7 @@
   </div>
 
   <!-- Pain Coupé -->
-  <div class="product-card breads">
+  <div class="product-card breads" data-fc-id="bakery-pain-coup-pack">
     <img src="img/pain-coupe.webp" alt="Pain Coupé">
     <h3>Pain Coupé</h3>
     <p>Soft sliced bread, ideal for breakfast and snacks.</p>
@@ -399,7 +391,7 @@
   </div>
 
   <!-- Pain Français -->
-  <div class="product-card breads">
+  <div class="product-card breads" data-fc-id="bakery-pain-fran-ais-loaf">
     <img src="img/pain-francais.webp" alt="Pain Français">
     <h3>Pain Français</h3>
     <p>Classic French bread with a crispy crust and soft interior.</p>
@@ -408,7 +400,7 @@
   </div>
 
   <!-- Pain Viande -->
-  <div class="product-card breads">
+  <div class="product-card breads" data-fc-id="bakery-pain-viande-piece">
     <img src="img/pain-viande.webp" alt="Pain Viande">
     <h3>Pain Viande</h3>
     <p>Bread filled with seasoned meat for a delicious snack.</p>
@@ -417,7 +409,7 @@
   </div>
 
 <!-- Croissant -->
-<div class="product-card croissant">
+<div class="product-card croissant" data-fc-id="bakery-croissant-piece">
   <img src="img/croissants.webp" alt="Croissant">
   <h3>Croissant</h3>
   <p>Delicious French-style croissants.</p>
@@ -427,7 +419,7 @@
 
 
   <!-- Donuts -->
-  <div class="product-card donuts">
+  <div class="product-card donuts" data-fc-id="bakery-donuts-pack">
     <img src="img/donuts.webp" alt="Donuts">
     <h3>Donuts</h3>
     <p>Classic fried donuts with a soft and fluffy texture.</p>
@@ -436,7 +428,7 @@
   </div>
 
   <!-- Round Donuts -->
-<div class="product-card donuts">
+<div class="product-card donuts" data-fc-id="bakery-round-donuts-pack">
   <img src="img/round-donuts.webp" alt="Round Donuts">
   <h3>Round Donuts</h3>
   <p>Classic round donuts, light and fluffy.</p>
@@ -445,7 +437,7 @@
 </div>
 
   <!-- Special Donuts -->
-  <div class="product-card donuts">
+  <div class="product-card donuts" data-fc-id="bakery-special-donuts-pack">
     <img src="img/special-donuts.webp" alt="Special Donuts">
     <h3>Special Donuts</h3>
     <p>Premium flavored donuts with assorted toppings.</p>
@@ -454,7 +446,7 @@
   </div>
 
   <!-- Chocolate Glazed Donuts -->
-  <div class="product-card donuts">
+  <div class="product-card donuts" data-fc-id="bakery-chocolate-glazed-donuts-piece">
     <img src="img/chocolate-glazed-donuts.webp" alt="Chocolate Glazed Donuts">
     <h3>Chocolate Glazed Donuts</h3>
     <p>Soft donuts coated with a rich chocolate glaze.</p>
@@ -463,7 +455,7 @@
   </div>
 
   <!-- Cup Cakes -->
-  <div class="product-card cakes">
+  <div class="product-card cakes" data-fc-id="bakery-cup-cakes-pack">
     <img src="img/cupcakes.webp" alt="Cup Cakes">
     <h3>Cup Cakes</h3>
     <p>Moist and delicious cupcakes in various flavors.</p>
@@ -472,7 +464,7 @@
   </div>
 
   <!-- Pancakes -->
-  <div class="product-card cakes">
+  <div class="product-card cakes" data-fc-id="bakery-pan-cakes-piece">
     <img src="img/pancakes.webp" alt="Pan Cakes">
     <h3>Pan Cakes</h3>
     <p>Soft and fluffy pancakes, perfect for breakfast.</p>
@@ -481,7 +473,7 @@
   </div>
 
   <!-- Chocolate Cakes -->
-  <div class="product-card cakes">
+  <div class="product-card cakes" data-fc-id="bakery-chocolate-cake-piece">
     <img src="img/chocolate-cake.webp" alt="Chocolate Cake">
     <h3>Chocolate Cake</h3>
     <p>Rich and moist chocolate cake, perfect for any occasion.</p>
@@ -490,7 +482,7 @@
   </div>
 
   <!-- Pizza -->
-  <div class="product-card specialties">
+  <div class="product-card specialties" data-fc-id="bakery-pizza-large">
     <img src="img/pizza.webp" alt="Pizza">
     <h3>Pizza</h3>
     <p>Delicious cheesy pizza with fresh toppings.</p>
@@ -499,7 +491,7 @@
   </div>
 
   <!-- Chapati -->
-<div class="product-card specialties">
+<div class="product-card specialties" data-fc-id="bakery-chapati-piece">
   <img src="img/chapati.webp" alt="Chapati">
   <h3>Chapati</h3>
   <p>Traditional flatbread, great with tea or as a side dish.</p>
@@ -508,7 +500,7 @@
 </div>
 
 <!-- Samosa -->
-<div class="product-card specialties">
+<div class="product-card specialties" data-fc-id="bakery-samosa-piece">
   <img src="img/samosa.webp" alt="Samosa">
   <h3>Samosa</h3>
   <p>Deep-fried, crispy, and filled with spiced meat or veggies.</p>
@@ -517,7 +509,7 @@
 </div>
 
 <!-- Burgers -->
-<div class="product-card specialties">
+<div class="product-card specialties" data-fc-id="bakery-burger-piece">
   <img src="img/burger.webp" alt="Burger">
   <h3>Burger</h3>
   <p>Juicy burger with fresh ingredients and homemade bun.</p>
@@ -634,5 +626,7 @@
     }
   </script>
 
+<script src="data/freshcart-data.js"></script>
+<script src="data/firebase-config.js"></script><script src="js/freshcart-cloud.js"></script><script src="js/freshcart-live.js"></script>
 </body>
 </html>

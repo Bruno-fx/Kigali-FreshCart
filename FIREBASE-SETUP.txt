@@ -1,0 +1,7 @@
+Kigali FreshCart online sync
+=============================
+
+This package now includes Netlify Functions + Netlify Blobs as the main live connection.
+Deploy the folder to Netlify through GitHub and admin changes will be saved online for all visitors.
+
+Firebase Realtime Database remains optional. To use Firebase instead, add your databaseURL in data/firebase-config.js and set preferFirebaseOnly: true.

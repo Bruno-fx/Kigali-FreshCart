@@ -1,0 +1,12 @@
+{
+  "name": "kigali-freshcart",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Kigali FreshCart static site ready'"
+  },
+  "dependencies": {
+    "@netlify/blobs": "latest"
+  },
+  "devDependencies": {}
+}
